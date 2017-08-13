@@ -2,7 +2,7 @@ const mongoose  = require('mongoose');
 const bcrypt    = require('bcrypt');
 const validator = require('validator');
 
-const userSchema = new mongoose.Schema ({
+const userSchema = new mongoose.Schema({
   profilePicture: { type: String },
   dob: { type: Date },
   username: { type: String, required: true },

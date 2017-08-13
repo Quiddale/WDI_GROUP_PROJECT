@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="groupProject">
   <head>
+    <base href="/">
     <meta charset="utf-8">
     <title>Project 3</title>
     <!-- inject:js -->
@@ -8,7 +9,7 @@
     <!-- inject:css -->
     <!-- endinject -->
   </head>
-  <body>
-    <h1>Project 3</h1>
+  <body ng-controller="MainCtrl as main">
+    <main class="container" ui-view></main>
   </body>
 </html>
