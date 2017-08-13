@@ -6,7 +6,7 @@ NewCtrl.$inject = ['Story', '$state'];
 function NewCtrl(Story, $state){
   const vm = this;
   vm.story = {};
-  vm.story.contributions = [];
+  // vm.story.contributions = [];
   vm.titleCheck = true;
   vm.genreCheck = false;
   vm.ruleCheck = false;
@@ -40,6 +40,7 @@ function NewCtrl(Story, $state){
     vm.contribCheck = false;
   }
   function goContrib(){
+    vm.story.contributions = [];
     vm.titleCheck = false;
     vm.genreCheck = false;
     vm.ruleCheck = false;
@@ -67,9 +68,9 @@ function NewCtrl(Story, $state){
           vm.count++;
         }
         if(vm.count === vm.sentances.length){
-          vm.submit = false;
+          vm.submitCheck = false;
         }else{
-          vm.submit = true;
+          vm.submitCheck = true;
         }
       }
     }
@@ -84,7 +85,9 @@ function NewCtrl(Story, $state){
       vm.story.rules.start = vm.story.rules.start.split('')[vm.story.rules.start.length - 1];
     }
   }
+
   function submit(){
+    console.log('submit');
     Story
       .save(vm.story)
       .$promise

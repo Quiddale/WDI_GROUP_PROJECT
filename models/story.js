@@ -5,7 +5,7 @@ const mongoose  = require('mongoose');
 const storySchema = new mongoose.Schema({
   title: { type: String, require: true },
   genre: { type: String , require: true  },
-  rules: { type: String, required: true },
+  rules: {type: Object, require: true},
   contributions: { type: Array, required: true },
   userContribution: {type: String}
 });

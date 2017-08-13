@@ -15,7 +15,6 @@ router.route('/stories')
   .get(stories.index)
   .post(stories.create);
 
-
 router.route('/users')
   .get(users.index);
 

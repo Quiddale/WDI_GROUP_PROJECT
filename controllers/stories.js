@@ -10,6 +10,7 @@ function storyIndex(req, res) {
 }
 
 function storyCreate(req, res) {
+  console.log(req);
   Story
     .create(req.body)
     .then(story => res.status(201).json(story))
