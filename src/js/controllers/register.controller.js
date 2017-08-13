@@ -5,7 +5,6 @@ angular
 RegisterCtrl.$inject = ['User', 'TokenService'];
 
 function RegisterCtrl(User, TokenService){
-  // console.log('hello');
   const vm = this;
   vm.register = register;
 
