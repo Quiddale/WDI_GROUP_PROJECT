@@ -12,7 +12,6 @@ function LoginCtrl(User, TokenService) {
       .login(vm.user)
       .$promise
       .then(data => {
-        console.log(data);
         TokenService.setToken(data.token);
       });
   }

@@ -7,7 +7,6 @@ AuthInterceptor.$inject = ['API', 'TokenService'];
 function AuthInterceptor(API, TokenService) {
   return {
     request: function(req) {
-      console.log(req);
       return req;
     },
     response: function(res) {

@@ -13,19 +13,24 @@
     <button type="button" name="button" ng-click="new.goRules()" value="button">Next</button>
     <button type="button" name="button" ng-click="new.goTitle()" value="button">Back</button>
   </div>
-  {{new.genreCheck}}
 
   <div class="" ng-show="new.ruleCheck">
     <label for="rule">Give your story a rule</label>
-    <input type="text" name="rule" ng-model="new.story.rules">
-    <button type="button" name="button" ng-click="new.goContrib()" value="button">Next</button>
+
+    <button type="button" name="button">All sentances must start with the letter <input type="text" name="start" ng-model="new.story.rules.start" ng-change="new.starts()"></button>
+    <button type="button" name="button">You cannot use the letter <input type="text" name="contain" ng-model="new.story.rules.contain" ng-change="new.contains()"></button>
+
+    <!-- <input type="radio" name="startRule" ng-model="new.story.rules.start">
+    <input type="radio" name="containsRule" ng-model="new.story.rules.contains"> -->
+
+    <button type="button" name="button" ng-click="new.goContrib()" value="button" >Next</button>
     <button type="button" name="button" ng-click="new.goGenre()" value="button">Back</button>
   </div>
 
   <div class="" ng-show="new.contribCheck">
     <label for="userContribution">Give your story a contribution</label>
     <input type="text-area" name="userContribution" ng-model="new.story.userContribution" ng-change="new.addContrib()">
-    <input type="submit" value="Submit">
+    <input type="submit" value="Submit" ng-hide="new.submit">
   </div>
 
 </form>

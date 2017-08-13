@@ -13,7 +13,6 @@ function RegisterCtrl(User, TokenService){
     .register(vm.user)
     .$promise
     .then(data => {
-      console.log(data);
       TokenService.setToken(data.token);
     });
   }

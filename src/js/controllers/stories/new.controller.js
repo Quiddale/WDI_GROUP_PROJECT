@@ -5,8 +5,6 @@ angular
 NewCtrl.$inject = ['Story', '$state'];
 function NewCtrl(Story, $state){
   const vm = this;
-
-  console.log('NEW');
   vm.story = {};
   vm.story.contributions = [];
   vm.titleCheck = true;
@@ -20,6 +18,8 @@ function NewCtrl(Story, $state){
   vm.goContrib = goContrib;
   vm.addContrib = addContrib;
   vm.submit = submit;
+  vm.starts = starts;
+  vm.contains = contains;
 
   function goTitle(){
     vm.titleCheck = true;
@@ -48,11 +48,43 @@ function NewCtrl(Story, $state){
   function addContrib(){
     vm.story.contributions.pop();
     vm.story.contributions.push(vm.story.userContribution);
+    vm.sentances = vm.story.userContribution.split('. ');
+    vm.count = 0;
+    if(vm.story.rules.contain){
+      for (var i = 0; i < vm.story.userContribution.split('').length; i++) {
+        if(vm.story.userContribution.split('')[i].toLowerCase() === vm.story.rules.contain.toLowerCase()){
+          vm.submit === false;
+          return;
+        }else{
+          vm.submit = true;
+        }
+      }
+    }
+    if (vm.story.rules.start) {
+      for (var a = 0; a < vm.sentances.length; a++) {
+
+        if(vm.sentances[a].split('')[0].toLowerCase() === vm.story.rules.start.toLowerCase()){
+          vm.count++;
+        }
+        if(vm.count === vm.sentances.length){
+          vm.submit = false;
+        }else{
+          vm.submit = true;
+        }
+      }
+    }
+  }
+  function contains(){
+    if(vm.story.rules.contain.split('').length >1){
+      vm.story.rules.contain = vm.story.rules.contain.split('')[vm.story.rules.contain.length - 1];
+    }
+  }
+  function starts(){
+    if(vm.story.rules.start.split('').length >1){
+      vm.story.rules.start = vm.story.rules.start.split('')[vm.story.rules.start.length - 1];
+    }
   }
   function submit(){
-    console.log('submit');
-    console.log(vm.story);
-
     Story
       .save(vm.story)
       .$promise

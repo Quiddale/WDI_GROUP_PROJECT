@@ -4,7 +4,6 @@ angular
 
 MainCtrl.$inject = ['User'];
 function MainCtrl(User){
-  console.log('MAIN');
   const vm = this;
   vm.users = User.query();
 }
