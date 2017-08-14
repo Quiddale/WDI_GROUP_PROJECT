@@ -2,3 +2,37 @@ img {
   width: 300px;
   height: auto;
 }
+
+.progress-btns {
+  list-style-type: none;
+  padding: 0;
+  text-align: center;
+  li {
+    display: inline-block;
+    width: 100px;
+    padding: 10px;
+    button {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: none;
+      border: solid 2px black;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
+
+.grey {
+  color: grey;
+}
+
+.black {
+  color: black;
+}
+
+.bold {
+  font-weight: bold;
+  color: red;
+}

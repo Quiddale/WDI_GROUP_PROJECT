@@ -1,18 +1,39 @@
 <h1>Create New</h1>
-{{new.story}}
+<p>{{new.story}}</p>
+
+<ul class="progress-btns">
+  <li>
+    <!-- ng-disabled="!new.story.title" -->
+    <button ng-click="new.goTitle()" ng-class="{bold: new.titleCheck}">1</button>
+    <p ng-class="{grey: !new.story.title, bold: new.titleCheck}">Title</p>
+  </li>
+  <li>
+    <button ng-disabled="!new.story.genre" ng-click="new.goGenre()" ng-class="{bold: new.genreCheck}">2</button>
+    <p ng-class="{grey: !new.story.genre, bold: new.genreCheck}">Genre</p>
+  </li>
+  <li>
+    <button ng-disabled="!new.story.rules" ng-click="new.goRules()" ng-class="{bold: new.ruleCheck}">3</button>
+    <p ng-class="{grey: !new.story.rules.start || !new.story.rules.contains, black: new.story.rules.start || new.story.rules.contains, bold: new.ruleCheck}">Rules</p>
+  </li>
+  <li>
+    <button ng-disabled="!new.story.authorContribution" ng-click="new.goContrib()" ng-class="{bold: new.contribCheck}">4</button>
+    <p ng-class="{grey: !new.story.authorContribution, bold: new.contribCheck}">Start the story</p>
+  </li>
+</ul>
+
 <form ng-submit="new.submit()">
   <input type="hidden" name="image" ng-model="new.story.image">
 
   <div class="" ng-show="new.titleCheck">
     <label for="title">Give your story a title</label>
     <input type="text" name="title" ng-model="new.story.title">
-    <button type="button" name="button" ng-click="new.goGenre()" value="button">Next</button>
+    <button type="button" name="button" ng-click="new.goGenre()" ng-disabled="!new.story.title" value="button">Next</button>
   </div>
 
   <div class="" ng-show="new.genreCheck">
     <label for="genre" >Give your story a genre</label>
     <input type="text" name="genre" ng-model="new.story.genre">
-    <button type="button" name="button" ng-click="new.goRules()" value="button">Next</button>
+    <button type="button" name="button" ng-click="new.goRules()" ng-disabled="!new.story.genre" value="button">Next</button>
     <button type="button" name="button" ng-click="new.goTitle()" value="button">Back</button>
   </div>
 
@@ -25,7 +46,7 @@
     <!-- <input type="radio" name="startRule" ng-model="new.story.rules.start">
     <input type="radio" name="containsRule" ng-model="new.story.rules.contains"> -->
 
-    <button type="button" name="button" ng-click="new.goContrib()" value="button" >Next</button>
+    <button type="button" name="button" ng-click="new.goContrib()" ng-disabled="!new.story.rules" value="button">Next</button>
     <button type="button" name="button" ng-click="new.goGenre()" value="button">Back</button>
   </div>
 
