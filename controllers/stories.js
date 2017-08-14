@@ -1,5 +1,4 @@
 const Story = require('../models/story');
-// const User = require('../models/story');
 
 
 function storyIndex(req, res) {
@@ -28,10 +27,6 @@ function storyShow(req, res) {
   .exec()
   .then(story => res.status(200).json(story))
   .catch(err => res.status(500).json(err));
-  // , (err, story) => {
-  //   if (err) return res.status(500).json({ message: 'Something went wrong.' });
-  //   if (!story) return res.status(404).json({ message: 'Story not found.' });
-  //   return res.status(200).json(story);
 
 }
 
