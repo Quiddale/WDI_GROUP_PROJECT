@@ -12,7 +12,7 @@ function storyIndex(req, res) {
 
 function storyCreate(req, res) {
   req.body.createdBy = req.user.id;
-  console.log(req.body);
+  // console.log(req.body);
   Story
     .create(req.body)
     .then(story => res.status(201).json(story))
@@ -20,7 +20,7 @@ function storyCreate(req, res) {
 }
 
 function storyShow(req, res) {
-  console.log(req.params);
+  // console.log(req.params);
   Story
   .findById(req.params.id)
   .populate('createdBy')
@@ -28,11 +28,25 @@ function storyShow(req, res) {
   .exec()
   .then(story => res.status(200).json(story))
   .catch(err => res.status(500).json(err));
+}
 
+function storyUpdate(req, res) {
+
+  Story
+  .findById(req.params.id)
+  .exec()
+  .then(story => {
+    if(!story) return res.status(404).json({ message: 'No story found!'});
+    story.image = req.body.image;
+    story.save();
+  })
+  .then(story => res.status(200).json(story))
+  .catch(err=> res.status(500).json(err));
 }
 
 module.exports = {
   index: storyIndex,
   create: storyCreate,
-  show: storyShow
+  show: storyShow,
+  update: storyUpdate
 };

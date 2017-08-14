@@ -1,4 +1,14 @@
-<h1>show</h1>
+<section style="background-image:url({{ vm.story.image }})">
+  <h1>{{ vm.story.title}}</h1>
 
-{{vm.story}}
-{{vm.story.createdBy.username}}
+  <h2>{{ vm.story.genre }}</h2>
+
+  <h3>Created by {{vm.story.createdBy.username}}</h3>
+
+  <!-- {{vm.story}} -->
+  <form ng-submit="vm.refreshMe()">
+    <input type="submit" ng-show="vm.canRefresh" value="Refresh">
+
+  </form>
+
+</section>
