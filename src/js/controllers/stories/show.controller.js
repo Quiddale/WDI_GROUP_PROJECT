@@ -8,5 +8,5 @@ function StoryShowCtrl(Story, $stateParams){
   const vm = this;
   console.log($stateParams);
   vm.story = Story.get({id: $stateParams.id});
-  console.log(vm);
+  console.log(vm.story);
 }

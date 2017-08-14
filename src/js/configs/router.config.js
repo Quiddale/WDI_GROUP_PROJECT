@@ -38,7 +38,7 @@ function Router($stateProvider, $locationProvider, $urlRouterProvider){
   .state('storiesShow', {
     url: '/stories/:id',
     templateUrl: '/js/views/stories/show.html',
-    controller: 'StoryShowCtrl as vm'
+    controller: 'StoryShowCtrl as stories'
   });
 
   $urlRouterProvider.otherwise('/');
