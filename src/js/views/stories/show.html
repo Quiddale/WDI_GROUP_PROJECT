@@ -5,6 +5,10 @@
 
   <h3>Created by {{vm.story.createdBy.username}}</h3>
 
-  {{vm.story}}
+  <!-- {{vm.story}} -->
+  <form ng-submit="vm.refreshMe()">
+    <input type="submit" ng-show="vm.canRefresh" value="Refresh">
+
+  </form>
 
 </section>

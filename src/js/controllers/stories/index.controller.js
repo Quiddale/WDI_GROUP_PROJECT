@@ -7,12 +7,12 @@ StoriesIndexCtrl.$inject= ['Story', 'User'];
 function StoriesIndexCtrl(Story, User){
   const vm = this;
   vm.all   = Story.query();
-  console.log(vm.all);
+  // console.log(vm.all);
   vm.users = User.query();
   vm.findUser = findUser;
   function findUser(e){
-    console.log(e);
+    // console.log(e);
     vm.user = User.query({id: e});
   }
-  console.log(vm.users);
+  // console.log(vm.users);
 }

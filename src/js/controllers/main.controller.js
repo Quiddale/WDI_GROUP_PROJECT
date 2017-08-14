@@ -29,7 +29,6 @@ function MainCtrl($rootScope, CurrentUserService, $state, Story){
       vm.randomIndex = Math.floor(Math.random() *vm.stories.length);
       vm.randomId = vm.stories[vm.randomIndex]._id;
       $state.go('storiesShow', {id: vm.randomId});
-      console.log(vm.randomId);
     });
 
 
