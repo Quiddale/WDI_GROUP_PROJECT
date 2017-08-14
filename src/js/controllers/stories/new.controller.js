@@ -48,13 +48,13 @@ function NewCtrl(Story, $state){
   }
   function addContrib(){
     vm.story.contributions.pop();
-    vm.story.contributions.push(vm.story.userContribution);
-    vm.sentances = vm.story.userContribution.split('. ');
+    vm.story.contributions.push(vm.story.authorContribution);
+    vm.sentances = vm.story.authorContribution.split('. ');
     vm.count = 0;
     if(vm.story.rules.contain){
-      for (var i = 0; i < vm.story.userContribution.split('').length; i++) {
-        if(vm.story.userContribution.split('')[i].toLowerCase() === vm.story.rules.contain.toLowerCase()){
-          vm.submitCheck === false;
+      for (var i = 0; i < vm.story.authorContribution.split('').length; i++) {
+        if(vm.story.authorContribution.split('')[i].toLowerCase() === vm.story.rules.contain.toLowerCase()){
+          vm.submitCheck = false;
           return;
         }else{
           vm.submitCheck = true;

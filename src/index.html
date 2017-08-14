@@ -12,11 +12,11 @@
   <body ng-controller="MainCtrl as main">
     <nav>
       <ul>
-        <li ui-sref="home">Home</li>
-        <li ui-sref="register">Register</li>
-        <li ui-sref="login">Login</li>
-        <li ui-sref="new">Create</li>
-        <li ui-sref="storiesIndex">Index</li>
+        <li ng-hide="" ><a ui-sref="home">Home</a></li>
+        <li ng-hide="main.user" ><a ui-sref="register">Register</a></li>
+        <li ng-hide="main.user" ><a ui-sref="login">Login</a></li>
+        <li ng-show="main.user" ><a ui-sref="new">Create</a></li>
+        <li ng-show="main.user" ><a ui-sref="storiesIndex">Index</a></li>
       </ul>
     </nav>
     <main class="container" ui-view></main>

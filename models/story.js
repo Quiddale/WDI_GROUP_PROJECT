@@ -1,17 +1,16 @@
 const mongoose  = require('mongoose');
 
-
 const contribSchema = new mongoose.Schema({
-  contributer: {type: mongoose.Schema.ObjectId, ref: 'User'},
+  contributor: {type: mongoose.Schema.ObjectId, ref: 'User'},
   contribution: {type: String, require: true}
 });
 
 const storySchema = new mongoose.Schema({
-  title: { type: String, require: true },
-  genre: { type: String , require: true  },
-  rules: {type: Object, require: true},
-  userContribution: {type: String},
-  createdBy: {type: mongoose.Schema.ObjectId, ref: 'User' },
+  title: { type: String, required: true },
+  genre: { type: String , required: true  },
+  rules: {type: Object, required: true},
+  authorContribution: {type: String},
+  createdBy: {type: mongoose.Schema.ObjectId, ref: 'User'},
   contributions: [contribSchema]
 });
 
