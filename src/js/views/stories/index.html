@@ -1,0 +1,12 @@
+<h1>Index</h1>
+
+{{stories.all}}
+
+<ul ng-repeat="story in stories.all">
+  <li>{{story.title}}</li>
+  <li>{{story.genre}}</li>
+  <li >{{story.rules.contain}}</li>
+  <li >{{story.rules.start}}</li>
+
+  <li ng-repeat="contribution in story.contributions">{{contribution}}</li>
+</ul>

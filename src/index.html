@@ -12,6 +12,7 @@
   <body ng-controller="MainCtrl as main">
     <nav>
       <ul>
+<<<<<<< HEAD
         <li>
           <a ui-sref="home">Home</a>
         </li>
@@ -27,6 +28,13 @@
         <li ng-show="main.user">
           <a ng-click="main.logout()">Logout</a>
         </li>
+=======
+        <li ui-sref="home">Home</li>
+        <li ui-sref="register">Register</li>
+        <li ui-sref="login">Login</li>
+        <li ui-sref="new">Create</li>
+        <li ui-sref="storiesIndex">Index</li>
+>>>>>>> 26ef7d323befd96bb01a0767243099c02c624909
       </ul>
     </nav>
     <main class="container" ui-view></main>
