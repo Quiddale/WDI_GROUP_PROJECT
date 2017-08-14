@@ -24,6 +24,7 @@ function storyShow(req, res) {
   Story
   .findById(req.params.id)
   .populate('createdBy')
+  .populate('contributions.contributor')
   .exec()
   .then(story => res.status(200).json(story))
   .catch(err => res.status(500).json(err));
