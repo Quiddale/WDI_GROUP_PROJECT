@@ -1,3 +1,34 @@
 <h1>Register</h1>
 
-{{main.users}}
+<!-- {{main.users}} -->
+
+<!-- const userSchema = new mongoose.Schema({
+  profilePicture: { type: String },
+  dob: { type: Date },
+  username: { type: String, required: true },
+  email: { type: String, required: true },
+  passwordHash: {type: String, required: true },
+  bio: { type: String},
+  interest: { type: String }
+}); -->
+{{register.user}}
+
+<form ng-submit="register.register()">
+  <div>
+    <label for="username">Username</label>
+    <input type="text" name="username" placeholder="username" ng-model="register.user.username">
+  </div>
+  <div>
+    <label for="email">Email</label>
+    <input type="email" name="email" placeholder="email" ng-model="register.user.email">
+  </div>
+  <div>
+    <label for="password">Password</label>
+    <input type="password" name="password" placeholder="password" ng-model="register.user.password">
+  </div>
+  <div>
+    <label for="passwordConfirmation">Confirm your password</label>
+    <input type="password" name="passwordConfirmation" placeholder="confirm your password" ng-model="register.user.passwordConfirmation">
+  </div>
+  <input type="submit" value="Register">
+</form>

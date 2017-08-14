@@ -10,6 +10,15 @@
     <!-- endinject -->
   </head>
   <body ng-controller="MainCtrl as main">
+    <nav>
+      <ul>
+        <li ui-sref="home">Home</li>
+        <li ui-sref="register">Register</li>
+        <li ui-sref="login">Login</li>
+        <li ui-sref="new">Create</li>
+        <li ui-sref="storiesIndex">Index</li>
+      </ul>
+    </nav>
     <main class="container" ui-view></main>
   </body>
 </html>
