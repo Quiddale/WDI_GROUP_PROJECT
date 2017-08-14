@@ -2,8 +2,8 @@ angular
 .module('groupProject')
 .controller('NewCtrl', NewCtrl);
 
-NewCtrl.$inject = ['Story', '$state', 'CurrentUserService'];
-function NewCtrl(Story, $state, CurrentUserService){
+NewCtrl.$inject = ['Story', '$state', 'CurrentUserService', '$http'];
+function NewCtrl(Story, $state, CurrentUserService, $http){
   const vm = this;
   vm.story = {};
   // vm.story.contributions = [];
@@ -96,12 +96,21 @@ function NewCtrl(Story, $state, CurrentUserService){
   }
 
   function submit(){
-    Story
-      .save(vm.story)
-      .$promise
-      .then(() =>{
-        $state.go('storiesIndex');
+    $http
+      .get('https://api.unsplash.com/photos/random?client_id=6486f6a95a6e765711b9ee1b7accf318606fffc506b7769da674d6d51d44a9ba&featured=true')
+      .then((response) => {
+        // console.log(response.data.urls.full);
+        vm.story.image = response.data.urls.full;
+      })
+      .then(() => {
+        Story
+          .save(vm.story)
+          .$promise
+          .then(() =>{
+            // console.log(story);
+            // console.log(vm.story);
+            $state.go('storiesIndex');
+          });
       });
-
   }
 }

@@ -3,6 +3,7 @@
 {{stories.all}}
 
 <ul ng-repeat="story in stories.all" ui-sref="storiesShow({ id: story._id})">
+  <img src="{{ story.image }}" alt="">
   <li>{{story.title}}</li>
   <li>{{story.genre}}</li>
   <li >{{story.rules.contain}}</li>

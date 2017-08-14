@@ -1,6 +1,8 @@
 <h1>Create New</h1>
 {{new.story}}
 <form ng-submit="new.submit()">
+  <input type="hidden" name="image" ng-model="new.story.image">
+
   <div class="" ng-show="new.titleCheck">
     <label for="title">Give your story a title</label>
     <input type="text" name="title" ng-model="new.story.title">
