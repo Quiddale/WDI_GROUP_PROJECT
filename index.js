@@ -36,8 +36,6 @@ function jwtErrorHandler(err, req, res, next) {
   return res.status(401).json({ message: 'Unauthorized request'});
 }
 
-
-
 app.use('/api', routes);
 app.get('/*', (req, res) => res.sendFile(`${dest}/index.html`));
 

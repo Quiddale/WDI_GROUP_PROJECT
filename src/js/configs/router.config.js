@@ -24,16 +24,21 @@ function Router($stateProvider, $locationProvider, $urlRouterProvider){
     controller: 'LoginCtrl',
     controllerAs: 'login'
   })
-  .state('new', {
-    url: '/new',
+  .state('storiesCreate', {
+    url: '/stories/new',
     templateUrl: '/js/views/stories/new.html',
     controller: 'NewCtrl',
     controllerAs: 'new'
   })
   .state('storiesIndex', {
     url: '/stories',
-    templateUrl: 'js/views/stories/index.html',
+    templateUrl: '/js/views/stories/index.html',
     controller: 'StoriesIndexCtrl as stories'
+  })
+  .state('storiesShow', {
+    url: '/stories/:id',
+    templateUrl: '/js/views/stories/show.html',
+    controller: 'StoryShowCtrl as vm'
   });
 
   $urlRouterProvider.otherwise('/');

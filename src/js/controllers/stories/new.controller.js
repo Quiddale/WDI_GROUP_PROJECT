@@ -2,8 +2,8 @@ angular
 .module('groupProject')
 .controller('NewCtrl', NewCtrl);
 
-NewCtrl.$inject = ['Story', '$state'];
-function NewCtrl(Story, $state){
+NewCtrl.$inject = ['Story', '$state', 'CurrentUserService'];
+function NewCtrl(Story, $state, CurrentUserService){
   const vm = this;
   vm.story = {};
   // vm.story.contributions = [];
@@ -46,14 +46,19 @@ function NewCtrl(Story, $state){
     vm.ruleCheck = false;
     vm.contribCheck = true;
   }
+
   function addContrib(){
-    vm.story.contributions.pop();
-    vm.story.contributions.push(vm.story.authorContribution);
-    vm.sentances = vm.story.authorContribution.split('. ');
+    // vm.story.contributions.pop();
+    vm.user = CurrentUserService.currentUser;
+    vm.letterArray = vm.story.authorContribution.split('');
+
+    // vm.story.contributions.push(vm.story.authorContribution);
+    vm.sentences = vm.story.authorContribution.split('. ');
     vm.count = 0;
+
     if(vm.story.rules.contain){
-      for (var i = 0; i < vm.story.authorContribution.split('').length; i++) {
-        if(vm.story.authorContribution.split('')[i].toLowerCase() === vm.story.rules.contain.toLowerCase()){
+      for (var i = 0; i < vm.letterArray.length; i++) {
+        if(vm.letterArray[i].toLowerCase() === vm.story.rules.contain.toLowerCase()){
           vm.submitCheck = false;
           return;
         }else{
@@ -61,20 +66,24 @@ function NewCtrl(Story, $state){
         }
       }
     }
-    if (vm.story.rules.start) {
-      for (var a = 0; a < vm.sentances.length; a++) {
 
-        if(vm.sentances[a].split('')[0].toLowerCase() === vm.story.rules.start.toLowerCase()){
+    if (vm.story.rules.start) {
+
+      for (var a = 0; a < vm.sentences.length; a++) {
+
+
+        if(vm.sentences[a].split('')[0].toLowerCase() === vm.story.rules.start.toLowerCase()){
           vm.count++;
         }
-        if(vm.count === vm.sentances.length){
-          vm.submitCheck = false;
-        }else{
+        if(vm.count === vm.sentences.length){
           vm.submitCheck = true;
+        }else{
+          vm.submitCheck = false;
         }
       }
     }
   }
+
   function contains(){
     if(vm.story.rules.contain.split('').length >1){
       vm.story.rules.contain = vm.story.rules.contain.split('')[vm.story.rules.contain.length - 1];
@@ -87,8 +96,6 @@ function NewCtrl(Story, $state){
   }
 
   function submit(){
-    console.log('submit');
-    console.log(vm.story);
     Story
       .save(vm.story)
       .$promise

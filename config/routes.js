@@ -14,6 +14,8 @@ router.route('/login')
 router.route('/stories')
   .get(stories.index)
   .post(stories.create);
+router.route('/stories/:id')
+  .get(stories.show);
 
 router.route('/users')
   .get(users.index);

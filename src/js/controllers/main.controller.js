@@ -9,8 +9,10 @@ function MainCtrl($rootScope, CurrentUserService, $state){
 
   $rootScope.$on('loggedIn', () =>{
     vm.user = CurrentUserService.currentUser;
+
   });
-  $rootScope.$on('loggerOut', () =>{
+
+  $rootScope.$on('loggedOut', () =>{
     vm.user = null;
     $state.go('home');
   });
@@ -18,7 +20,4 @@ function MainCtrl($rootScope, CurrentUserService, $state){
   function logout(){
     CurrentUserService.removeUser();
   }
-
-
-
 }

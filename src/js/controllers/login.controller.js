@@ -2,8 +2,8 @@ angular
   .module('groupProject')
   .controller('LoginCtrl', LoginCtrl);
 
-LoginCtrl.$inject = ['User', 'TokenService'];
-function LoginCtrl(User, TokenService) {
+LoginCtrl.$inject = ['User', 'CurrentUserService', '$state'];
+function LoginCtrl(User, CurrentUserService, $state) {
   const vm = this;
   vm.login = login;
 
@@ -11,8 +11,11 @@ function LoginCtrl(User, TokenService) {
     User
       .login(vm.user)
       .$promise
-      .then(data => {
-        TokenService.setToken(data.token);
+      .then(() => {
+        // console.log(data);
+        // TokenService.setToken(data.token);
+        CurrentUserService.getUser();
+        $state.go('storiesIndex');
       });
   }
 }

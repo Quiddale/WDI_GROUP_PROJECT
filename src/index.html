@@ -12,11 +12,27 @@
   <body ng-controller="MainCtrl as main">
     <nav>
       <ul>
-        <li ng-hide="" ><a ui-sref="home">Home</a></li>
-        <li ng-hide="main.user" ><a ui-sref="register">Register</a></li>
-        <li ng-hide="main.user" ><a ui-sref="login">Login</a></li>
-        <li ng-show="main.user" ><a ui-sref="new">Create</a></li>
-        <li ng-show="main.user" ><a ui-sref="storiesIndex">Index</a></li>
+        <li>
+          <a ui-sref="home">Home</a>
+        </li>
+        <li ng-hide="main.user">
+          <a ui-sref="register">Register</a>
+        </li>
+        <li ng-hide="main.user">
+          <a ui-sref="login">Login</a>
+        </li>
+        <li ng-show="main.user">
+          <p>Welcome {{ main.user.username }}</p>
+        </li>
+        <li ng-show="main.user">
+          <a ng-click="main.logout()">Logout</a>
+        </li>
+        <li ng-show="main.user">
+          <a ui-sref="storiesIndex">All the stories</a>
+        </li>
+        <li ng-show="main.user">
+          <a ui-sref="storiesCreate">Create a new story</a>
+        </li>
       </ul>
     </nav>
     <main class="container" ui-view></main>

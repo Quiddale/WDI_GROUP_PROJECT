@@ -7,7 +7,7 @@ const contribSchema = new mongoose.Schema({
 
 const storySchema = new mongoose.Schema({
   title: { type: String, required: true },
-  genre: { type: String , required: true  },
+  genre: { type: String, required: true },
   rules: {type: Object, required: true},
   authorContribution: {type: String},
   createdBy: {type: mongoose.Schema.ObjectId, ref: 'User'},
