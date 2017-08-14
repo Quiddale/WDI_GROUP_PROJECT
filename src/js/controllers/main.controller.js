@@ -2,9 +2,11 @@ angular
 .module('groupProject')
 .controller('MainCtrl', MainCtrl);
 
-MainCtrl.$inject = ['$rootScope', 'CurrentUserService', '$state'];
-function MainCtrl($rootScope, CurrentUserService, $state){
+MainCtrl.$inject = ['$rootScope', 'CurrentUserService', '$state', 'Story'];
+function MainCtrl($rootScope, CurrentUserService, $state, Story){
   const vm = this;
+  vm.randomStory = randomStory;
+
   vm.logout = logout;
 
   $rootScope.$on('loggedIn', () =>{
@@ -18,5 +20,22 @@ function MainCtrl($rootScope, CurrentUserService, $state){
 
   function logout(){
     CurrentUserService.removeUser();
+  }
+
+  function randomStory(){
+    vm.stories = Story.query();
+    vm.stories.$promise.then(function(stories) {
+      vm.stories = stories;
+      vm.randomIndex = Math.floor(Math.random() *vm.stories.length);
+      vm.randomId = vm.stories[vm.randomIndex]._id;
+      $state.go('storiesShow', {id: vm.randomId});
+      console.log(vm.randomId);
+    });
+
+
+
+
+    // console.log(vm.randomIndex);
+    // console.log(vm.stories.length);
   }
 }
