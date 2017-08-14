@@ -1,13 +1,18 @@
 const mongoose  = require('mongoose');
-// const bcrypt    = require('bcrypt');
-// const validator = require('validator');
+
+
+const contribSchema = new mongoose.Schema({
+  contributer: {type: mongoose.Schema.ObjectId, ref: 'User'},
+  contribution: {type: String, require: true}
+});
 
 const storySchema = new mongoose.Schema({
   title: { type: String, require: true },
   genre: { type: String , require: true  },
   rules: {type: Object, require: true},
-  contributions: { type: Array, required: true },
-  userContribution: {type: String}
+  userContribution: {type: String},
+  createdBy: {type: mongoose.Schema.ObjectId, ref: 'User' },
+  contributions: [contribSchema]
 });
 
 module.exports = mongoose.model('Story', storySchema);

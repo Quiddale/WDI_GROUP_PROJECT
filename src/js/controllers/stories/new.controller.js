@@ -54,10 +54,10 @@ function NewCtrl(Story, $state){
     if(vm.story.rules.contain){
       for (var i = 0; i < vm.story.userContribution.split('').length; i++) {
         if(vm.story.userContribution.split('')[i].toLowerCase() === vm.story.rules.contain.toLowerCase()){
-          vm.submit === false;
+          vm.submitCheck === false;
           return;
         }else{
-          vm.submit = true;
+          vm.submitCheck = true;
         }
       }
     }
@@ -88,6 +88,7 @@ function NewCtrl(Story, $state){
 
   function submit(){
     console.log('submit');
+    console.log(vm.story);
     Story
       .save(vm.story)
       .$promise
