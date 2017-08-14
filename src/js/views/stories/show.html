@@ -1,10 +1,10 @@
-<section style="background-image:url({{ stories.story.image }})">
-  <h1>{{ stories.story.title}}</h1>
+<section style="background-image:url({{ vm.story.image }})">
+  <h1>{{ vm.story.title}}</h1>
 
-  <h2>{{ stories.story.genre }}</h2>
+  <h2>{{ vm.story.genre }}</h2>
 
-  <h3>Created by {{ stories.story.createdBy }}</h3>
+  <h3>Created by {{vm.story.createdBy.username}}</h3>
 
-  {{stories.story}}
+  {{vm.story}}
 
 </section>
