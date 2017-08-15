@@ -33,11 +33,12 @@
   <div class="" ng-show="new.genreCheck">
     <label for="genre" >Give your story a genre</label>
     <select ng-model="new.story.genre">
-      <option value="romance">Romance</option>
-      <option value="adventureother">adventure</option>
-      <option value="thriller">thriller</option>
-      <option value="crime">crime</option>
-      <option value="other">other</option>
+      <option value="Adventure">Adventure</option>
+      <option value="Comedy">Comedy</option>
+      <option value="Crime">Crime</option>
+      <option value="Romance">Romance</option>
+      <option value="Thriller">Thriller</option>
+      <option value="Other">Other</option>
     </select>
     <!-- <input type="text" name="genre" ng-model="new.story.genre"> -->
     <button type="button" name="button" ng-click="new.goRules()" ng-disabled="!new.story.genre" value="button">Next</button>
