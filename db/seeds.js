@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
+const config = require('../config/config');
 mongoose.Promise = require('bluebird');
 
-const dbURL = process.env.MONGODB_URI || 'mongodb://localhost/group-project';
+const dbURL = config.db.development;
 mongoose.connect(dbURL);
 
 const User = require('../models/user');

@@ -1,14 +1,45 @@
 <h1>Index</h1>
 
-{{stories.all}}
+<!-- {{stories.all}} -->
 
-<ul ng-repeat="story in stories.all" >
-  <img src="{{ story.image }}" alt="">
-  <li ui-sref="storiesShow({ id: story._id})">{{story.title}}</li>
-  <li>{{story.genre}}</li>
-  <li >{{story.rules.contain}}</li>
-  <li >{{story.rules.start}}</li>
-  <li ng-repeat="contribution in story.contributions">{{contribution}}</li>
+<h2>Adventure</h2>
+<ul ng-repeat="story in stories.all">
+  <div ng-show="story.genre === 'Adventure'">
+    <img src="{{ story.image }}" alt="">
+    <li ui-sref="storiesShow({ id: story._id})">{{story.title}}</li>
+    <li>{{story.genre}}</li>
+    <li >{{story.rules.contain}}</li>
+    <li >{{story.rules.start}}</li>
+    <li ng-repeat="contribution in story.contributions">{{contribution}}</li>
 
-  <a ui-sref="userShow({ id: story.createdBy.id})">{{story.createdBy.username}}</a>
+    <a ui-sref="userShow({ id: story.createdBy.id})">{{story.createdBy.username}}</a>
+  </div>
+</ul>
+
+<h2>Comedy</h2>
+<ul ng-repeat="story in stories.all">
+  <div ng-show="story.genre === 'Comedy'">
+    <img src="{{ story.image }}" alt="">
+    <li ui-sref="storiesShow({ id: story._id})">{{story.title}}</li>
+    <li>{{story.genre}}</li>
+    <li >{{story.rules.contain}}</li>
+    <li >{{story.rules.start}}</li>
+    <li ng-repeat="contribution in story.contributions">{{contribution}}</li>
+
+    <a ui-sref="userShow({ id: story.createdBy.id})">{{story.createdBy.username}}</a>
+  </div>
+</ul>
+
+<h2>Crime</h2>
+<ul ng-repeat="story in stories.all">
+  <div ng-show="story.genre === 'Crime'">
+    <img src="{{ story.image }}" alt="">
+    <li ui-sref="storiesShow({ id: story._id})">{{story.title}}</li>
+    <li>{{story.genre}}</li>
+    <li >{{story.rules.contain}}</li>
+    <li >{{story.rules.start}}</li>
+    <li ng-repeat="contribution in story.contributions">{{contribution}}</li>
+
+    <a ui-sref="userShow({ id: story.createdBy.id})">{{story.createdBy.username}}</a>
+  </div>
 </ul>
