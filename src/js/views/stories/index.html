@@ -2,9 +2,7 @@
 
 <input ng-model="stories.q" type="text" name="" value="" ng-change="stories.searchQuery()">
 
-<div ng-show="stories.filtering" ng-repeat="genre in stories.possibleGenres">
-  <h2>{{genre}}</h2>
-</div>
+
 
 <div ng-hide="stories.filtering"ng-repeat="genre in stories.possibleGenres">
   <h2 ng-show="genre.exists">{{genre.genre}}</h2>
