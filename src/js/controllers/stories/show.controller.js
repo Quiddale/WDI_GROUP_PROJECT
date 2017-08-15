@@ -2,8 +2,8 @@ angular
 .module('groupProject')
 .controller('StoryShowCtrl', StoryShowCtrl);
 
-StoryShowCtrl.$inject =['Story', '$stateParams', 'CurrentUserService', '$http', '$state'];
-function StoryShowCtrl(Story, $stateParams, CurrentUserService, $http, $state){
+StoryShowCtrl.$inject =['Story', '$stateParams', 'CurrentUserService', '$http', '$state', 'LogicService'];
+function StoryShowCtrl(Story, $stateParams, CurrentUserService, $http, $state, LogicService){
   const vm = this;
   vm.story = Story.get({id: $stateParams.id});
   vm.refreshMe = refreshMe;
@@ -11,7 +11,8 @@ function StoryShowCtrl(Story, $stateParams, CurrentUserService, $http, $state){
   vm.addContribution = addContribution;
 
   function addContribution(){
-    vm.contributor = CurrentUserService.currentUser.id;
+    LogicService.checkRules(vm.contribution.body, vm.story.rules);
+    vm.submitCheck = LogicService.submitCheck;
   }
 
   vm.submitContrib = submitContrib;
@@ -36,7 +37,6 @@ function StoryShowCtrl(Story, $stateParams, CurrentUserService, $http, $state){
       vm.authorId = story[0];
       vm.actualAuthorId = vm.authorId.createdBy.id;
       if (vm.actualAuthorId === CurrentUserService.currentUser.id) {
-        console.log('Im true');
         vm.canRefresh = true;
       } else {
         vm.canRefresh = false;

@@ -25,5 +25,5 @@
 
 <input type="text" name="contribution" ng-model="vm.contribution.body" ng-change="vm.addContribution()">
 
-<button type="button" ng-click="vm.submitContrib()">Submit</button>
+<button ng-show="vm.submitCheck" type="button" ng-click="vm.submitContrib()">Submit</button>
 <p>{{vm.story.contributions}}</p>

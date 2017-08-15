@@ -51,6 +51,7 @@ function NewCtrl(Story, $state, CurrentUserService, $http, LogicService){
     LogicService.checkRules(vm.story.authorContribution, vm.story.rules);
     vm.submitCheck = LogicService.submitCheck;
   }
+  
 
   function contains(){
     LogicService.containsInput(vm.story.rules.contain.split(''));
