@@ -1,2 +1,19 @@
 <h2>Profile</h2>
 {{vm.user}}
+<img src="{{ user.profilePicture }}">
+<h1>{{ vm.user.username}}</h1>
+<h3>Biography{{ vm.user.bio}}</h3>
+<h3>Date of birth{{ vm.user.dob}}</h3>
+<h3>Interests {{ vm.user.interest }}</h3>
+<h3>I authored
+  <ul ng-repeat="story in vm.user.authored">
+    <li>{{story.title}}</li>
+    <img src="{{ story.image }}">
+    <p>{{ story.genre}}</p>
+    <p>{{ story.authorContribution }}</p>
+  </ul>
+</h3>
+<h3>I contributed</h3>
+<ul ng-repeat="story in vm.userContributions">
+  <li>{{story.title }}</li>
+</ul>
