@@ -9,7 +9,9 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true },
   passwordHash: {type: String, required: true },
   bio: { type: String},
-  interest: { type: String }
+  interest: { type: String },
+  authored: [],
+  contributed: []
 });
 
 userSchema
