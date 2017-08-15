@@ -2,7 +2,7 @@ const mongoose  = require('mongoose');
 
 const contribSchema = new mongoose.Schema({
   contributor: {type: mongoose.Schema.ObjectId, ref: 'User'},
-  contribution: {type: String, require: true}
+  body: {type: String, require: true}
 });
 
 const storySchema = new mongoose.Schema({

@@ -1,7 +1,19 @@
+body{
+  margin: 0;
+}
 img {
   width: 300px;
   height: auto;
 }
+// .background-image{
+//   top: 0;
+//   left: 0;
+//   position: absolute;
+//   width: 100%;
+//   height: auto;
+//   z-index: -1;
+//   background-repeat: no-repeat;
+// }
 
 .progress-btns {
   list-style-type: none;

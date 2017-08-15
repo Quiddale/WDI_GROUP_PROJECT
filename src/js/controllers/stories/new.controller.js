@@ -2,8 +2,8 @@ angular
 .module('groupProject')
 .controller('NewCtrl', NewCtrl);
 
-NewCtrl.$inject = ['Story', '$state', 'CurrentUserService', '$http'];
-function NewCtrl(Story, $state, CurrentUserService, $http){
+NewCtrl.$inject = ['Story', '$state', 'CurrentUserService', '$http', 'LogicService'];
+function NewCtrl(Story, $state, CurrentUserService, $http, LogicService){
   const vm = this;
   vm.story = {};
   // vm.story.contributions = [];
@@ -48,24 +48,29 @@ function NewCtrl(Story, $state, CurrentUserService, $http){
   }
 
   function addContrib(){
+
+    vm.charLeft = 500 - vm.story.authorContribution.split('').length;
+    console.log(vm.charLeft);
     // vm.story.contributions.pop();
     vm.user = CurrentUserService.currentUser;
-    vm.letterArray = vm.story.authorContribution.split('');
-
-    // vm.story.contributions.push(vm.story.authorContribution);
-    vm.sentences = vm.story.authorContribution.split('. ');
-    vm.count = 0;
-
-    if(vm.story.rules.contain){
-      for (var i = 0; i < vm.letterArray.length; i++) {
-        if(vm.letterArray[i].toLowerCase() === vm.story.rules.contain.toLowerCase()){
-          vm.submitCheck = false;
-          return;
-        }else{
-          vm.submitCheck = true;
-        }
-      }
-    }
+    console.log(LogicService.submitCheck);
+    LogicService.test(vm.story.authorContribution, vm.story.rules);
+    // vm.letterArray = vm.story.authorContribution.split('');
+    //
+    // // vm.story.contributions.push(vm.story.authorContribution);
+    // vm.sentences = vm.story.authorContribution.split('. ');
+    // vm.count = 0;
+    //
+    // if(vm.story.rules.contain){
+    //   for (var i = 0; i < vm.letterArray.length; i++) {
+    //     if(vm.letterArray[i].toLowerCase() === vm.story.rules.contain.toLowerCase()){
+    //       vm.submitCheck = false;
+    //       return;
+    //     }else{
+    //       vm.submitCheck = true;
+    //     }
+    //   }
+    // }
 
     if (vm.story.rules.start) {
 
@@ -99,16 +104,13 @@ function NewCtrl(Story, $state, CurrentUserService, $http){
     $http
       .get('https://api.unsplash.com/photos/random?client_id=6486f6a95a6e765711b9ee1b7accf318606fffc506b7769da674d6d51d44a9ba&featured=true')
       .then((response) => {
-        // console.log(response.data.urls.full);
-        vm.story.image = response.data.urls.full;
+        vm.story.image = response.data.urls.regular;
       })
       .then(() => {
         Story
           .save(vm.story)
           .$promise
           .then(() =>{
-            // console.log(story);
-            // console.log(vm.story);
             $state.go('storiesIndex');
           });
       });
