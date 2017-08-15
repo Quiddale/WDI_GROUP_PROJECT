@@ -1,6 +1,8 @@
 <h1>Index</h1>
 
-<div ng-repeat="genre in stories.possibleGenres">
+<input ng-model="stories.q" type="text" name="" value="" ng-change="stories.searchQuery()">
+
+<div ng-hide="stories.filtering" ng-repeat="genre in stories.possibleGenres">
   <h2>{{genre}}</h2>
   <ul ng-repeat="story in stories.all">
     <div ng-show="story.genre === '{{genre}}'">
@@ -13,5 +15,14 @@
 
       <a ui-sref="userShow({ id: story.createdBy.id})">{{story.createdBy.username}}</a>
     </div>
+  </ul>
+</div>
+
+
+<div ng-show="stories.filtering" ng-repeat="story in stories.all | filter: stories.q">
+  <ul>
+    <li>{{story.title}}</li>
+    <li>{{story.genre}}</li>
+    <li>{{story.contributions}}</li>
   </ul>
 </div>
