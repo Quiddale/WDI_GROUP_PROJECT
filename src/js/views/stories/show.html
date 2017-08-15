@@ -23,7 +23,7 @@
   </li>
 </ul>
 
-<input type="text" name="contribution" ng-model="vm.contribution.body" ng-change="vm.addContribution()">
+<input ng-disabled="vm.test" type="text" name="contribution" ng-model="vm.contribution.body" ng-change="vm.addContribution()">
 
 <button ng-show="vm.submitCheck" type="button" ng-click="vm.submitContrib()">Submit</button>
 <p>{{vm.story.contributions}}</p>

@@ -7,6 +7,19 @@ function StoryShowCtrl(Story, $stateParams, CurrentUserService, $http, $state, L
   const vm = this;
   vm.story = Story.get({id: $stateParams.id});
   vm.refreshMe = refreshMe;
+  vm.test = false;
+
+  vm.limitAccess = function(){
+    vm.story
+    .$promise.then(()=>{
+      console.log(vm.story.contributions[vm.story.contributions.length-1]);
+      if(vm.story.contributions[vm.story.contributions.length -1].contributor.id === CurrentUserService.currentUser.id){
+        vm.test = true;
+        vm.submitCheck = false;
+      }
+    });
+  };
+  vm.limitAccess();
 
   vm.addContribution = addContribution;
 
@@ -25,6 +38,7 @@ function StoryShowCtrl(Story, $stateParams, CurrentUserService, $http, $state, L
       vm.contribution.contributor = CurrentUserService.currentUser;
       vm.story.contributions.push(vm.contribution);
       vm.contribution = {};
+      vm.limitAccess();
     });
   }
 
