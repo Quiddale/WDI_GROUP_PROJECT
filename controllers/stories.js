@@ -5,6 +5,7 @@ function storyIndex(req, res) {
   Story
     .find()
     .populate('createdBy')
+    .populate('contributions.contributor')
     .exec()
     .then(stories => res.status(200).json(stories))
     .catch(err => res.status(500).json(err));

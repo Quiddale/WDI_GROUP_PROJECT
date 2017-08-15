@@ -1,28 +1,34 @@
 angular
-  .module('groupProject')
-  .service('LogicService', LogicService);
+.module('groupProject')
+.service('LogicService', LogicService);
 
 LogicService.$inject = [];
 
 function LogicService(){
   const self = this;
-  self.test = function(authorContribution, rules){
-    console.log('LOGIC');
 
+  self.containCheck = function(authorContribution, rules){
     self.letterArray = authorContribution.split('');
+    for (var i = 0; i < self.letterArray.length; i++) {
+      if(self.letterArray[i].toLowerCase() === rules.contain.toLowerCase()){
+        self.containLogicCheck = false;
+        return;
+      }else{
+        self.containLogicCheck = true;
+      }
+    }
+  };
 
-    // self.story.contributions.push(authorContribution);
-    self.sentences = authorContribution.split('. ');
+  self.startCheck = function(sentences, rules){
     self.count = 0;
-
-    if(rules.contain){
-      for (var i = 0; i < self.letterArray.length; i++) {
-        if(self.letterArray[i].toLowerCase() === rules.contain.toLowerCase()){
-          self.submitCheck = false;
-          return;
-        }else{
-          self.submitCheck = true;
-        }
+    for (var a = 0; a < sentences.length; a++) {
+      if(sentences[a].split('')[0].toLowerCase() === rules.start.toLowerCase()){
+        self.count++;
+      }
+      if(self.count === sentences.length){
+        self.startLogicCheck = true;
+      }else{
+        self.startLogicCheck = false;
       }
     }
   };
