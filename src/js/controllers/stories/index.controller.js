@@ -6,13 +6,16 @@ StoriesIndexCtrl.$inject= ['Story', 'User'];
 
 function StoriesIndexCtrl(Story, User){
   const vm = this;
-  vm.all   = Story.query();
-  // console.log(vm.all);
+
+  vm.possibleGenres = ['Adventure', 'Comedy', 'Crime', 'Romance', 'Thriller'];
+  vm.includedGenres = [];
+
+  vm.all = Story.query();
+
   vm.users = User.query();
   vm.findUser = findUser;
   function findUser(e){
-    // console.log(e);
     vm.user = User.query({id: e});
   }
-  // console.log(vm.users);
+
 }
