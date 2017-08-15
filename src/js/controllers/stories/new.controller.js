@@ -48,18 +48,31 @@ function NewCtrl(Story, $state, CurrentUserService, $http, LogicService){
   }
 
   function addContrib(){
+    LogicService.containLogicCheck = true;
+    LogicService.startLogicCheck = true;
 
     vm.charLeft = 500 - vm.story.authorContribution.split('').length;
-    console.log(vm.charLeft);
-    // vm.story.contributions.pop();
-    vm.user = CurrentUserService.currentUser;
-    console.log(LogicService.submitCheck);
-    LogicService.test(vm.story.authorContribution, vm.story.rules);
+    vm.sentences = vm.story.authorContribution.split('. ');
+
+    if(vm.story.rules.contain){
+      LogicService.containCheck(vm.story.authorContribution, vm.story.rules);
+    }
+    if(vm.story.rules.start){
+      LogicService.startCheck(vm.sentences, vm.story.rules);
+    }
+    if(LogicService.startLogicCheck && LogicService.containLogicCheck){
+      vm.submitCheck = true;
+    }else{
+      vm.submitCheck = false;
+    }
+
+
     // vm.letterArray = vm.story.authorContribution.split('');
     //
-    // // vm.story.contributions.push(vm.story.authorContribution);
-    // vm.sentences = vm.story.authorContribution.split('. ');
-    // vm.count = 0;
+    console.log(vm.story);
+    // vm.story.contributions.push(vm.story.authorContribution);
+
+    vm.count = 0;
     //
     // if(vm.story.rules.contain){
     //   for (var i = 0; i < vm.letterArray.length; i++) {
@@ -72,21 +85,18 @@ function NewCtrl(Story, $state, CurrentUserService, $http, LogicService){
     //   }
     // }
 
-    if (vm.story.rules.start) {
-
-      for (var a = 0; a < vm.sentences.length; a++) {
-
-
-        if(vm.sentences[a].split('')[0].toLowerCase() === vm.story.rules.start.toLowerCase()){
-          vm.count++;
-        }
-        if(vm.count === vm.sentences.length){
-          vm.submitCheck = true;
-        }else{
-          vm.submitCheck = false;
-        }
-      }
-    }
+  //   if (vm.story.rules.start) {
+  //     for (var a = 0; a < vm.sentences.length; a++) {
+  //       if(vm.sentences[a].split('')[0].toLowerCase() === vm.story.rules.start.toLowerCase()){
+  //         vm.count++;
+  //       }
+  //       if(vm.count === vm.sentences.length){
+  //         vm.submitCheck = true;
+  //       }else{
+  //         vm.submitCheck = false;
+  //       }
+  //     }
+  //   }
   }
 
   function contains(){
