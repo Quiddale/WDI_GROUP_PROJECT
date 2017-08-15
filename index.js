@@ -10,7 +10,7 @@ const config     = require('./config/config');
 const routes     = require('./config/routes');
 const dest       = `${__dirname}/public`;
 
-mongoose.connect(config.db.test);
+mongoose.connect(config.db.development);
 mongoose.Promise = bluebird;
 
 if (app.get('env') !== 'production') app.use(cors());
