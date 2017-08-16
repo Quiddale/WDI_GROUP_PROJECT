@@ -2,10 +2,14 @@ angular
 .module('groupProject')
 .controller('StoriesIndexCtrl', StoriesIndexCtrl);
 
-StoriesIndexCtrl.$inject= ['Story', 'User', 'filterFilter', '$scope'];
+StoriesIndexCtrl.$inject= ['Story', 'User'];
 
-function StoriesIndexCtrl(Story, User, filterFilter, $scope){
+function StoriesIndexCtrl(Story, User){
   const vm = this;
+
+
+  vm.showCarousel = false;
+  console.log(vm.showCarousel);
 
   vm.possibleGenres = [
     {
@@ -44,6 +48,7 @@ function StoriesIndexCtrl(Story, User, filterFilter, $scope){
   .query()
   .$promise
   .then(story => {
+    vm.showCarousel = true;
     vm.all = story;
   })
   .then(() => {
@@ -56,7 +61,15 @@ function StoriesIndexCtrl(Story, User, filterFilter, $scope){
         }
       }
     }
+
     console.log(vm.possibleGenres);
+  }).then(()=>{
+
+    // setTimeout(function(){
+    //   vm.showCarousel = true;
+    //   console.log(vm.showCarousel);
+    // }, 1000);
+
   });
 
 
@@ -72,21 +85,6 @@ function StoriesIndexCtrl(Story, User, filterFilter, $scope){
       vm.filtering = false;
     }
   };
-  // vm.isInitialized = false;
-  // if (vm.initOnload) {
-  //   vm.isInitialized = false;
-  //   return vm.$watch('data', function (newVal, oldVal) {
-  //     if (newVal != null) {
-  //       if (vm.isInitialized) {
-  //         destroySlick();
-  //       }
-  //       initializeSlick();
-  //       return vm.isInitialized = true;
-  //     }
-  //   });
-  // } else {
-  //   return initializeSlick();
-  // }
 
 
   vm.users = User.query();

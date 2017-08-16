@@ -4,7 +4,7 @@ body{
   margin: 0;
 }
 img {
-  width: 300px;
+  width: 400px;
   height: auto;
   display: inline;
   margin: 0;
@@ -87,4 +87,11 @@ img {
 .register-page {
   background-color: lightblue;
   height: 100vh;
+}
+
+.slick-frame {
+    visibility: hidden;
+}
+.slick-frame.slick-initialized {
+    visibility: visible;
 }

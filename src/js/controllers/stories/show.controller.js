@@ -7,24 +7,35 @@ function StoryShowCtrl(Story, $stateParams, CurrentUserService, $http, $state, L
   const vm = this;
   vm.story = Story.get({id: $stateParams.id});
   vm.refreshMe = refreshMe;
-  vm.test = false;
+  vm.lastContributor = false;
 
   vm.limitAccess = function(){
     vm.story
     .$promise
     .then(()=>{
       if(vm.story.contributions[vm.story.contributions.length -1].contributor.id === CurrentUserService.currentUser.id){
-        vm.test = true;
+        vm.lastContributor = true;
         vm.submitCheck = false;
       }
     });
   };
   vm.limitAccess();
+  
+  vm.deleteContrib = function(){
+    Story
+    .deleteContribution({id: vm.story._id}, vm.contribution)
+    .$promise
+    .then(() => {
+      vm.story.contributions.pop();
+    });
+  };
 
   vm.addContribution = addContribution;
 
   function addContribution(){
-
+    vm.containAdhere = LogicService.containLogicCheck;
+    vm.startsAdhere = LogicService.startLogicCheck;
+    console.log(vm.containAdhere, vm.startsAdhere);
     LogicService.limitContributions(vm.contribution.body);
     vm.wordCount = LogicService.wordCount;
     vm.contribution.body = LogicService.limitContrib;

@@ -1,20 +1,23 @@
 <h1>Index</h1>
 
-<input ng-model="stories.q" type="text" name="" value="" ng-change="stories.searchQuery()">
+<input ng-model="vm.q" type="text" name="" value="" ng-change="vm.searchQuery()">
+{{vm.users}}
+<div ng-enable="vm.showCarousel" ng-model="vm.showCarousel">
 
-<div ng-hide="stories.filtering" ng-repeat="stories in stories.possibleGenres track by $index" >
-  <h2 ng-show="stories.exists">{{stories.genre}}</h2>
+  <div ng-hide="vm.filtering" ng-repeat="stories in vm.possibleGenres track by $index">
+    <h2 ng-show="stories.exists">{{stories.genre}}</h2>
 
-  <slick slides-to-show="2" slides-to-scroll="1" init-onload="false"  data="stories.stories" dots="true" arrows="true" rows="1" autoplay="false">
-    <div ng-repeat="story in stories.stories track by $index">
-      <img src="{{story.image}}" alt="">
-      <h4>{{story.title}}</h4>
-    </div>
-  </slick>
-
+    <slick slides-to-show="2" slides-to-scroll="1" init-onload="true"  data="stories.stories" dots="true" arrows="true" rows="1" autoplay="false" >
+      <div ng-repeat="story in stories.stories track by $index" >
+        <img src="{{story.image}}" alt="">
+        <h4 ui-sref="storiesShow({id: story._id})">{{story.title}}</h4>
+        <a ui-sref="">Created by </a>
+      </div>
+    </slick>
+  </div>
 </div>
 
-<div ng-show="stories.filtering" ng-repeat="story in stories.all | filter: stories.q">
+<div ng-show="vm.filtering" ng-repeat="story in vm.all | filter: vm.q">
   <ul>
     <li>{{story.title}}</li>
     <li>{{story.genre}}</li>

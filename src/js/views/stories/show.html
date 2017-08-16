@@ -17,15 +17,18 @@
     <h2>{{vm.story.createdBy.username}}</h2>
     <p>{{vm.story.authorContribution}}</p>
   </li>
+  <h4>{{vm.story.rules}}</h4>
   <li ng-repeat="contrib in vm.story.contributions">
     <h2>{{contrib.contributor.username}}</h2>
     <p>{{contrib.body}}</p>
   </li>
+  <button type="button" name="button" ng-show="vm.lastContributor" ng-click="vm.deleteContrib()">Delete</button>
+  <button type="button" name="button" ng-show="vm.lastContributor">edit</button>
 </ul>
 <label for="" ng-show="vm.showWordCount">Word limit: {{vm.wordCount}}</label>
 <label for="" ng-show="vm.overLimitError">You are over the word limit!</label>
 <br>
-<input ng-disabled="vm.test" type="text" name="contribution" ng-model="vm.contribution.body" ng-change="vm.addContribution()">
+<input ng-disabled="vm.lastContributor" type="text" name="contribution" ng-model="vm.contribution.body" ng-change="vm.addContribution()">
 {{vm.contribution.body}}
 <br>
 <button ng-show="vm.submitCheck" type="button" ng-click="vm.submitContrib()">Submit</button>

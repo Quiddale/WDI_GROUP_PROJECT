@@ -27,7 +27,10 @@ router.route('/stories/:id')
   .put(stories.update)
   .patch(stories.update);
 router.route('/stories/:id/contributions/new')
-  .post(contributions.create);
+  .post(contributions.create)
+  .delete(contributions.delete);
+
+
 
 
 module.exports = router;
