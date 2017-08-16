@@ -50,8 +50,17 @@ function NewCtrl(Story, $state, CurrentUserService, $http, LogicService){
   function addContrib(){
     LogicService.checkRules(vm.story.authorContribution, vm.story.rules);
     vm.submitCheck = LogicService.submitCheck;
+
+    LogicService.limitContributions(vm.story.authorContribution);
+    vm.wordCount = LogicService.wordCount;
+    vm.story.authorContribution = LogicService.limitContrib;
+    if (vm.story.authorContribution.split('').length > 0) {
+      vm.showWordCount = true;
+    }else{
+      vm.showWordCount = false;
+    }
   }
-  
+
 
   function contains(){
     LogicService.containsInput(vm.story.rules.contain.split(''));

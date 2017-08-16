@@ -24,22 +24,36 @@ function StoryShowCtrl(Story, $stateParams, CurrentUserService, $http, $state, L
   vm.addContribution = addContribution;
 
   function addContribution(){
+
+    LogicService.limitContributions(vm.contribution.body);
+    vm.wordCount = LogicService.wordCount;
+    vm.contribution.body = LogicService.limitContrib;
+    if (vm.contribution.body.split('').length > 0) {
+      vm.showWordCount = true;
+    }else{
+      vm.showWordCount = false;
+    }
+
     LogicService.checkRules(vm.contribution.body, vm.story.rules);
     vm.submitCheck = LogicService.submitCheck;
   }
 
   vm.submitContrib = submitContrib;
   function submitContrib(){
-    vm.contribution.contributor = CurrentUserService.currentUser.id;
-    Story
-    .newContribution({id: vm.story._id}, vm.contribution)
-    .$promise
-    .then(() => {
-      vm.contribution.contributor = CurrentUserService.currentUser;
-      vm.story.contributions.push(vm.contribution);
-      vm.contribution = {};
-      vm.limitAccess();
-    });
+    if(!vm.contribution.body){
+      console.log('EMPTY');
+    }else{
+      vm.contribution.contributor = CurrentUserService.currentUser.id;
+      Story
+      .newContribution({id: vm.story._id}, vm.contribution)
+      .$promise
+      .then(() => {
+        vm.contribution.contributor = CurrentUserService.currentUser;
+        vm.story.contributions.push(vm.contribution);
+        vm.contribution = {};
+        vm.limitAccess();
+      });
+    }
   }
 
 
