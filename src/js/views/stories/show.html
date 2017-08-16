@@ -30,3 +30,7 @@
 <br>
 <button ng-show="vm.submitCheck" type="button" ng-click="vm.submitContrib()">Submit</button>
 <p>{{vm.story.contributions}}</p>
+<h3>Related Stories</h3>
+<ul ng-repeat="relatedStory in vm.relatedStories">
+  <li>{{relatedStory.title}}</li>
+</ul>

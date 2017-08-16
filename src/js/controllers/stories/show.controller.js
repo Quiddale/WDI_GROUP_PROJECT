@@ -11,8 +11,8 @@ function StoryShowCtrl(Story, $stateParams, CurrentUserService, $http, $state, L
 
   vm.limitAccess = function(){
     vm.story
-    .$promise.then(()=>{
-      console.log(vm.story.contributions[vm.story.contributions.length-1]);
+    .$promise
+    .then(()=>{
       if(vm.story.contributions[vm.story.contributions.length -1].contributor.id === CurrentUserService.currentUser.id){
         vm.test = true;
         vm.submitCheck = false;
@@ -55,6 +55,19 @@ function StoryShowCtrl(Story, $stateParams, CurrentUserService, $http, $state, L
       });
     }
   }
+
+  Story.query()
+  .$promise
+  .then((stories)=>{
+    console.log(stories);
+    vm.relatedStories = [];
+    for (var i = 0; i < stories.length; i++) {
+      if(stories[i].genre === vm.story.genre && stories[i]._id !== vm.story._id){
+        vm.relatedStories.push(stories[1]);
+      }
+    }
+    console.log(vm.relatedStories);
+  });
 
 
   if (vm.story !== undefined) {

@@ -6,7 +6,6 @@ NewCtrl.$inject = ['Story', '$state', 'CurrentUserService', '$http', 'LogicServi
 function NewCtrl(Story, $state, CurrentUserService, $http, LogicService){
   const vm = this;
   vm.story = {};
-  // vm.story.contributions = [];
   vm.titleCheck = true;
   vm.genreCheck = false;
   vm.ruleCheck = false;
