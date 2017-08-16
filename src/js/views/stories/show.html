@@ -1,39 +1,77 @@
-<section style="background-image:url({{ vm.story.image }})" class="background-image">
-  <!-- <img src="{{vm.story.image}}" alt="" class="background-image"> -->
-  <h1>{{ vm.story.title}}</h1>
-
-  <h2>{{ vm.story.genre }}</h2>
-
-  <h3>Created by {{vm.story.createdBy.username}}</h3>
-
-  <!-- {{vm.story}} -->
-  <form ng-submit="vm.refreshMe()">
-    <input type="submit" ng-show="vm.canRefresh" value="Refresh">
-  </form>
-
+<section style="background-image:url({{ vm.story.image }})" class="background-image container">
+  <div class="row">
+    <div class="show-titles col-sm-6 col-sm-offset-3">
+      <div class="titles">
+        <h1>{{ vm.story.title}}</h1>
+        <h3>{{ vm.story.genre }}</h3>
+        <h3>By {{vm.story.createdBy.username}}<span ng-if="vm.story.contributions.length>=1"> and {{vm.story.contributions.length}} <span ng-if="vm.story.contributions.length!=1"> collaborators</span><span ng-if="vm.story.contributions.length=1"> collaborator</span></span></h3>
+      </div>
+      <div class="rule">
+        <p ng-show="vm.story.rules.start">{{vm.story.rules.start}} |</p>
+      </div>
+      <div class="rule">
+        <p ng-show="vm.story.rules.contain">/{{vm.story.rules.contain}}/</p>
+      </div>
+    </div>
+  </div>
 </section>
-<ul>
-  <li>
-    <h2>{{vm.story.createdBy.username}}</h2>
-    <p>{{vm.story.authorContribution}}</p>
-  </li>
-  <h4>{{vm.story.rules}}</h4>
-  <li ng-repeat="contrib in vm.story.contributions">
-    <h2>{{contrib.contributor.username}}</h2>
-    <p>{{contrib.body}}</p>
-  </li>
-  <button type="button" name="button" ng-show="vm.lastContributor" ng-click="vm.deleteContrib()">Delete</button>
-  <button type="button" name="button" ng-show="vm.lastContributor">edit</button>
-</ul>
-<label for="" ng-show="vm.showWordCount">Word limit: {{vm.wordCount}}</label>
-<label for="" ng-show="vm.overLimitError">You are over the word limit!</label>
+<!-- <img src="{{vm.story.image}}" alt="" class="background-image"> -->
+
+
+
+
+<!-- {{vm.story}} -->
+<form ng-submit="vm.refreshMe()">
+  <input type="submit" ng-show="vm.canRefresh" value="Refresh">
+</form>
+{{vm.canRefresh}}
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-2">
+
+      <img ng-show="vm.user.profilePicture" class="show-profile-photo" src="{{vm.story.createdBy.profilePicture}}" alt="">
+      <img ng-hide="vm.user.profilePicture"
+      class="show-profile-photo" src="https://www.fillmurray.com/g/300/300" alt="">
+    </div>
+    <div class="col-sm-9 contrib">
+      <p>{{vm.story.authorContribution}}</p>
+    </div>
+  </div>
+<div class="row">
+
+  <div ng-repeat="contrib in vm.story.contributions">
+
+    <div class="col-sm-2">
+      <img ng-show="vm.user.profilePicture" class="show-profile-photo" src="{{vm.story.createdBy.profilePicture}}" alt="">
+      <img ng-hide="vm.user.profilePicture"
+      class="show-profile-photo" src="https://www.fillmurray.com/g/300/300" alt="">
+    </div>
+
+    <div class="col-sm-9 contrib">
+      <p>{{contrib.body}}</p>
+    </div>
+
+  </div>
+</div>
+<button type="button" name="button" ng-show="vm.lastContributor" ng-click="vm.deleteContrib()">Delete</button>
+<button type="button" name="button" ng-show="vm.lastContributor">edit</button>
+
+
+<div class="">
+  <textarea class="col-sm-9 col-sm-offset-2 text-area" ng-disabled="vm.lastContributor" type="text" name="contribution" ng-model="vm.contribution.body" ng-change="vm.addContribution()"></textarea>
+</div>
+<div class="">
+  <label for="" ng-show="vm.showWordCount">Word limit: {{vm.wordCount}}</label>
+  <label for="" ng-show="vm.overLimitError">You are over the word limit!</label>
+</div>
+
 <br>
-<input ng-disabled="vm.lastContributor" type="text" name="contribution" ng-model="vm.contribution.body" ng-change="vm.addContribution()">
-{{vm.contribution.body}}
 <br>
 <button ng-show="vm.submitCheck" type="button" ng-click="vm.submitContrib()">Submit</button>
-<p>{{vm.story.contributions}}</p>
 <h3>Related Stories</h3>
 <ul ng-repeat="relatedStory in vm.relatedStories">
   <li>{{relatedStory.title}}</li>
 </ul>
+
+</div>

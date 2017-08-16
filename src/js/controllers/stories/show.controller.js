@@ -20,7 +20,7 @@ function StoryShowCtrl(Story, $stateParams, CurrentUserService, $http, $state, L
     });
   };
   vm.limitAccess();
-  
+
   vm.deleteContrib = function(){
     Story
     .deleteContribution({id: vm.story._id}, vm.contribution)
@@ -74,10 +74,10 @@ function StoryShowCtrl(Story, $stateParams, CurrentUserService, $http, $state, L
     vm.relatedStories = [];
     for (var i = 0; i < stories.length; i++) {
       if(stories[i].genre === vm.story.genre && stories[i]._id !== vm.story._id){
-        vm.relatedStories.push(stories[1]);
+        vm.relatedStories.push(stories[i]);
       }
     }
-    console.log(vm.relatedStories);
+    console.log(vm.relatedStories, 'related?');
   });
 
 
@@ -88,6 +88,8 @@ function StoryShowCtrl(Story, $stateParams, CurrentUserService, $http, $state, L
     .then(function(story) {
       vm.authorId = story[0];
       vm.actualAuthorId = vm.authorId.createdBy.id;
+      console.log(vm.actualAuthorId, CurrentUserService.currentUser.id);
+
       if (vm.actualAuthorId === CurrentUserService.currentUser.id) {
         vm.canRefresh = true;
       } else {
