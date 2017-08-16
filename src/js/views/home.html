@@ -1,31 +1,34 @@
-<section class="homepage" id="home-page" >
-  <h1>Home</h1>
+<!-- <div class="home-container" ng-class="{'scroll': vm.scroll}"> -->
+  <section class="homepage" id="home-page">
+    <h1>Home</h1>
 
-  <div ng-show="vm.loginSection">
-    <a href="#login-page">Enter</a>
-  </div>
-  <div ng-show="vm.registerSection">
-    <a href="#register-page">Enter</a>
-  </div>
-
-</section>
-<section ng-controller="LoginCtrl as login" class="login-page" id="login-page" ng-show="vm.loginSection">
-  <a href="#home-page">Home</a>
-  <form ng-submit="login.login()">
-    <div>
-      <label for="email">Email</label>
-      <input type="email" name="email" placeholder="email" ng-model="login.user.email">
+    <!-- ng-show="vm.loginSection" -->
+    <div ng-show="vm.loginSection">
+      <!-- ng-click="vm.scrollMe()" -->
+      <a href="#login-page">Enter</a>
     </div>
-    <div>
-      <label for="password">Password</label>
-      <input type="password" name="password" placeholder="password" ng-model="login.user.password">
+    <div ng-show="vm.registerSection">
+      <a href="#register-page">Enter</a>
     </div>
-    <input type="submit" value="Login">
-  </form>
-  <a ng-click="vm.goToRegister()">Register</a>
-</section>
 
+  </section>
+  <section ng-controller="LoginCtrl as login" class="login-page" id="login-page" ng-show="vm.loginSection">
+    <a href="#home-page">Home</a>
+    <form ng-submit="login.login()">
+      <div>
+        <label for="email">Email</label>
+        <input type="email" name="email" placeholder="email" ng-model="login.user.email">
+      </div>
+      <div>
+        <label for="password">Password</label>
+        <input type="password" name="password" placeholder="password" ng-model="login.user.password">
+      </div>
+      <input type="submit" value="Login">
+    </form>
+    <a ng-click="vm.goToRegister()">Register</a>
+  </section>
 
+<<<<<<< HEAD
 <section ng-controller="RegisterCtrl as register" class="register-page" id="register-page" ng-show="vm.registerSection">
   <a href="#home-page">Home</a>
   <form ng-submit="register.register()">
@@ -53,3 +56,30 @@
   </form>
   <a ng-click="vm.goToLogin()">Login</a>
 </section>
+=======
+
+  <section ng-controller="RegisterCtrl as register" class="register-page" id="register-page" ng-show="vm.registerSection">
+    <a href="#home-page">Home</a>
+    <form ng-submit="register.register()">
+      <div>
+        <label for="username">Username</label>
+        <input type="text" name="username" placeholder="username" ng-model="register.user.username">
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input type="email" name="email" placeholder="email" ng-model="register.user.email">
+      </div>
+      <div>
+        <label for="password">Password</label>
+        <input type="password" name="password" placeholder="password" ng-model="register.user.password">
+      </div>
+      <div>
+        <label for="passwordConfirmation">Confirm your password</label>
+        <input type="password" name="passwordConfirmation" placeholder="confirm your password" ng-model="register.user.passwordConfirmation">
+      </div>
+      <input type="submit" value="Register">
+    </form>
+    <a ng-click="vm.goToLogin()">Login</a>
+  </section>
+<!-- </div> -->
+>>>>>>> a510d0c566eb4d94b4ab9c04de511bef9d1861ae

@@ -1,26 +1,30 @@
-<h1>Index</h1>
+<div class="container">
+  <section ng-model="animation" ng-hide="animation">
+    <h1>Index</h1>
 
-<input ng-model="vm.q" type="text" name="" value="" ng-change="vm.searchQuery()">
-{{vm.users}}
-<div ng-enable="vm.showCarousel" ng-model="vm.showCarousel">
+    <input ng-model="vm.q" type="text" name="" value="" ng-change="vm.searchQuery()">
+    {{vm.users}}
+    <div ng-enable="vm.showCarousel" ng-model="vm.showCarousel">
 
-  <div ng-hide="vm.filtering" ng-repeat="stories in vm.possibleGenres track by $index">
-    <h2 ng-show="stories.exists">{{stories.genre}}</h2>
+      <div ng-hide="vm.filtering" ng-repeat="stories in vm.possibleGenres track by $index">
+        <h2 ng-show="stories.exists">{{stories.genre}}</h2>
 
-    <slick slides-to-show="2" slides-to-scroll="1" init-onload="true"  data="stories.stories" dots="true" arrows="true" rows="1" autoplay="false" >
-      <div ng-repeat="story in stories.stories track by $index" >
-        <img src="{{story.image}}" alt="">
-        <h4 ui-sref="storiesShow({id: story._id})">{{story.title}}</h4>
-        <a ui-sref="">Created by </a>
+        <slick slides-to-show="2" slides-to-scroll="1" init-onload="true"  data="stories.stories" dots="true" arrows="true" rows="1" autoplay="false" >
+          <div ng-repeat="story in stories.stories track by $index" >
+            <img src="{{story.image}}" alt="">
+            <h4 ui-sref="storiesShow({id: story._id})">{{story.title}}</h4>
+            <a ui-sref="">Created by </a>
+          </div>
+        </slick>
       </div>
-    </slick>
-  </div>
-</div>
+    </div>
 
-<div ng-show="vm.filtering" ng-repeat="story in vm.all | filter: vm.q">
-  <ul>
-    <li>{{story.title}}</li>
-    <li>{{story.genre}}</li>
-    <li>{{story.contributions}}</li>
-  </ul>
+    <div ng-show="vm.filtering" ng-repeat="story in vm.all | filter: vm.q">
+      <ul>
+        <li>{{story.title}}</li>
+        <li>{{story.genre}}</li>
+        <li>{{story.contributions}}</li>
+      </ul>
+    </div>
+</section>
 </div>
