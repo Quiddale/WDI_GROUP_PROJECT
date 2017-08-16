@@ -1,3 +1,5 @@
+@import "helpers/reset";
+
 body{
   margin: 0;
 }
@@ -48,4 +50,26 @@ img {
 .bold {
   font-weight: bold;
   color: red;
+}
+
+.homepage {
+  background-color: blanchedalmond;
+  height: 100vh;
+  text-align: center;
+  position: relative;
+  a {
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 40px;
+  }
+}
+
+.login-page {
+  background-color: lavender;
+  height: 100vh;
+}
+
+.register-page {
+  background-color: lightblue;
+  height: 100vh;
 }

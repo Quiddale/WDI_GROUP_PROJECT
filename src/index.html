@@ -10,7 +10,7 @@
     <!-- endinject -->
   </head>
   <body ng-controller="MainCtrl as main">
-    <nav>
+    <nav ng-show="main.user">
       <ul>
         <li>
           <a ui-sref="home">Home</a>
