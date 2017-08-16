@@ -3,8 +3,10 @@
 <input ng-model="stories.q" type="text" name="" value="" ng-change="stories.searchQuery()">
 
 
+<div class="container">
 
-<div ng-hide="stories.filtering" ng-repeat="genre in stories.possibleGenres">
+
+<div ng-hide="stories.filtering" ng-repeat="genre in stories.possibleGenres" >
   <h2 ng-show="genre.exists">{{genre.genre}}</h2>
   <ul ng-repeat="story in stories.all">
     <div ng-show="story.genre === '{{genre.genre}}'">
@@ -23,7 +25,7 @@
     </div>
   </ul>
 </div>
-
+</div>
 
 <div ng-show="stories.filtering" ng-repeat="story in stories.all | filter: stories.q">
   <ul>

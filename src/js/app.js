@@ -2,5 +2,7 @@ angular
   .module('groupProject',  [
     'ui.router',
     'ngResource',
-    'angular-jwt'
+    'angular-jwt',
+    'ui.bootstrap',
+    'ngAnimate'
   ]);
