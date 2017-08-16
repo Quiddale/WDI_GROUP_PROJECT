@@ -3,6 +3,7 @@ angular
     'ui.router',
     'ngResource',
     'angular-jwt',
-    'ui.bootstrap',
-    'ngAnimate'
+    // 'ui.bootstrap',
+    'ngAnimate',
+    'slick'
   ]);

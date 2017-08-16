@@ -2,29 +2,16 @@
 
 <input ng-model="stories.q" type="text" name="" value="" ng-change="stories.searchQuery()">
 
+<div ng-hide="stories.filtering" ng-repeat="stories in stories.possibleGenres" >
+  <h2 ng-show="stories.exists">{{stories.genre}}</h2>
 
-<div class="container">
-
-
-<div ng-hide="stories.filtering" ng-repeat="genre in stories.possibleGenres" >
-  <h2 ng-show="genre.exists">{{genre.genre}}</h2>
-  <ul ng-repeat="story in stories.all">
-    <div ng-show="story.genre === '{{genre.genre}}'">
-      <li>
-        <img src="{{ story.image }}" alt="">
-      </li>
-      <li ui-sref="storiesShow({ id: story._id})">
-        <h3>{{story.title}}</h3>
-      </li>
-      <li>
-        <h5>A story by <a ui-sref="userShow({ id: story.createdBy.id})">{{story.createdBy.username}}</a></h5>
-      </li>
-      <li ng-show="story.rules.start">Start rule ({{story.rules.start}})</li>
-      <li ng-show="story.rules.contain">Contain rule ({{story.rules.contain}})</li>
-      <li>{{story.contributions.length}} contribution<span ng-hide="story.contributions.length === 1">s</span></li>
+  <slick slides-to-show="2" slides-to-scroll="1" init-onload="false"  data="stories.stories" dots="true" arrows="true" rows="1" autoplay="false">
+    <div ng-repeat="story in stories.stories">
+      <img src="{{story.image}}" alt="">
+      <h2>{{story.title}}</h2>
     </div>
-  </ul>
-</div>
+  </slick>
+
 </div>
 
 <div ng-show="stories.filtering" ng-repeat="story in stories.all | filter: stories.q">

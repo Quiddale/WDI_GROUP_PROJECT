@@ -1,31 +1,35 @@
 <!DOCTYPE html>
 <html ng-app="groupProject">
-  <head>
-    <base href="/">
-    <meta charset="utf-8">
-    <title>Project 3</title>
-    <!-- inject:js -->
-    <!-- endinject -->
-    <!-- inject:css -->
-    <!-- endinject -->
-  </head>
-  <body ng-controller="MainCtrl as main">
-    <nav ng-show="main.user">
-      <ul>
+<head>
+  <base href="/">
+  <meta charset="utf-8">
+  <title>Project 3</title>
+  <!-- inject:js -->
+  <!-- endinject -->
+  <!-- inject:css -->
+  <!-- endinject -->
+</head>
+<body ng-controller="MainCtrl as main">
+  <nav class="navbar navbar-default" role="navigation" ng-show="main.user">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" ng-click="isNavCollapsed = !isNavCollapsed">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">A menu</a>
+    </div>
+    <div class="collapse navbar-collapse" uib-collapse="isNavCollapsed">
+      <ul class="nav navbar-nav">
+        <li ng-show="main.user">
+          <a><p>Welcome {{ main.user.username }}</p></a>
+        </li>
         <li>
-          <a ui-sref="home">Home</a>
-        </li>
-        <li ng-hide="main.user">
-          <a ui-sref="register">Register</a>
-        </li>
-        <li ng-hide="main.user">
-          <a ui-sref="login">Login</a>
+          <a ui-sref="storiesIndex">Home</a>
         </li>
         <li ng-show="main.user">
-          <p>Welcome {{ main.user.username }}</p>
-        </li>
-        <li ng-show="main.user">
-          <a ng-click="main.logout()">Logout</a>
+          <a ng-click="main.logout()" class="pointer">Logout</a>
         </li>
         <li ng-show="main.user">
           <a ui-sref="storiesIndex">All the stories</a>
@@ -33,9 +37,27 @@
         <li ng-show="main.user">
           <a ui-sref="storiesCreate">Create a new story</a>
         </li>
-        <a ng-click="main.randomStory()">RandomStory</a>
+        <li>
+          <a ng-click="main.randomStory()" class="pointer">RandomStory</a>
+        </li>
+
       </ul>
-    </nav>
-    <main class="container" ui-view></main>
-  </body>
+    </div>
+  </nav>
+  <!-- <nav ng-show="main.user" class="navbar">
+    <ul>
+      <li>
+        <a ui-sref="home">Home</a>
+      </li>
+      <li ng-hide="main.user">
+        <a ui-sref="register">Register</a>
+      </li>
+      <li ng-hide="main.user">
+        <a ui-sref="login">Login</a>
+      </li>
+
+    </ul>
+  </nav> -->
+  <main class="container" ui-view></main>
+</body>
 </html>

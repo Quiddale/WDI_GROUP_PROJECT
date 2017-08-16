@@ -20,15 +20,24 @@
     "angular-ui-router": "^0.3.2",
     "bootstrap": "^3.3.7",
     "angular-resource": "^1.5.9",
-    "bootstrap-css-only": "^3.3.7",
     "angular-bootstrap": "^2.5.0",
-    "angular-animate": "^1.6.5"
+    "angular-animate": "^1.6.5",
+    "angular-slick": "^0.2.1",
+    "bootstrap-css-only": "^3.3.7"
   },
   "overrides": {
     "bootstrap": {
       "main": [
         "dist/css/bootstrap.css",
         "dist/js/bootstrap.js"
+      ]
+    },
+    "slick-carousel": {
+      "main": [
+        "slick/slick.css",
+        "slick/slick-theme.css",
+        "slick/slick.js",
+        "slick/fonts/*"
       ]
     }
   }

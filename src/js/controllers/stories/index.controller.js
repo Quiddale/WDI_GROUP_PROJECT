@@ -10,41 +10,54 @@ function StoriesIndexCtrl(Story, User, filterFilter, $scope){
   vm.possibleGenres = [
     {
       genre: 'Adventure',
-      exists: false
+      exists: false,
+      count: 0,
+      stories: []
     },
     {
       genre: 'Comedy',
-      exists: false
+      exists: false,
+      count: 0,
+      stories: []
     },
     {
       genre: 'Crime',
-      exists: false
+      exists: false,
+      count: 0,
+      stories: []
     },
     {
       genre: 'Romance',
-      exists: false
+      exists: false,
+      count: 0,
+      stories: []
     },
     {
       genre: 'Thriller',
-      exists: false
+      exists: false,
+      count: 0,
+      stories: []
     }
   ];
 
   Story
-    .query()
-    .$promise
-    .then(story => {
-      vm.all = story;
-    })
-    .then(() => {
-      for (var i = 0; i < vm.possibleGenres.length; i++) {
-        for (var j = 0; j < vm.all.length; j++) {
-          if (vm.possibleGenres[i].genre === vm.all[j].genre) {
-            vm.possibleGenres[i].exists = true;
-          }
+  .query()
+  .$promise
+  .then(story => {
+    vm.all = story;
+  })
+  .then(() => {
+    for (var i = 0; i < vm.possibleGenres.length; i++) {
+      for (var j = 0; j < vm.all.length; j++) {
+        if (vm.possibleGenres[i].genre === vm.all[j].genre) {
+          vm.possibleGenres[i].exists = true;
+          vm.possibleGenres[i].count++;
+          vm.possibleGenres[i].stories.push(vm.all[j]);
         }
       }
-    });
+    }
+    console.log(vm.possibleGenres);
+  });
 
 
   function filterStories() {
@@ -59,6 +72,21 @@ function StoriesIndexCtrl(Story, User, filterFilter, $scope){
       vm.filtering = false;
     }
   };
+  // vm.isInitialized = false;
+  // if (vm.initOnload) {
+  //   vm.isInitialized = false;
+  //   return vm.$watch('data', function (newVal, oldVal) {
+  //     if (newVal != null) {
+  //       if (vm.isInitialized) {
+  //         destroySlick();
+  //       }
+  //       initializeSlick();
+  //       return vm.isInitialized = true;
+  //     }
+  //   });
+  // } else {
+  //   return initializeSlick();
+  // }
 
 
   vm.users = User.query();

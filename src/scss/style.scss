@@ -6,6 +6,11 @@ body{
 img {
   width: 300px;
   height: auto;
+  display: inline;
+  margin: 0;
+}
+.pointer{
+  cursor: pointer;
 }
 
 // .background-image{
