@@ -48,66 +48,18 @@ function NewCtrl(Story, $state, CurrentUserService, $http, LogicService){
   }
 
   function addContrib(){
-    LogicService.containLogicCheck = true;
-    LogicService.startLogicCheck = true;
-
-    vm.charLeft = 500 - vm.story.authorContribution.split('').length;
-    vm.sentences = vm.story.authorContribution.split('. ');
-
-    if(vm.story.rules.contain){
-      LogicService.containCheck(vm.story.authorContribution, vm.story.rules);
-    }
-    if(vm.story.rules.start){
-      LogicService.startCheck(vm.sentences, vm.story.rules);
-    }
-    if(LogicService.startLogicCheck && LogicService.containLogicCheck){
-      vm.submitCheck = true;
-    }else{
-      vm.submitCheck = false;
-    }
-
-
-    // vm.letterArray = vm.story.authorContribution.split('');
-    //
-    console.log(vm.story);
-    // vm.story.contributions.push(vm.story.authorContribution);
-
-    vm.count = 0;
-    //
-    // if(vm.story.rules.contain){
-    //   for (var i = 0; i < vm.letterArray.length; i++) {
-    //     if(vm.letterArray[i].toLowerCase() === vm.story.rules.contain.toLowerCase()){
-    //       vm.submitCheck = false;
-    //       return;
-    //     }else{
-    //       vm.submitCheck = true;
-    //     }
-    //   }
-    // }
-
-  //   if (vm.story.rules.start) {
-  //     for (var a = 0; a < vm.sentences.length; a++) {
-  //       if(vm.sentences[a].split('')[0].toLowerCase() === vm.story.rules.start.toLowerCase()){
-  //         vm.count++;
-  //       }
-  //       if(vm.count === vm.sentences.length){
-  //         vm.submitCheck = true;
-  //       }else{
-  //         vm.submitCheck = false;
-  //       }
-  //     }
-  //   }
+    LogicService.checkRules(vm.story.authorContribution, vm.story.rules);
+    vm.submitCheck = LogicService.submitCheck;
   }
+  
 
   function contains(){
-    if(vm.story.rules.contain.split('').length >1){
-      vm.story.rules.contain = vm.story.rules.contain.split('')[vm.story.rules.contain.length - 1];
-    }
+    LogicService.containsInput(vm.story.rules.contain.split(''));
+    vm.story.rules.contain = LogicService.letters[0];
   }
   function starts(){
-    if(vm.story.rules.start.split('').length >1){
-      vm.story.rules.start = vm.story.rules.start.split('')[vm.story.rules.start.length - 1];
-    }
+    LogicService.containsInput(vm.story.rules.start.split(''));
+    vm.story.rules.start = LogicService.letters[0];
   }
 
   function submit(){

@@ -15,8 +15,7 @@ function UsersShowCtrl($stateParams, User, Story){
   .then(()=>{
     for (var i = 0; i < vm.stories.length; i++) {
       for (var a = 0; a < vm.stories[i].contributions.length; a++) {
-        const contrib = vm.stories[i].contributions;
-        if(vm.stories[i].contributions[a].contributor === vm.user.id){
+        if(vm.stories[i].contributions[a].contributor.id === vm.user.id){
           vm.userContributions.push(vm.stories[i]);
         }
       }

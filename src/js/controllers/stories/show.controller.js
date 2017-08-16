@@ -2,16 +2,30 @@ angular
 .module('groupProject')
 .controller('StoryShowCtrl', StoryShowCtrl);
 
-StoryShowCtrl.$inject =['Story', '$stateParams', 'CurrentUserService', '$http', '$state'];
-function StoryShowCtrl(Story, $stateParams, CurrentUserService, $http, $state){
+StoryShowCtrl.$inject =['Story', '$stateParams', 'CurrentUserService', '$http', '$state', 'LogicService'];
+function StoryShowCtrl(Story, $stateParams, CurrentUserService, $http, $state, LogicService){
   const vm = this;
   vm.story = Story.get({id: $stateParams.id});
   vm.refreshMe = refreshMe;
+  vm.test = false;
+
+  vm.limitAccess = function(){
+    vm.story
+    .$promise.then(()=>{
+      console.log(vm.story.contributions[vm.story.contributions.length-1]);
+      if(vm.story.contributions[vm.story.contributions.length -1].contributor.id === CurrentUserService.currentUser.id){
+        vm.test = true;
+        vm.submitCheck = false;
+      }
+    });
+  };
+  vm.limitAccess();
 
   vm.addContribution = addContribution;
 
   function addContribution(){
-    vm.contributor = CurrentUserService.currentUser.id;
+    LogicService.checkRules(vm.contribution.body, vm.story.rules);
+    vm.submitCheck = LogicService.submitCheck;
   }
 
   vm.submitContrib = submitContrib;
@@ -24,6 +38,7 @@ function StoryShowCtrl(Story, $stateParams, CurrentUserService, $http, $state){
       vm.contribution.contributor = CurrentUserService.currentUser;
       vm.story.contributions.push(vm.contribution);
       vm.contribution = {};
+      vm.limitAccess();
     });
   }
 
@@ -36,7 +51,6 @@ function StoryShowCtrl(Story, $stateParams, CurrentUserService, $http, $state){
       vm.authorId = story[0];
       vm.actualAuthorId = vm.authorId.createdBy.id;
       if (vm.actualAuthorId === CurrentUserService.currentUser.id) {
-        console.log('Im true');
         vm.canRefresh = true;
       } else {
         vm.canRefresh = false;
