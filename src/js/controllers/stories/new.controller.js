@@ -6,7 +6,6 @@ NewCtrl.$inject = ['Story', '$state', 'CurrentUserService', '$http', 'LogicServi
 function NewCtrl(Story, $state, CurrentUserService, $http, LogicService){
   const vm = this;
   vm.story = {};
-  // vm.story.contributions = [];
   vm.titleCheck = true;
   vm.genreCheck = false;
   vm.ruleCheck = false;
@@ -50,8 +49,17 @@ function NewCtrl(Story, $state, CurrentUserService, $http, LogicService){
   function addContrib(){
     LogicService.checkRules(vm.story.authorContribution, vm.story.rules);
     vm.submitCheck = LogicService.submitCheck;
+
+    LogicService.limitContributions(vm.story.authorContribution);
+    vm.wordCount = LogicService.wordCount;
+    vm.story.authorContribution = LogicService.limitContrib;
+    if (vm.story.authorContribution.split('').length > 0) {
+      vm.showWordCount = true;
+    }else{
+      vm.showWordCount = false;
+    }
   }
-  
+
 
   function contains(){
     LogicService.containsInput(vm.story.rules.contain.split(''));
