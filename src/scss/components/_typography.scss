@@ -1,0 +1,11 @@
+h1, h2 p, a, button, label, input, body {
+  font-family: $main-font;
+}
+
+h1, h2, h4 {
+  font-weight: bold;
+}
+
+h4 {
+  font-family: $title-font;
+}

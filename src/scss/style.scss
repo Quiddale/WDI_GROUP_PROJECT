@@ -1,4 +1,38 @@
 // @import "helpers/reset";
+//Helpers
+@import "helpers/mixins";
+@import "helpers/variables";
+//Components
+@import "components/buttons";
+@import "components/navigation";
+@import "components/typography";
+@import "components/forms";
+@import "components/main";
+
+//target states like :hover / :focus / etc
+// button {
+//           height: 35px;
+//           cursor: pointer;
+//           background: $secnd-white;
+//           &:hover {
+//             font-weight: bold;
+//           }
+//           &:focus {
+//             outline: none;
+//           }
+//         }
+
+//make color lighter / darker
+// border-bottom-color: darken($main-red, 20%);
+// background: lighten($light-grey, 10%);
+
+//to refer to a variable:
+// p {
+//   font-family: $body-font;
+// }
+
+//to refer to a mixin:
+// @include background-image-styling;
 
 body{
   margin: 0;
