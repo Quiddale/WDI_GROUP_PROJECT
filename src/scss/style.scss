@@ -3,6 +3,9 @@
 body{
   margin: 0;
 }
+h1 {
+  margin: 0;
+}
 img {
   width: 300px;
   height: auto;
@@ -57,13 +60,19 @@ img {
   color: red;
 }
 
+.home-container {
+  position: relative;
+}
+
 .homepage {
   background-color: blanchedalmond;
   height: 100vh;
   text-align: center;
   position: relative;
+
   a {
     position: absolute;
+    text-align: center;
     bottom: 0;
     margin-bottom: 40px;
   }
@@ -78,3 +87,18 @@ img {
   background-color: lightblue;
   height: 100vh;
 }
+
+// .scroll {
+//   animation: example 1s 0s 1 linear forwards;
+// }
+//
+// @keyframes example {
+//     from {
+//       // transform: translateY(0px);
+//       top: 0;
+//     }
+//     to {
+//       // transform: translateY(-100vh);
+//       top: -100vh;
+//     }
+// }
