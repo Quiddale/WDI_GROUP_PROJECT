@@ -182,3 +182,46 @@ img {
 .homepage {
   background-image: url("https://s-media-cache-ak0.pinimg.com/originals/e4/5f/54/e45f54e2cc5516e2210c34453db5ab6e.jpg")
 }
+
+
+.profile-photo{
+  margin: 30px auto;
+  width: 400px;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 50%;
+  img{
+    position: absolute;
+   margin: auto;
+   min-height: 100%;
+   min-width: 100%;
+  }
+}
+.username{
+  text-align: center;
+}
+.storyImage{
+  height: 200px;
+  width: 100%;
+  background-size: cover;
+  position: relative;
+  display: inline-block;
+  .rule{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+    margin-top: 140px;
+    margin-left: 10px;
+    display: inline-block;
+    p{
+      text-align: center;
+      margin: auto;
+      height: 100%;
+      width: 100%;
+      position: relative;
+      top: 10px;
+    }
+  }
+}

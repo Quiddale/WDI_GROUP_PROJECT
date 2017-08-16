@@ -13,7 +13,7 @@
           <div ng-repeat="story in stories.stories track by $index" >
             <img src="{{story.image}}" alt="">
             <h4 ui-sref="storiesShow({id: story._id})">{{story.title}}</h4>
-            <a ui-sref="">Created by </a>
+            <a ui-sref="userShow({id: story.createdBy.id})">Created by {{story.createdBy.username}}</a>
           </div>
         </slick>
       </div>

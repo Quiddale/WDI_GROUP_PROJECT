@@ -1,20 +1,58 @@
-<h2>Profile</h2>
-{{vm.user}}
+
 <img src="{{ user.profilePicture }}">
-<h1>{{ vm.user.username}}</h1>
-<h3>Biography{{ vm.user.bio}}</h3>
-<h3>Date of birth{{ vm.user.dob}}</h3>
-<h3>Interests {{ vm.user.interest }}</h3>
-<h3>I authored
-  <ul ng-repeat="story in vm.user.authored">
-    <li>{{story.title}}</li>
-    <img src="{{ story.image }}">
-    <p>{{ story.genre}}</p>
-    <p>{{ story.authorContribution }}</p>
-  </ul>
-</h3>
-<h3>I contributed
-  <ul ng-repeat="story in vm.userContributions">
-    <li>{{story.title }}</li>
-  </ul>
-</h3>
+<div class="container">
+  <div class="row">
+    <div class="profile-photo ">
+      <img ng-show="vm.user.profilePicture" class="profile-photo" src="{{vm.user.profilePicture}}" alt="">
+      <img ng-hide="vm.user.profilePicture" src="https://www.fillmurray.com/g/300/300" alt="">
+
+    </div>
+  </div>
+  <div class="row username">
+    <h1 class="">{{ vm.user.username}}</h1>
+  </div>
+</div>
+
+
+
+
+<div class="container">
+  <div class="row">
+    <h3><span>I wrote {{vm.user.authored.length}}</span> <span ng-if="vm.user.authored.length>1">stories</span> <span ng-if="vm.user.authored.length<=1">story</span><h3>
+      <div class="col-sm-4" ng-repeat="story in vm.user.authored">
+        <div class="storyImage"
+        style="background-image:url({{ story.image }})">
+        <div class="rule">
+          <p ng-show="story.rules.start">{{story.rules.start}} |</p>
+        </div>
+        <div class="rule">
+          <p ng-show="story.rules.contain">/{{story.rules.contain}}/</p>
+        </div>
+      </div>
+
+      <h3><a ui-sref="storiesShow({id: story._id})">{{story.title}}</a></h3>
+      <h5>{{ story.genre}}</h5>
+      <h5>This story has {{story.contributions.length}} <span ng-if="story.contributions.length=1">contribution</span><span ng-if="story.contributions.length!=1">contributions</span></h5>
+    </div>
+  </div>
+
+  <div class="row">
+    <h3><span>I contributed to {{vm.userContributions.length}}</span> <span ng-if="vm.userContributions.length>1">stories</span> <span ng-if="vm.userContributions.length<=1">story</span><h3>
+      <div class="col-sm-4" ng-repeat="story in vm.userContributions">
+        <div class="storyImage"
+        style="background-image:url({{ story.image }})">
+        <div class="rule">
+          <p ng-show="story.rules.start">{{story.rules.start}} |</p>
+        </div>
+        <div class="rule">
+          <p ng-show="story.rules.contain">/{{story.rules.contain}}/</p>
+        </div>
+      </div>
+      <h3>{{story.title}}</h3>
+      <h4>By: <strong><a ui-sref="userShow({id: story.createdBy.id})">{{story.createdBy.username}}</a></strong></h4>
+      <h5>{{ story.genre}}</h5>
+      <h5>This story has {{story.contributions.length}} <span ng-if="story.contributions.length=1">contribution</span><span ng-if="story.contributions.length!=1">contributions</span></h5>
+    </div>
+  </div>
+
+</div>
