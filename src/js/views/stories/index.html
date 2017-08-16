@@ -2,13 +2,13 @@
 
 <input ng-model="stories.q" type="text" name="" value="" ng-change="stories.searchQuery()">
 
-<div ng-hide="stories.filtering" ng-repeat="stories in stories.possibleGenres" >
+<div ng-hide="stories.filtering" ng-repeat="stories in stories.possibleGenres track by $index" >
   <h2 ng-show="stories.exists">{{stories.genre}}</h2>
 
   <slick slides-to-show="2" slides-to-scroll="1" init-onload="false"  data="stories.stories" dots="true" arrows="true" rows="1" autoplay="false">
-    <div ng-repeat="story in stories.stories">
+    <div ng-repeat="story in stories.stories track by $index">
       <img src="{{story.image}}" alt="">
-      <h2>{{story.title}}</h2>
+      <h4>{{story.title}}</h4>
     </div>
   </slick>
 

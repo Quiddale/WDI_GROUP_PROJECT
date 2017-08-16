@@ -12,6 +12,16 @@ img {
 .pointer{
   cursor: pointer;
 }
+.slick-next{
+  // color: black !important;
+  // background-color: black;
+}
+.slick-next:before {
+  color: black;
+  font-family: 'Dosis', sans-serif;
+  content: '>';
+  font-size: 70px;
+}
 
 // .background-image{
 //   top: 0;
