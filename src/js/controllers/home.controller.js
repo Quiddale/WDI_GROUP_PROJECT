@@ -9,6 +9,7 @@ function HomeCtrl() {
   vm.loginSection = true;
   vm.goToRegister = goToRegister;
   vm.goToLogin = goToLogin;
+  vm.smoothScroller = smoothScroller;
 
   function goToRegister() {
     vm.registerSection = true;
@@ -18,5 +19,12 @@ function HomeCtrl() {
   function goToLogin() {
     vm.loginSection = true;
     vm.registerSection = false;
+  }
+
+  function smoothScroller() {
+    console.log('Im hit');
+    document.querySelector('.login-page').scrollIntoView({
+      behavior: 'smooth'
+    });
   }
 }

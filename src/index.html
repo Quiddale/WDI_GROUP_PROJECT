@@ -12,7 +12,7 @@
   <!-- endinject -->
 </head>
 <body ng-controller="MainCtrl as main">
-  <nav class="navbar navbar-default" role="navigation" ng-show="main.user">
+  <nav class="navbar navbar-default" role="navigation" ng-show="main.user" ng-model="animation">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" ng-click="isNavCollapsed = !isNavCollapsed">
         <span class="sr-only">Toggle navigation</span>

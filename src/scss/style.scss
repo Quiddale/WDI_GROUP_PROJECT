@@ -88,3 +88,28 @@ img {
   background-color: lightblue;
   height: 100vh;
 }
+
+.ng-hide {
+  right: 100%;
+  left: -200%;
+}
+
+// .register-page{
+//   transition: all linear 1s;
+//
+//   position: relative;
+//   right: -100%;
+// }
+// .login-page{
+//   transition: all linear 1s;
+//   position: absolute;
+//   width:
+// }
+// .transitionFormsRegister{
+//   right: 0%;
+// }
+// .transitionFormsLogin{
+//   // right: 500px;
+//   // display: none;
+//   background-color: blue;
+// }

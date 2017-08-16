@@ -2,14 +2,14 @@
   <h1>Home</h1>
 
   <div ng-show="vm.loginSection">
-    <a href="#login-page">Enter</a>
+    <a ng-click="vm.smoothScroller()">Enter</a>
   </div>
   <div ng-show="vm.registerSection">
     <a href="#register-page">Enter</a>
   </div>
 
 </section>
-<section ng-controller="LoginCtrl as login" class="login-page" id="login-page" ng-show="vm.loginSection">
+<section ng-controller="LoginCtrl as login" class="login-page" id="login-page" ng-show="vm.loginSection" ng-show="vm.loginSection">
   <a href="#home-page">Home</a>
   <form ng-submit="login.login()">
     <div>
