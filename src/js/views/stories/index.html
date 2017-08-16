@@ -4,7 +4,7 @@
 
 
 
-<div ng-hide="stories.filtering"ng-repeat="genre in stories.possibleGenres">
+<div ng-hide="stories.filtering" ng-repeat="genre in stories.possibleGenres">
   <h2 ng-show="genre.exists">{{genre.genre}}</h2>
   <ul ng-repeat="story in stories.all">
     <div ng-show="story.genre === '{{genre.genre}}'">

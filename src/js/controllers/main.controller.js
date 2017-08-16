@@ -4,6 +4,9 @@ angular
 
 MainCtrl.$inject = ['$rootScope', 'CurrentUserService', '$state', 'Story'];
 function MainCtrl($rootScope, CurrentUserService, $state, Story){
+  var elem = document.querySelector('.carousel');
+
+
   const vm = this;
   vm.randomStory = randomStory;
 

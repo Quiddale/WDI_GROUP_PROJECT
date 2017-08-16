@@ -18,6 +18,8 @@
     "angular": "^1.5.8",
     "angular-jwt": "^0.1.9",
     "angular-ui-router": "^1.0.5",
-    "angular-resource": "^1.6.5"
+    "angular-resource": "^1.6.5",
+    "flickity": "^2.0.9",
+    "angular-flickity": "^3.1.4"
   }
 }

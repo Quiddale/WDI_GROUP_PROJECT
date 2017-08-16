@@ -41,16 +41,10 @@ function storyUpdate(req, res) {
     if (req.body.image) {
       story.image = req.body.image;
     }
-
-
-    console.log(req.body.contributions, '<----------------------------- REQ.BODY');
     // console.log(story.contributions, '<--------------------- STORY CONTRIBUTIONS');
     // for (var i = 0; i < story.contributions.length; i++) {
     //   story.contributions[i].contributor = req.body.contributions[i].contributor._id;
     // }
-    if (req.body.contributions){
-      story.contributions = req.body.contributions;
-    }
 
     // for (var i = 0; i < story.contributions.length; i++) {
     //   console.log(story.contributions[i], 'BEFORE');
