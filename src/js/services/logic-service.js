@@ -38,8 +38,6 @@ function LogicService(){
 
       self.containLogicCheck = true;
       self.startLogicCheck = true;
-
-      self.charLeft = 500 - self.authorContrib.split('').length;
       self.sentences = self.authorContrib.split('. ');
       self.letterArray = self.authorContrib.split('');
 
@@ -61,6 +59,19 @@ function LogicService(){
     self.letters = letters;
     if(self.letters.length >1){
       self.letters = self.letters[self.letters.length - 1];
+    }
+  };
+
+  self.limitContributions = function(contribution){
+    self.limitContrib = contribution;
+    if (self.wordCount === 0 && self.limitContrib.split('').length >= 500) {
+      self.overLimitError = true;
+      self.contribLimited = contribution.split('');
+      self.limitContrib = self.contribLimited.splice(0, 500).join('');
+    }else{
+      self.addedContrib = true;
+      self.wordCount = 500 - self.limitContrib.split('').length;
+      self.overLimitError = false;
     }
   };
 }
