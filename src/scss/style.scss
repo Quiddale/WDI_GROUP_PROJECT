@@ -98,6 +98,7 @@ img {
   height: 100vh;
 }
 
+<<<<<<< HEAD
 // .scroll {
 //   animation: example 1s 0s 1 linear forwards;
 // }
@@ -111,4 +112,29 @@ img {
 //       // transform: translateY(-100vh);
 //       top: -100vh;
 //     }
+=======
+.ng-hide {
+  right: 100%;
+  left: -200%;
+}
+
+// .register-page{
+//   transition: all linear 1s;
+//
+//   position: relative;
+//   right: -100%;
+// }
+// .login-page{
+//   transition: all linear 1s;
+//   position: absolute;
+//   width:
+// }
+// .transitionFormsRegister{
+//   right: 0%;
+// }
+// .transitionFormsLogin{
+//   // right: 500px;
+//   // display: none;
+//   background-color: blue;
+>>>>>>> home-animations
 // }
