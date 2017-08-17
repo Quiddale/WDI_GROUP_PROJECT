@@ -6,90 +6,66 @@
     <h1>OulipoGram</h1>
     <h2>Collaborative. Creative. Constrained.</h2>
   </header>
-  <div ng-show="vm.loginSection">
+  <div>
     <div class="relative-button">
-      <a href="#login-page" id="loginLink">
+      <a href="#wrapper" id="loginLink">
         <p class="all-button" ><strong>Enter</strong></p>
-        <img class="assets" src="/images/arrow-down.svg" alt="">
-      </a>
-    </div>
-  </div>
-
-  <div ng-show="vm.registerSection">
-    <div class="relative-button">
-      <a href="#register-page">
-        <p class="all-button"><strong>Enter</strong></p>
-        <img class="assets" src="/images/arrow-down.svg" alt="">
+        <img class="assets animated pulse" src="/images/arrow-down.svg" alt="">
       </a>
     </div>
   </div>
 </section>
 
-<div class="slide-wrapper relative-section">
-  <div class="">
-    <a href="#home-page">
-      <img class="assets-flipped" src="/images/arrow-down.svg" alt="">
-      <p class="all-button">Home</p>
-    </a>
+<div class="wrapper" id="wrapper">
+  <div class="test">
   </div>
-  <div class="wrapper">
-    <slick slides-to-show="2" slides-to-scroll="1" init-onload="true" data="" dots="true" arrows="true" rows="1" autoplay="false" >
-    <!-- <section ng-controller="LoginCtrl as login" class="relative-section" id="login-page" ng-show="vm.loginSection"> -->
-      <section ng-controller="LoginCtrl as login" id="login-page">
+  <div class="slick">
+    <div ng-controller="LoginCtrl as login" class="relative-section" id="login-page" ng-show="vm.loginSection">
+      <form ng-submit="login.login()">
+        <h2>Login</h2>
 
-        <!-- <div class="">
-        <a href="#home-page">
-        <img class="assets-flipped" src="/images/arrow-down.svg" alt="">
-        <p class="all-button"><strong>Home</strong></p>
-        </a>
-        </div> -->
-        <!-- <div class="wrapper"> -->
         <div>
-        <form ng-submit="login.login()">
-          <div>
-            <input type="email" name="email" placeholder="email" ng-model="login.user.email">
-          </div>
-          <div>
-            <input type="password" name="password" placeholder="password" ng-model="login.user.password">
-          </div>
-          <input type="submit" class="login-btn all-button" value="LOGIN" id="bold-log">
-        </form>
-        <!-- <a ng-click="vm.goToRegister()" class="all-button register-button">or Register</a> -->
+          <input type="email" name="email" placeholder="email" ng-model="login.user.email">
         </div>
-      </section>
+        <div>
+          <input type="password" name="password" placeholder="password" ng-model="login.user.password">
+        </div>
+        <input type="submit" class="login-btn all-button" value="LOGIN" id="bold-log">
+      </form>
+    </div>
+    <div ng-controller="RegisterCtrl as register" class="relative-section" id="register-page">
+      <form ng-submit="register.register()">
+        <h2>Register</h2>
 
-      <!-- <section ng-controller="RegisterCtrl as register" class="relative-section" id="register-page" ng-show="vm.registerSection"> -->
-      <section ng-controller="RegisterCtrl as register" id="register-page">
-
-      <!-- <div class="">
-        <a href="#home-page">
-          <img class="assets-flipped" src="/images/arrow-down.svg" alt="">
-          <p class="all-button">Home</p>
-        </a>
-      </div> -->
-      <!-- <div class="wrapper"> -->
-      <div>
-        <form ng-submit="register.register()">
-          <div>
-            <input type="text" name="username" placeholder="username" ng-model="register.user.username">
-          </div>
-          <div>
-            <input type="profilePicture" name="profilePicture" placeholder="http://www.your-picture-here.com" ng-model="register.user.profilePicture">
-          </div>
-          <div>
-            <input type="email" name="email" placeholder="email" ng-model="login.user.email">Your email
-          </div>
-          <div>
-            <input type="password" name="password" placeholder="password" ng-model="login.user.password">password
-          </div>
-          <div>
-            <input type="password" name="passwordConfirmation" placeholder="confirm your password" ng-model="register.user.passwordConfirmation">
-          </div>
-          <input type="submit" class="register-btn" value="REGISTER" id="bold-reg">
-        </form>
-        <a ng-click="vm.goToLogin()">Login</a>
-      </div>
-      </section>
-    </slick>
+        <div>
+          <input type="text" name="username" placeholder="username" ng-model="register.user.username">
+        </div>
+        <div>
+          <input type="profilePicture" name="profilePicture" placeholder="http://www.your-picture-here.com" ng-model="register.user.profilePicture">
+        </div>
+        <div>
+          <input type="email" name="email" placeholder="email" ng-model="login.user.email">
+        </div>
+        <div>
+          <input type="password" name="password" placeholder="password" ng-model="login.user.password">
+        </div>
+        <div>
+          <input type="password" name="passwordConfirmation" placeholder="confirm your password" ng-model="register.user.passwordConfirmation">
+        </div>
+        <input type="submit" class="register-btn" value="REGISTER" id="bold-reg">
+      </form>
+    </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  $('.slick').slick({
+    infinite: false,
+    arrows: true,
+    draggable: false
+  });
+
+  $('.slick-prev, .slick-next').appendTo('.test');
+  $('.slick-prev').addClass('login-arrow');
+  $('.slick-next').addClass('register-arrow');
+</script>

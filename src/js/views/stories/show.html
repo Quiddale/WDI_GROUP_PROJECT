@@ -33,7 +33,6 @@
 <form ng-submit="vm.refreshMe()">
   <input type="submit" ng-show="vm.canRefresh" value="Refresh">
 </form>
-<!-- {{vm.canRefresh}} -->
 
 <div class="container">
   <div class="row">
@@ -57,19 +56,35 @@
       class="show-profile-photo" src="https://www.fillmurray.com/g/300/300" alt="">
     </div>
 
+
     <div class="col-sm-9 contrib">
       <p>{{contrib.body}}</p>
     </div>
 
+
+
   </div>
 </div>
+<div class="row">
+  <div class="show-rules col-sm-2" ng-show="vm.story.rules.contain">
+    <div class="show-rule" ng-class="{error: !vm.startsAdhere && vm.contribution.body}">
+      <p ng-show="vm.story.rules.start">{{vm.story.rules.start}} |</p>
+    </div>
+    <div class="show-rule" ng-class="{error: !vm.containAdhere && vm.contribution.body}">
+      <p ng-show="vm.story.rules.contain">({{vm.story.rules.contain}})</p>
+    </div>
+  </div>
+
+  <div class="">
+    <textarea class="col-sm-9 text-area" ng-disabled="vm.lastContributor" type="text" name="contribution" ng-model="vm.contribution.body" ng-change="vm.addContribution()"></textarea>
+  </div>
+
+</div>
+
+
 <button type="button" name="button" ng-show="vm.lastContributor" ng-click="vm.deleteContrib()">Delete</button>
 <button type="button" name="button" ng-show="vm.lastContributor">edit</button>
 
-
-<div class="">
-  <textarea class="col-sm-9 col-sm-offset-2 text-area" ng-disabled="vm.lastContributor" type="text" name="contribution" ng-model="vm.contribution.body" ng-change="vm.addContribution()"></textarea>
-</div>
 <div class="">
   <label for="" ng-show="vm.showWordCount">Word limit: {{vm.wordCount}}</label>
   <label for="" ng-show="vm.overLimitError">You are over the word limit!</label>
