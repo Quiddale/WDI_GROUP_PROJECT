@@ -1,3 +1,11 @@
+header {
+  position: absolute;
+  text-align: center;
+  left: 50%;
+  top: 45%;
+  transform: translate(-50%, -50%);
+}
+
 .relative-section {
   height: 100vh;
   text-align: center;

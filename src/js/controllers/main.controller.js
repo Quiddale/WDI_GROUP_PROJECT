@@ -34,7 +34,24 @@ function MainCtrl($rootScope, CurrentUserService, $state, Story){
       $state.go('storiesShow', {id: vm.randomId});
     });
 
+    vm.status = {
+      isopen: false
+    };
 
+    vm.toggled = toggled;
+
+    function toggled(open) {
+      console.log('Dropdown is now: ', open);
+    }
+
+    vm.toggleDropdown = toggleDropdown;
+
+    function toggleDropdown($event) {
+      console.log($event);
+      $event.preventDefault();
+      $event.stopPropagation();
+      vm.status.isopen = !vm.status.isopen;
+    }
 
 
     // console.log(vm.randomIndex);

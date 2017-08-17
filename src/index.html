@@ -5,7 +5,6 @@
   <base href="/">
   <meta charset="utf-8">
   <title>Project 3</title>
-
   <!-- inject:js -->
   <!-- endinject -->
   <!-- inject:css -->
@@ -20,57 +19,43 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">A menu</a>
+      <a class="navbar-brand" ui-sref="storiesIndex">
+        <img class="nav-logo" src="/images/logo.svg" alt="">
+        <!-- <span>OulipoGram</span> -->
+      </a>
     </div>
     <div class="collapse navbar-collapse" uib-collapse="isNavCollapsed">
       <ul class="nav navbar-nav">
-        <li ng-show="main.user" class="dropdown" uib-dropdown>
-          <a role="button" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" uib-dropdown-toggle>
-            Welcome {{ main.user.username }}
-            <b class="caret"></b>
-            <ul class="dropdown-menu">
-              <li ng-show="main.user">
-                <a ui-sref="userShow({id: main.user.id})" class="pointer">Logout</a>
-              </li>
-              <li ng-show="main.user">
-                <a ng-click="main.logout()" class="pointer">Logout</a>
-              </li>
-            </ul>
+        <li>
+          <a ng-click="main.expandFiler()" class="pointer">
+            <img class="nav-icon" src="/images/filter-icon.svg" alt="Filter Stories">
           </a>
         </li>
         <li>
-          <a ui-sref="storiesIndex">Home</a>
+          <a ng-click="main.randomStory()" class="pointer">
+            <img class="nav-icon" src="/images/random-icon.svg" alt="Random Story">
+          </a>
+        </li>
+        <li ng-show="main.user">
+          <a ui-sref="storiesCreate">
+            <img class="nav-icon" src="/images/new-icon.svg" alt="New Story">
+          </a>
         </li>
         <li ng-show="main.user">
           <a ng-click="main.logout()" class="pointer">Logout</a>
         </li>
-        <li ng-show="main.user">
-          <a ui-sref="storiesIndex">All the stories</a>
+        <li  ng-show="main.user" dropdown is-open="main.status.isopen">
+          <a id="single-button" type="button" dropdown-toggle>
+            <span class="user-profile"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="single-button">
+            <li role="menuitem"><a ui-sref="userShow({id: main.user.id})" class="pointer">View Profile</a></li>
+            <li role="menuitem"><a ng-click="main.logout()" class="pointer">Logout</a></li>
+          </ul>
         </li>
-        <li ng-show="main.user">
-          <a ui-sref="storiesCreate">Create a new story</a>
-        </li>
-        <li>
-          <a ng-click="main.randomStory()" class="pointer">RandomStory</a>
-        </li>
-
       </ul>
     </div>
   </nav>
-  <!-- <nav ng-show="main.user" class="navbar">
-    <ul>
-      <li>
-        <a ui-sref="home">Home</a>
-      </li>
-      <li ng-hide="main.user">
-        <a ui-sref="register">Register</a>
-      </li>
-      <li ng-hide="main.user">
-        <a ui-sref="login">Login</a>
-      </li>
-
-    </ul>
-  </nav> -->
-  <main class="" ui-view></main>
+<main class="" ui-view></main>
 </body>
 </html>
