@@ -10,6 +10,7 @@ function NewCtrl(Story, $state, CurrentUserService, $http, LogicService, $stateP
   vm.genreCheck = false;
   vm.ruleCheck = false;
   vm.contribCheck = false;
+  vm.showFooter = true;
 
   vm.goGenre = goGenre;
   vm.goTitle = goTitle;

@@ -4,9 +4,9 @@ angular
 
 MainCtrl.$inject = ['$rootScope', 'CurrentUserService', '$state', 'Story'];
 function MainCtrl($rootScope, CurrentUserService, $state, Story){
+
   var elem = document.querySelector('.carousel');
-
-
+  
   const vm = this;
   vm.randomStory = randomStory;
   vm.filterBar = false;
@@ -100,32 +100,35 @@ function MainCtrl($rootScope, CurrentUserService, $state, Story){
     }
   ];
 
-  Story
-  .query()
-  .$promise
-  .then(story => {
-    vm.showCarousel = true;
-    vm.all = story;
-  })
-  .then(() => {
-    for (var i = 0; i < vm.possibleGenres.length; i++) {
-      for (var j = 0; j < vm.all.length; j++) {
-        if (vm.possibleGenres[i].genre === vm.all[j].genre) {
-          vm.possibleGenres[i].exists = true;
-          vm.possibleGenres[i].count++;
-          vm.possibleGenres[i].stories.push(vm.all[j]);
+  vm.findStories = function(){
+    Story
+    .query()
+    .$promise
+    .then(story => {
+      vm.showCarousel = true;
+      vm.all = story;
+    })
+    .then(() => {
+      for (var i = 0; i < vm.possibleGenres.length; i++) {
+        for (var j = 0; j < vm.all.length; j++) {
+          if (vm.possibleGenres[i].genre === vm.all[j].genre) {
+            vm.possibleGenres[i].exists = true;
+            vm.possibleGenres[i].count++;
+            vm.possibleGenres[i].stories.push(vm.all[j]);
+          }
         }
       }
-    }
 
-    console.log(vm.possibleGenres);
-  }).then(()=>{
+      console.log(vm.possibleGenres);
+    }).then(()=>{
 
-    // setTimeout(function(){
-    //   vm.showCarousel = true;
-    //   console.log(vm.showCarousel);
-    // }, 1000);
+      // setTimeout(function(){
+      //   vm.showCarousel = true;
+      //   console.log(vm.showCarousel);
+      // }, 1000);
 
-  });
+    });
+  }
+  vm.findStories();
 
 }

@@ -70,13 +70,16 @@
 </nav>
 
 <main class="" ui-view></main>
-<footer>
-  <p>Made with &hearts; by
-    <strong>Dragana</strong>
-    <strong>Oli</strong>
-    <strong>Q</strong>
-    <strong>Marta</strong>
-  </p>
-</footer>
+<div class="" ng-controller="NewCtrl as vm">
+  <footer ng-hide="vm.showFooter">
+    <p>Made with &hearts; by
+      <strong>Dragana</strong>
+      <strong>Oli</strong>
+      <strong>Q</strong>
+      <strong>Marta</strong>
+    </p>
+  </footer>
+</div>
+
 </body>
 </html>

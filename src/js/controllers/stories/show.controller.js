@@ -91,12 +91,13 @@ function StoryShowCtrl(Story, $stateParams, CurrentUserService, $http, $state, L
     vm.text = Story.query();
     vm.text
     .$promise
-    .then(function(story) {
-      vm.authorId = story[0];
-      vm.actualAuthorId = vm.authorId.createdBy.id;
-      console.log(vm.actualAuthorId, CurrentUserService.currentUser.id);
+    .then(function() {
+      vm.authorId = vm.story.createdBy.id;
+      // vm.actualAuthorId = vm.authorId.createdBy.id;
+      // console.log(vm.actualAuthorId, CurrentUserService.currentUser.id);
+      console.log(vm.story, 'THIS IS VM.STORY');
 
-      if (vm.actualAuthorId === CurrentUserService.currentUser.id) {
+      if (vm.authorId === CurrentUserService.currentUser.id) {
         vm.canRefresh = true;
       } else {
         vm.canRefresh = false;

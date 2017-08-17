@@ -4,7 +4,7 @@
 
 <div class="container index-div">
   <section ng-model="animation" ng-hide="animation">
-    <h1>A world of experimental wordplay</h1>
+    <!-- <h1>A world of experimental wordplay</h1> -->
     <div ng-model="main.showCarousel">
       <div ng-hide="vm.filtering" ng-repeat="stories in main.possibleGenres track by $index">
         <h2 class="genre-h2" ng-show="stories.exists">{{stories.genre}}</h2>
