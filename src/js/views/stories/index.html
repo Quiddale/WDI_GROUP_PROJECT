@@ -10,13 +10,15 @@
         <h2 class="genre-h2" ng-show="stories.exists">{{stories.genre}}</h2>
         <slick slides-to-show="1" slides-to-scroll="1" init-onload="true" data="stories.stories" dots="false" arrows="true" rows="1" autoplay="false" >
           <div ng-repeat="story in stories.stories track by $index" >
-            <div>
+            <div class="slide-wrapper">
               <div class="image-div" style="background-image: url('{{story.image}}');">
-                <div class="rule">
-                  <p ng-show="story.rules.start">{{story.rules.start}} |</p>
-                </div>
-                <div class="rule">
-                  <p ng-show="story.rules.contain"><span class="brackets">( </span>{{story.rules.contain}} <span class="brackets"> )</span></p>
+                <div class="rules-index">
+                  <div ng-show="story.rules.start" class="">
+                    {{story.rules.start}} |
+                  </div>
+                  <div ng-show="story.rules.contain" class="">
+                    <span class="brackets-index">( </span>{{story.rules.contain}} <span class="brackets-index"> )</span>
+                  </div>
                 </div>
               </div>
               <div class="content-div">
@@ -34,13 +36,15 @@
     <div ng-show="vm.filtering" ng-repeat="story in vm.all | filter: vm.q" class="col-sm-4">
       <div class="storyImage"
       style="background-image:url({{ story.image }})">
-      <div class="rule">
-        <p ng-show="story.rules.start">{{story.rules.start}} |</p>
+        <div class="rules-index">
+          <div ng-show="story.rules.start" class="">
+            {{story.rules.start}} |
+          </div>
+          <div ng-show="story.rules.contain" class="">
+            <span class="brackets-index">( </span>{{story.rules.contain}} <span class="brackets-index"> )</span>
+          </div>
+        </div>
       </div>
-      <div class="rule">
-        <p ng-show="story.rules.contain"><span class="brackets">(</span>{{story.rules.contain}} <span class="brackets">)</span></p>
-      </div>
-    </div>
     <h3>{{story.title}}</h3>
     <h4>By: <strong><a ui-sref="userShow({id: story.createdBy.id})">{{story.createdBy.username}}</a></strong></h4>
     <h5>{{ story.genre}}</h5>
