@@ -14,6 +14,7 @@ function RegisterCtrl(User, CurrentUserService, $state){
     .register(vm.user)
     .$promise
     .then(() =>{
+      console.log('register');
       // console.log(data);
       // TokenService.setToken(data.token);
       CurrentUserService.getUser();

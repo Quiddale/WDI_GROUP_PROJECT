@@ -24,13 +24,12 @@
 <form ng-submit="vm.refreshMe()">
   <input type="submit" ng-show="vm.canRefresh" value="Refresh">
 </form>
-
 <div class="container">
   <div class="row">
     <div class="col-sm-2">
 
-      <img ng-show="vm.user.profilePicture" class="show-profile-photo" src="{{vm.story.createdBy.profilePicture}}" alt="">
-      <img ng-hide="vm.user.profilePicture"
+      <img ng-show="vm.story.createdBy.profilePicture" class="show-profile-photo" src="{{vm.story.createdBy.profilePicture}}" alt="">
+      <img ng-hide="vm.story.createdBy.profilePicture"
       class="show-profile-photo" src="https://www.fillmurray.com/g/300/300" alt="">
     </div>
     <div class="col-sm-9 contrib">
@@ -42,8 +41,8 @@
   <div ng-repeat="contrib in vm.story.contributions">
 
     <div class="col-sm-2">
-      <img ng-show="vm.user.profilePicture" class="show-profile-photo" src="{{vm.story.createdBy.profilePicture}}" alt="">
-      <img ng-hide="vm.user.profilePicture"
+      <img ng-show="main.user.profilePicture" class="show-profile-photo" src="{{main.user.profilePicture}}" alt="">
+      <img ng-hide="main.user.profilePicture"
       class="show-profile-photo" src="https://www.fillmurray.com/g/300/300" alt="">
     </div>
 

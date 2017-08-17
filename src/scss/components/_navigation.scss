@@ -1,3 +1,37 @@
 .navbar {
   margin-bottom: 0px;
+  height: 60px;
 }
+
+.nav-filter{
+
+}
+.navbar-brand{
+  padding-left: 80px !important;
+}
+#single-button{
+  padding-top: 10px !important;
+}
+
+.profile-icon{
+  margin-top: -3px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+.dropdown-divider{
+  padding-top: 20px !important;
+}
+.dropdown-menu{
+  padding: 20px;
+  text-align: center;
+  color: black;
+}
+.nav>li>a:focus, .nav>li>a:hover {
+        text-decoration: none;
+        background-color: transparent !important;
+  }
+  nav{
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+
+  }
