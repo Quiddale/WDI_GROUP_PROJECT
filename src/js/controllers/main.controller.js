@@ -9,6 +9,8 @@ function MainCtrl($rootScope, CurrentUserService, $state, Story){
 
   const vm = this;
   vm.randomStory = randomStory;
+  vm.filterBar = false;
+  vm.toggleFilter = toggleFilter;
 
   vm.logout = logout;
 
@@ -33,30 +35,37 @@ function MainCtrl($rootScope, CurrentUserService, $state, Story){
       vm.randomId = vm.stories[vm.randomIndex]._id;
       $state.go('storiesShow', {id: vm.randomId});
     });
-
-    vm.status = {
-      isopen: false
-    };
-
-    vm.toggled = toggled;
-
-    function toggled(open) {
-      console.log('Dropdown is now: ', open);
-    }
-
-    vm.toggleDropdown = toggleDropdown;
-
-    function toggleDropdown($event) {
-      console.log($event);
-      $event.preventDefault();
-      $event.stopPropagation();
-      vm.status.isopen = !vm.status.isopen;
-    }
-
-
     // console.log(vm.randomIndex);
     // console.log(vm.stories.length);
   }
+
+  function toggleFilter() {
+    if (vm.filterBar === false) {
+      vm.filterBar = true;
+    } else {
+      vm.filterBar = false;
+    }
+  }
+
+  vm.status = {
+    isopen: false
+  };
+
+  vm.toggled = toggled;
+
+  function toggled(open) {
+    console.log('Dropdown is now: ', open);
+  }
+
+  vm.toggleDropdown = toggleDropdown;
+
+  function toggleDropdown($event) {
+    console.log($event);
+    $event.preventDefault();
+    $event.stopPropagation();
+    vm.status.isopen = !vm.status.isopen;
+  }
+
   vm.possibleGenres = [
     {
       genre: 'Adventure',
