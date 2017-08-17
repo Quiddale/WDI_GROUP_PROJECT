@@ -74,8 +74,6 @@
   </div>
 
   <div class="contrib-form" ng-show="new.contribCheck">
-    {{new.story.rules}}
-    {{new.startsAdhere}}
     <label for="authorContribution">Be the first to contibute</label>
 
     <div class="row">
@@ -99,7 +97,7 @@
     </div>
     <span class="two-buttons">
       <button type="button" name="button" ng-click="new.goGenre()" value="button">Back</button>
-      <input type="submit" value="|      Submit" ng-disable="!new.submitCheck">
+      <input type="submit" value="|      Submit" ng-hide="!new.submitCheck">
     </span>
 
 
