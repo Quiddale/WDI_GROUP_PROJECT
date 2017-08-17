@@ -24,17 +24,54 @@ header {
   margin: 50px 0 30px;
 }
 
+.slide-wrapper {
+  margin: 0 auto;
+  // text-align: center;
+}
+
 .image-div {
   @include background-image-styling;
   background-size: cover;
-  width: 300px;
-  height: 200px;
+  width: 450px;
+  height: 300px;
   float: left;
-  margin-left: 50px;
+  margin-left: 100px;
+  position: relative;
+  z-index: -1;
+
+}
+
+.storyImage{
+  height: 200px;
+  width: 100%;
+  background-size: cover;
+  position: relative;
+  display: inline-block;
+}
+
+.rules-index {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  div {
+    display: inline-block;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: black;
+    padding-top: 13px;
+    background-image: linear-gradient(to top, #f7f8f0 0%, #adbdbc 100%);
+    p {
+      .brackets-index {
+        font-size: 20px!important;
+      }
+    }
+  }
 }
 
 .content-div {
-  width: 250px;
+  width: 400px;
   float: left;
   margin-top: 20px;
   margin-left: 20px;
@@ -42,8 +79,19 @@ header {
     margin: 0;
   }
   .story-title {
+    font-size: 30px;
     margin-left: -60px;
     background: white;
     padding: 10px 10px;
   }
+  p {
+    font-size: 16px;
+  }
+}
+
+
+// Forms
+
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+  background-color: white!important;
 }
