@@ -48,23 +48,53 @@
     background: none;
     border: none;
     border-bottom: 1px solid black;
+    font-weight: lighter;
+  }
+  .letter{
+    width: 50px;
+    text-align: center;
   }
   input:focus{
     outline: none;
     font-weight: lighter;
   }
   button{
-    width:100%;
+    width: 100%;
     background: none;
     border: none;
     margin-top: 30px;
-
+    display: inline-block;
   }
   .invalid{
     color: #ccc;
     // font-style: italic;
   }
-  select > option {
-   background: blue;
-}
+  select{
+   background: none;
+   border: none;
+   border-radius: 0;
+   border-bottom: 1px solid #333;
+   -webkit-appearance: none;
+  -webkit-border-radius: 0px;
+  }
+  select:focus{
+    outline: none;
+    font-weight: lighter;
+  }
+  .two-buttons{
+    width: 450px;
+    margin-left: 25%;
+    button{
+      width: auto;
+
+      margin: 60px 20px;
+    }
+  }
+  .rules-form{
+    text-align: center;
+    input{
+      margin-top: 30px;
+    }
+    width: 700px;
+  }
 }

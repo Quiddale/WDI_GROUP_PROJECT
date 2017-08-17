@@ -23,13 +23,18 @@
   <input type="hidden" name="image" ng-model="new.story.image">
 
   <div class="" ng-show="new.titleCheck">
-    <label for="title">The title of my story is going to be <span><input type="text" name="title" ng-model="new.story.title" class=""></span></label>
+
+    <label for="title">The title of my story is going to be
+      <span>
+        <input type="text" name="title" ng-model="new.story.title" class="">
+      </span>
+    </label>
 
     <button type="button" name="button" ng-click="new.goGenre()" ng-disabled="!new.story.title" ng-class="{invalid: !new.story.title}" value="button">Next</button>
   </div>
 
   <div class="" ng-show="new.genreCheck" >
-    <label for="genre" >Give your story a genre</label>
+    <label for="genre" >My stories genre is </label>
     <select ng-model="new.story.genre">
       <option value="Adventure">Adventure</option>
       <option value="Comedy">Comedy</option>
@@ -39,18 +44,31 @@
       <option value="Other">Other</option>
     </select>
     <!-- <input type="text" name="genre" ng-model="new.story.genre"> -->
-    <button type="button" name="button" ng-click="new.goRules()" ng-disabled="!new.story.genre" value="button">Next</button>
-    <button type="button" name="button" ng-click="new.goTitle()" value="button">Back</button>
+    <span class="two-buttons">
+    <button type="button" name="button" ng-click="new.goTitle()" value="button">Back</button> | <button type="button" name="button" ng-click="new.goRules()" ng-disabled="!new.story.genre" value="button">Next</button></span>
+
+
   </div>
 
-  <div class="" ng-show="new.ruleCheck">
-    <label for="rule">Give your story a rule</label>
+  <div class="rules-form" ng-show="new.ruleCheck">
+    <p for="rule">Choose some rules (optional)</p>
 
-    <button type="button" name="button">All sentances must start with the letter <input type="text" name="start" ng-model="new.story.rules.start" ng-change="new.starts()"></button>
-    <button type="button" name="button">You cannot use the letter <input type="text" name="contain" ng-model="new.story.rules.contain" ng-change="new.contains()"></button>
+    <label>All sentances must start with the letter
+      <span>
+        <input type="text" name="start" ng-model="new.story.rules.start" ng-change="new.starts()" class="letter">
+      </span>
+    </label>
+    <label>No sentence can contain the letter
+      <span>
+        <input type="text" name="contain" ng-model="new.story.rules.contain" ng-change="new.contains()" class="letter">
+      </span>
+    </label>
 
-    <button type="button" name="button" ng-click="new.goContrib()" ng-disabled="!new.story.rules" value="button">Next</button>
+    <!-- <button type="button" name="button">You cannot use the letter <input type="text" name="contain" ng-model="new.story.rules.contain" ng-change="new.contains()"></button> -->
+    <span class="two-buttons">
+    <button type="button" name="button" ng-click="new.goContrib()" ng-disabled="!new.story.rules" value="button">Next</button> |
     <button type="button" name="button" ng-click="new.goGenre()" value="button">Back</button>
+  </span>
   </div>
 
   <div class="" ng-show="new.contribCheck">
