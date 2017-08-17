@@ -44,6 +44,7 @@ function MainCtrl($rootScope, CurrentUserService, $state, Story){
       vm.filterBar = true;
     } else {
       vm.filterBar = false;
+      vm.q = '';
     }
   }
 

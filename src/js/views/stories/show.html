@@ -1,28 +1,28 @@
 <section style="background-image:url({{ vm.story.image }})" class="background-image">
   <!-- <div class="row"> -->
-    <div class="show-titles">
-      <div class="titles">
-        <h1>{{ vm.story.title}}</h1>
-        <h3>{{ vm.story.genre }}</h3>
-        <h3>By {{vm.story.createdBy.username}}<span ng-if="vm.story.contributions.length>=1"> and {{vm.story.contributions.length}} <span ng-if="vm.story.contributions.length!=1"> collaborators</span><span ng-if="vm.story.contributions.length=1"> collaborator</span></span></h3>
+  <div class="show-titles">
+    <div class="titles">
+      <h1>{{ vm.story.title}}</h1>
+      <h3>{{ vm.story.genre }}</h3>
+      <h3>By {{vm.story.createdBy.username}}<span ng-if="vm.story.contributions.length>=1"> and {{vm.story.contributions.length}} <span ng-if="vm.story.contributions.length!=1"> collaborators</span><span ng-if="vm.story.contributions.length=1"> collaborator</span></span></h3>
+    </div>
+    <div class="rules-show">
+      <div class="" ng-show="vm.story.rules.start">
+        {{vm.story.rules.start}} |
       </div>
-      <div class="rules-show">
-        <div class="" ng-show="vm.story.rules.start">
-          {{vm.story.rules.start}} |
-        </div>
-        <div ng-show="vm.story.rules.contain" class="">
-          <span class="brackets-show">( </span>{{vm.story.rules.contain}}<span class="brackets-show"> )</span>
+      <div ng-show="vm.story.rules.contain" class="">
+        <span class="brackets-show">( </span>{{vm.story.rules.contain}}<span class="brackets-show"> )</span>
       </div>
 
-      </div>
-      <div>
-        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-        	 width="78.098px" height="28.583px" viewBox="0 0 78.098 28.583" enable-background="new 0 0 78.098 28.583" xml:space="preserve">
-        <polyline fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
-        	74.098,5.001 40.12,23.989 4.589,5.001 "/>
-        </svg>
     </div>
+    <div>
+      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+      width="78.098px" height="28.583px" viewBox="0 0 78.098 28.583" enable-background="new 0 0 78.098 28.583" xml:space="preserve">
+      <polyline fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+      74.098,5.001 40.12,23.989 4.589,5.001 "/>
+    </svg>
   </div>
+</div>
 </section>
 <!-- <img src="{{vm.story.image}}" alt="" class="background-image"> -->
 <!-- {{vm.story}} -->
@@ -41,56 +41,78 @@
       <p>{{vm.story.authorContribution}}</p>
     </div>
   </div>
-<div class="row">
+  <div class="row">
 
-  <div ng-repeat="contrib in vm.story.contributions">
+    <div ng-repeat="contrib in vm.story.contributions">
 
-    <div class="col-sm-2">
-      <img ng-show="main.user.profilePicture" class="show-profile-photo" src="{{main.user.profilePicture}}" alt="">
-      <img ng-hide="main.user.profilePicture"
-      class="show-profile-photo" src="https://www.fillmurray.com/g/300/300" alt="">
-    </div>
-
-
-    <div class="col-sm-9 contrib">
-      <p>{{contrib.body}}</p>
-    </div>
+      <div class="col-sm-2">
+        <img ng-show="main.user.profilePicture" class="show-profile-photo" src="{{main.user.profilePicture}}" alt="">
+        <img ng-hide="main.user.profilePicture"
+        class="show-profile-photo" src="https://www.fillmurray.com/g/300/300" alt="">
+      </div>
 
 
+      <div class="col-sm-9 contrib">
+        <p>{{contrib.body}}</p>
+      </div>
 
-  </div>
-</div>
-<div class="row">
-  <div class="show-rules col-sm-2" ng-show="vm.story.rules.contain">
-    <div class="show-rule" ng-class="{error: !vm.startsAdhere && vm.contribution.body}">
-      <p ng-show="vm.story.rules.start">{{vm.story.rules.start}} |</p>
-    </div>
-    <div class="show-rule" ng-class="{error: !vm.containAdhere && vm.contribution.body}">
-      <p ng-show="vm.story.rules.contain">({{vm.story.rules.contain}})</p>
+
+
     </div>
   </div>
+  <div class="row">
+    <div class="show-rules col-sm-2" ng-show="vm.story.rules.contain">
+      <div class="show-rule" ng-class="{error: !vm.startsAdhere && vm.contribution.body}">
+        <p ng-show="vm.story.rules.start">{{vm.story.rules.start}} |</p>
+      </div>
+      <div class="show-rule" ng-class="{error: !vm.containAdhere && vm.contribution.body}">
+        <p ng-show="vm.story.rules.contain">({{vm.story.rules.contain}})</p>
+      </div>
+    </div>
+
+    <div class="">
+      <textarea class="col-sm-9 text-area" ng-disabled="vm.lastContributor" type="text" name="contribution" ng-model="vm.contribution.body" ng-change="vm.addContribution()"></textarea>
+    </div>
+
+  </div>
+
+
+  <button type="button" name="button" ng-show="vm.lastContributor" ng-click="vm.deleteContrib()"><i class="fa fa-trash" aria-hidden="true"></i></button>
+
 
   <div class="">
-    <textarea class="col-sm-9 text-area" ng-disabled="vm.lastContributor" type="text" name="contribution" ng-model="vm.contribution.body" ng-change="vm.addContribution()"></textarea>
+    <label for="" ng-show="vm.showWordCount">Word limit: {{vm.wordCount}}</label>
+    <label for="" ng-show="vm.overLimitError">You are over the word limit!</label>
   </div>
 
+  <br>
+  <br>
+  <button ng-show="vm.submitCheck" type="button" ng-click="vm.submitContrib()">Submit</button>
+
+<h3 ng-if="vm.relatedStories.length >0">Related Stories</h3>
+
+<div class="row">
+
+    <ul ng-repeat="story in vm.relatedStories">
+        <div class="col-sm-4">
+      <div class="storyImage"
+      style="background-image:url({{ story.image }})">
+        <div class="rules-index">
+          <div ng-show="story.rules.start" class="">
+            {{story.rules.start}} |
+          </div>
+          <div ng-show="story.rules.contain" class="">
+            <span class="brackets-index">( </span>{{story.rules.contain}} <span class="brackets-index"> )</span>
+          </div>
+        </div>
+      </div>
+    <h3>{{story.title}}</h3>
+    <h4>By: <strong><a ui-sref="userShow({id: story.createdBy.id})">{{story.createdBy.username}}</a></strong></h4>
+    <h5>{{ story.genre}}</h5>
+    <h5>This story has {{story.contributions.length}} <span ng-if="story.contributions.length=1">contribution</span><span ng-if="story.contributions.length!=1">contributions</span></h5>
+    </div>
+    </ul>
+
 </div>
-
-
-<button type="button" name="button" ng-show="vm.lastContributor" ng-click="vm.deleteContrib()"><i class="fa fa-trash" aria-hidden="true"></i></button>
-
-
-<div class="">
-  <label for="" ng-show="vm.showWordCount">Word limit: {{vm.wordCount}}</label>
-  <label for="" ng-show="vm.overLimitError">You are over the word limit!</label>
-</div>
-
-<br>
-<br>
-<button ng-show="vm.submitCheck" type="button" ng-click="vm.submitContrib()">Submit</button>
-<h3>Related Stories</h3>
-<ul ng-repeat="relatedStory in vm.relatedStories">
-  <li>{{relatedStory.title}}</li>
-</ul>
 
 </div>

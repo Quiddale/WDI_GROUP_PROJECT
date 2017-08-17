@@ -84,6 +84,7 @@ function StoriesIndexCtrl(Story, User){
       console.log(vm.q);
     }else{
       vm.filtering = false;
+      vm.q = '';
     }
   };
 
