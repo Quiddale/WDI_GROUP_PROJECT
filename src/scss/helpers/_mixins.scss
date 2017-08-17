@@ -2,3 +2,10 @@
   background-repeat: no-repeat;
   background-position: center;
 }
+
+@mixin absolute-center {
+  position: absolute;
+  text-align: center;
+  left: 50%;
+  transform: translate(-50%);
+}
