@@ -33,8 +33,11 @@ function StoryShowCtrl(Story, $stateParams, CurrentUserService, $http, $state, L
   vm.addContribution = addContribution;
 
   function addContribution(){
-    vm.containAdhere = LogicService.containLogicCheck;
-    vm.startsAdhere = LogicService.startLogicCheck;
+    // if(!vm.contribution.body && vm.contribution.body === vm.story.rules.starts){
+    //   vm.containAdhere = false;
+    //   vm.startsAdhere = false;
+    // }
+
     console.log(vm.containAdhere, vm.startsAdhere);
     LogicService.limitContributions(vm.contribution.body);
     vm.wordCount = LogicService.wordCount;
@@ -47,6 +50,8 @@ function StoryShowCtrl(Story, $stateParams, CurrentUserService, $http, $state, L
 
     LogicService.checkRules(vm.contribution.body, vm.story.rules);
     vm.submitCheck = LogicService.submitCheck;
+    vm.containAdhere = LogicService.containLogicCheck;
+    vm.startsAdhere = LogicService.startLogicCheck;
   }
 
   vm.submitContrib = submitContrib;
