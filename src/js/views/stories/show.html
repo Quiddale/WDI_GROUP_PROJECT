@@ -1,19 +1,23 @@
-<section style="background-image:url({{ vm.story.image }})" class="background-image container">
-  <div class="row">
-    <div class="show-titles col-sm-6 col-sm-offset-3">
+<section style="background-image:url({{ vm.story.image }})" class="background-image">
+  <!-- <div class="row"> -->
+    <div class="show-titles">
       <div class="titles">
         <h1>{{ vm.story.title}}</h1>
         <h3>{{ vm.story.genre }}</h3>
         <h3>By {{vm.story.createdBy.username}}<span ng-if="vm.story.contributions.length>=1"> and {{vm.story.contributions.length}} <span ng-if="vm.story.contributions.length!=1"> collaborators</span><span ng-if="vm.story.contributions.length=1"> collaborator</span></span></h3>
       </div>
+
       <div class="rule">
         <p ng-show="vm.story.rules.start">{{vm.story.rules.start}} |</p>
+
       </div>
+
       <div class="rule">
         <p ng-show="vm.story.rules.contain">/{{vm.story.rules.contain}}/</p>
       </div>
+
     </div>
-  </div>
+  <!-- </div> -->
 </section>
 <!-- <img src="{{vm.story.image}}" alt="" class="background-image"> -->
 
@@ -24,7 +28,7 @@
 <form ng-submit="vm.refreshMe()">
   <input type="submit" ng-show="vm.canRefresh" value="Refresh">
 </form>
-{{vm.canRefresh}}
+<!-- {{vm.canRefresh}} -->
 
 <div class="container">
   <div class="row">
