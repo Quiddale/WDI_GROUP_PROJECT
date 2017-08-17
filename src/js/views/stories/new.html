@@ -44,8 +44,11 @@
       <option value="Other">Other</option>
     </select>
     <!-- <input type="text" name="genre" ng-model="new.story.genre"> -->
-    <span class="two-buttons">
-    <button type="button" name="button" ng-click="new.goTitle()" value="button">Back</button> | <button type="button" name="button" ng-click="new.goRules()" ng-disabled="!new.story.genre" value="button">Next</button></span>
+    <div class="two-buttons">
+      <span class="two-buttons">
+      <button type="button" name="button" ng-click="new.goTitle()" value="button">Back</button> | <button type="button" name="button" ng-click="new.goRules()" ng-disabled="!new.story.genre" value="button">Next</button></span>
+    </div>
+
 
 
   </div>
@@ -63,19 +66,26 @@
         <input type="text" name="contain" ng-model="new.story.rules.contain" ng-change="new.contains()" class="letter">
       </span>
     </label>
-
-    <!-- <button type="button" name="button">You cannot use the letter <input type="text" name="contain" ng-model="new.story.rules.contain" ng-change="new.contains()"></button> -->
+    <br>
     <span class="two-buttons">
-    <button type="button" name="button" ng-click="new.goContrib()" ng-disabled="!new.story.rules" value="button">Next</button> |
-    <button type="button" name="button" ng-click="new.goGenre()" value="button">Back</button>
+      <button type="button" name="button" ng-click="new.goGenre()" value="button">Back</button> | <button type="button" name="button" ng-click="new.goContrib()" ng-disabled="!new.story.rules" value="button">Next</button>
+
   </span>
   </div>
 
-  <div class="" ng-show="new.contribCheck">
-    <label for="authorContribution">Give your story a contribution</label>
-    <label for="charLeft" ng-show="new.showWordCount">{{new.wordCount}}</label>
-    <input type="text-area" name="authorContribution" ng-model="new.story.authorContribution" ng-change="new.addContrib()" ng-limit="10">
-    <input type="submit" value="Submit" ng-show="new.submitCheck">
+  <div class="contrib-form" ng-show="new.contribCheck">
+    <label for="authorContribution">Be the first to contibute</label>
+
+    <textarea type="text-area"  class="text-area" name="authorContribution" ng-model="new.story.authorContribution" ng-change="new.addContrib()" ng-limit="10"></textarea>
+    <label for="charLeft" class="wordcount" ng-show="new.showWordCount">word count: {{new.wordCount}}</label>
+    <br>
+    <span class="two-buttons">
+      <button type="button" name="button" ng-click="new.goGenre()" value="button">Back</button>
+      <input type="submit" value="|      Submit" ng-show="new.submitCheck">
+  </span>
+
+
+
   </div>
 
 </form>
