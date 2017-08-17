@@ -1,0 +1,32 @@
+@media only screen and (max-width: 1210px) {
+  .image-div {
+    @include background-image-styling;
+    background-size: cover;
+    width: 80%;
+    height: 300px;
+    float: none;
+    // margin-left: 100px;
+  }
+
+  .content-div {
+    width: 80%;
+    float: none;
+    margin: 0 auto;
+    // display: block;
+    margin-top: 20px;
+    // margin-left: 20px;
+    h4, p {
+      margin: 0;
+    }
+    .story-title {
+      font-size: 30px;
+      margin-left: 0px;
+      background: none;
+      padding: 0;
+
+    }
+    p {
+      font-size: 16px;
+    }
+  }
+}

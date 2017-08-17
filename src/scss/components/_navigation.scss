@@ -2,10 +2,6 @@
   margin-bottom: 0px;
   height: 60px;
 }
-
-.nav-filter{
-
-}
 .navbar-brand{
   padding-left: 80px !important;
 }
@@ -25,7 +21,7 @@
 .dropdown-menu{
   padding: 20px;
   text-align: center;
-  color: black;
+  color: $black-color;
 }
 .nav>li>a:focus, .nav>li>a:hover {
         text-decoration: none;
@@ -35,3 +31,12 @@
     background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 
   }
+
+footer {
+  padding: 40px 0;
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+  p {
+    text-align: center;
+    font-size: 18px;
+  }
+}
