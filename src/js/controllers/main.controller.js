@@ -40,4 +40,65 @@ function MainCtrl($rootScope, CurrentUserService, $state, Story){
     // console.log(vm.randomIndex);
     // console.log(vm.stories.length);
   }
+  vm.possibleGenres = [
+    {
+      genre: 'Adventure',
+      exists: false,
+      count: 0,
+      stories: []
+    },
+    {
+      genre: 'Comedy',
+      exists: false,
+      count: 0,
+      stories: []
+    },
+    {
+      genre: 'Crime',
+      exists: false,
+      count: 0,
+      stories: []
+    },
+    {
+      genre: 'Romance',
+      exists: false,
+      count: 0,
+      stories: []
+    },
+    {
+      genre: 'Thriller',
+      exists: false,
+      count: 0,
+      stories: []
+    }
+  ];
+
+  Story
+  .query()
+  .$promise
+  .then(story => {
+    vm.showCarousel = true;
+    vm.all = story;
+  })
+  .then(() => {
+    for (var i = 0; i < vm.possibleGenres.length; i++) {
+      for (var j = 0; j < vm.all.length; j++) {
+        if (vm.possibleGenres[i].genre === vm.all[j].genre) {
+          vm.possibleGenres[i].exists = true;
+          vm.possibleGenres[i].count++;
+          vm.possibleGenres[i].stories.push(vm.all[j]);
+        }
+      }
+    }
+
+    console.log(vm.possibleGenres);
+  }).then(()=>{
+
+    // setTimeout(function(){
+    //   vm.showCarousel = true;
+    //   console.log(vm.showCarousel);
+    // }, 1000);
+
+  });
+
 }
