@@ -9,15 +9,16 @@
   <div ng-show="vm.loginSection">
     <div class="relative-button">
       <a href="#login-page">
-        <p>Enter</p>
+        <p class="all-button" ><strong>Enter</strong></p>
         <img class="assets" src="/images/arrow-down.svg" alt="">
       </a>
     </div>
   </div>
+
   <div ng-show="vm.registerSection">
     <div class="relative-button">
       <a href="#register-page">
-        <p>Enter</p>
+        <p class="all-button"><strong>Enter</strong></p>
         <img class="assets" src="/images/arrow-down.svg" alt="">
       </a>
     </div>
@@ -27,7 +28,7 @@
   <div class="">
     <a href="#home-page">
       <img class="assets-flipped" src="/images/arrow-down.svg" alt="">
-      <p>Home</p>
+      <p class="all-button"><strong>Home</strong></p>
     </a>
   </div>
   <form ng-submit="login.login()">
@@ -37,16 +38,18 @@
     <div>
       <input type="password" name="password" placeholder="password" ng-model="login.user.password">
     </div>
-    <input type="submit" value="Login">
+
+    <input class="all-button" type="submit" value="Login">
+
   </form>
-  <a ng-click="vm.goToRegister()">Register</a>
+  <a class="all-button" ng-click="vm.goToRegister()"><strong>Register</strong></a>
 </section>
 
 <section ng-controller="RegisterCtrl as register" class="relative-section" id="register-page" ng-show="vm.registerSection">
   <div class="">
     <a href="#home-page">
       <img class="assets-flipped" src="/images/arrow-down.svg" alt="">
-      <p>Home</p>
+      <p class="all-button">Home</p>
     </a>
   </div>
   <form ng-submit="register.register()">
@@ -67,5 +70,7 @@
     </div>
     <input type="submit" value="Register">
   </form>
+
   <a ng-click="vm.goToLogin()">Login</a>
+
 </section>
