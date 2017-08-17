@@ -6,32 +6,23 @@
     <h1>OulipoGram</h1>
     <h2>Collaborative. Creative. Constrained.</h2>
   </header>
-  <div ng-show="vm.loginSection">
+  <div>
     <div class="relative-button">
-      <a href="#login-page" id="loginLink">
+      <a href="#wrapper" id="loginLink">
         <p class="all-button" ><strong>Enter</strong></p>
-        <img class="assets" src="/images/arrow-down.svg" alt="">
-      </a>
-    </div>
-  </div>
-
-  <div ng-show="vm.registerSection">
-    <div class="relative-button">
-      <a href="#register-page">
-        <p class="all-button"><strong>Enter</strong></p>
-        <img class="assets" src="/images/arrow-down.svg" alt="">
+        <img class="assets animated pulse" src="/images/arrow-down.svg" alt="">
       </a>
     </div>
   </div>
 </section>
 
-<div class="wrapper">
+<div class="wrapper" id="wrapper">
   <div class="test">
   </div>
   <div class="slick">
     <div ng-controller="LoginCtrl as login" class="relative-section" id="login-page" ng-show="vm.loginSection">
       <form ng-submit="login.login()">
-        <!-- <h2>Login</h2> -->
+        <h2>Login</h2>
 
         <div>
           <input type="email" name="email" placeholder="email" ng-model="login.user.email">
@@ -44,7 +35,7 @@
     </div>
     <div ng-controller="RegisterCtrl as register" class="relative-section" id="register-page">
       <form ng-submit="register.register()">
-        <!-- <h2>Register</h2> -->
+        <h2>Register</h2>
 
         <div>
           <input type="text" name="username" placeholder="username" ng-model="register.user.username">
@@ -75,4 +66,6 @@
   });
 
   $('.slick-prev, .slick-next').appendTo('.test');
+  $('.slick-prev').addClass('login-arrow');
+  $('.slick-next').addClass('register-arrow');
 </script>

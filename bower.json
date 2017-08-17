@@ -24,7 +24,8 @@
     "angular-animate": "^1.6.5",
     "angular-slick": "^0.2.1",
     "bootstrap-css-only": "^3.3.7",
-    "ngSmoothScroll": "^2.0.0"
+    "ngSmoothScroll": "^2.0.0",
+    "animate.css": "animate-css#^3.5.2"
   },
   "overrides": {
     "bootstrap": {
