@@ -1,0 +1,33 @@
+.slick-next:before {
+  color: black;
+  font-family: 'Dosis', sans-serif;
+  content: '>';
+  font-size: 20px;
+}
+
+.slick-prev:before {
+  color: black;
+  font-family: 'Dosis', sans-serif;
+  content: '<';
+  font-size: 20px;
+}
+
+.login-arrow:before {
+  content: '<Login';
+}
+.register-arrow:before {
+  content: 'Register>';
+}
+
+
+.homepage {
+  background-image: $image-bg;
+}
+
+// NAVBAR
+.slick-frame {
+    visibility: hidden;
+}
+.slick-frame.slick-initialized {
+    visibility: visible;
+}

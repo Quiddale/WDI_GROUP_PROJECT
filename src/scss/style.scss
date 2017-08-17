@@ -11,31 +11,35 @@
 @import "components/main";
 @import "components/olis-partial";
 @import "components/martasPartial";
+@import "components/slick";
 
-//target states like :hover / :focus / etc
-// button {
-//           height: 35px;
-//           cursor: pointer;
-//           background: $secnd-white;
-//           &:hover {
-//             font-weight: bold;
-//           }
-//           &:focus {
-//             outline: none;
-//           }
-//         }
 
-//make color lighter / darker
-// border-bottom-color: darken($main-red, 20%);
-// background: lighten($light-grey, 10%);
+.test {
+  position: relative;
+  margin: 0 auto;
+  width: 150px;
+  height: 50px;
+  z-index: 2;
+  @include absolute-center;
+}
 
-//to refer to a variable:
-// p {
-//   font-family: $body-font;
-// }
+form {
+  margin-top: 60px;
+}
 
-//to refer to a mixin:
-// @include background-image-styling;
+.slick-next {
+  right: 45px;
+  position: absolute;
+}
+
+.slick-prev {
+  left: 3px;
+  position: absolute;
+}
+
+.slick {
+  position: relative;
+}
 
 body{
   margin: 0;
@@ -52,79 +56,6 @@ img {
 
 .pointer{
   cursor: pointer;
-}
-
-.slick-next:before {
-  color: black;
-  font-family: 'Dosis', sans-serif;
-  content: '>';
-  font-size: 70px;
-}
-
-
-
-// .grey {
-//   color: grey;
-// }
-//
-// .black {
-//   color: black;
-// }
-//
-// .bold {
-//   font-weight: bold;
-//   color: red;
-// }
-
-.homepage {
-  background-image: $image-bg;
-}
-
-
-// .scroll {
-//   animation: example 1s 0s 1 linear forwards;
-// }
-//
-// @keyframes example {
-//     from {
-//       // transform: translateY(0px);
-//       top: 0;
-//     }
-//     to {
-//       // transform: translateY(-100vh);
-//       top: -100vh;
-//     }
-// .ng-hide {
-//   right: 100%;
-//   left: -200%;
-// }
-
-// .register-page{
-//   transition: all linear 1s;
-//
-//   position: relative;
-//   right: -100%;
-// }
-// .login-page{
-//   transition: all linear 1s;
-//   position: absolute;
-//   width:
-// }
-// .transitionFormsRegister{
-//   right: 0%;
-// }
-// .transitionFormsLogin{
-  // right: 500px;
-  // display: none;
-//   background-color: blue;
-// }
-
-// NAVBAR
-.slick-frame {
-    visibility: hidden;
-}
-.slick-frame.slick-initialized {
-    visibility: visible;
 }
 
 
