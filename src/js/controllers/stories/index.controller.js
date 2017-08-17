@@ -7,7 +7,7 @@ StoriesIndexCtrl.$inject= ['Story', 'User'];
 function StoriesIndexCtrl(Story, User){
   const vm = this;
 
-
+  vm.filtering = false;
   vm.showCarousel = false;
   console.log(vm.showCarousel);
 
@@ -77,10 +77,11 @@ function StoriesIndexCtrl(Story, User){
     // vm.filtered = filterFilter(vm.all, vm.q);
     // $scope.$watch(() => vm.q, filterStories);
   }
+
   vm.searchQuery = function(){
     if(vm.q){
       vm.filtering = true;
-      console.log('HELLOW');
+      console.log(vm.q);
     }else{
       vm.filtering = false;
     }
