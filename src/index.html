@@ -5,6 +5,10 @@
   <base href="/">
   <meta charset="utf-8">
   <title>Project 3</title>
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
   <!-- inject:js -->
   <!-- endinject -->
   <!-- inject:css -->
@@ -27,8 +31,8 @@
     <div class="collapse navbar-collapse" uib-collapse="isNavCollapsed">
       <ul class="nav navbar-nav">
         <li>
-          <a ng-click="main.expandFiler()" class="pointer">
-            <img class="nav-icon" src="/images/filter-icon.svg" alt="Filter Stories">
+          <a ng-click="main.toggleFilter()" class="pointer">
+            <img ng-class="{'nav-icon-target': main.filterBar === true}" class="nav-icon" src="/images/filter-icon.svg" alt="Filter Stories">
           </a>
         </li>
         <li>
@@ -56,6 +60,7 @@
       </ul>
     </div>
   </nav>
+
 <main class="" ui-view></main>
 </body>
 </html>

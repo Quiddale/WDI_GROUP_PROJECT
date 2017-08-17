@@ -26,7 +26,7 @@
           <p ng-show="story.rules.start">{{story.rules.start}} |</p>
         </div>
         <div class="rule">
-          <p ng-show="story.rules.contain">/{{story.rules.contain}}/</p>
+          <p ng-show="story.rules.contain"><span class="brackets">(</span> {{story.rules.contain}} <span class="brackets">)</span></p>
         </div>
       </div>
 
@@ -45,7 +45,7 @@
           <p ng-show="story.rules.start">{{story.rules.start}} |</p>
         </div>
         <div class="rule">
-          <p ng-show="story.rules.contain">/{{story.rules.contain}}/</p>
+          <p ng-show="story.rules.contain"><span class="brackets">(</span>{{story.rules.contain}} <span class="brackets">)</span></p>
         </div>
       </div>
       <h3>{{story.title}}</h3>

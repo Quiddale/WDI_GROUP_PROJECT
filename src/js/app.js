@@ -1,9 +1,9 @@
 angular
-  .module('groupProject',  [
-    'ui.router',
-    'ngResource',
-    'angular-jwt',
-    // 'ui.bootstrap',
-    'ngAnimate',
-    'slick'
-  ]);
+.module('groupProject',  [
+  'ui.router',
+  'ngResource',
+  'angular-jwt',
+  // 'ui.bootstrap',
+  'ngAnimate',
+  'slick'
+]);

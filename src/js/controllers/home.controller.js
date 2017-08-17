@@ -9,8 +9,6 @@ function HomeCtrl() {
   vm.loginSection = true;
   vm.goToRegister = goToRegister;
   vm.goToLogin = goToLogin;
-  vm.scrollMe = scrollMe;
-  // vm.scrollIt = scrollIt;
 
   function goToRegister() {
     vm.registerSection = true;
@@ -22,13 +20,12 @@ function HomeCtrl() {
     vm.registerSection = false;
   }
 
-  function scrollMe() {
-    console.log('Im hit');
-    vm.scroll = scroll;
-  }
-
-  // function scrollIt() {
-  //   console.log('do something');
-  // }
-
+  $(function() {
+    $('a').click(function() {
+      $('html, body').animate({
+        scrollTop: $( $(this).attr('href') ).offset().top
+      }, 1000);
+      return false;
+    });
+  });
 }
