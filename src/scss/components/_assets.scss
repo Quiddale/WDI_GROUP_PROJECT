@@ -3,6 +3,25 @@
   height: auto;
 }
 
+.navbar-brand {
+  padding: 7px 15px;
+  .nav-logo {
+    width: 50px;
+  }
+}
+
+.nav-icon {
+  width: 25px;
+}
+
+.user-profile {
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  border-radius: 50%;
+  background-color: #303030;
+}
+
 .assets {
   display: inline-block;
   width: 50px;

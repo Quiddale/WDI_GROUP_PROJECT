@@ -1,0 +1,11 @@
+.text-area {
+  min-height: 350px;
+  background-image: repeating-linear-gradient(to bottom, transparent, transparent 38px, rgba(0,0,0,0.15) 39px);
+  line-height: 40px;
+  resize: none;
+  border: 0;
+  padding: 0;
+  &:focus {
+    outline: none;
+  }
+}
