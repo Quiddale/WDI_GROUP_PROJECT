@@ -24,8 +24,19 @@
     </div>
     <div class="collapse navbar-collapse" uib-collapse="isNavCollapsed">
       <ul class="nav navbar-nav">
-        <li ng-show="main.user">
-          <a><p>Welcome {{ main.user.username }}</p></a>
+        <li ng-show="main.user" class="dropdown" uib-dropdown>
+          <a role="button" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" uib-dropdown-toggle>
+            Welcome {{ main.user.username }}
+            <b class="caret"></b>
+            <ul class="dropdown-menu">
+              <li ng-show="main.user">
+                <a ui-sref="userShow({id: main.user.id})" class="pointer">Logout</a>
+              </li>
+              <li ng-show="main.user">
+                <a ng-click="main.logout()" class="pointer">Logout</a>
+              </li>
+            </ul>
+          </a>
         </li>
         <li>
           <a ui-sref="storiesIndex">Home</a>

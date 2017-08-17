@@ -1,0 +1,16 @@
+.logo {
+  width: 100px;
+  height: auto;
+}
+
+.assets {
+  display: inline-block;
+  width: 50px;
+  height: auto;
+}
+
+.assets-flipped {
+  @extend .assets;
+  transform: scaleY(-1);
+  filter: FlipY;
+}

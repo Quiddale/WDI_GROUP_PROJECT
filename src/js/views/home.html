@@ -1,85 +1,76 @@
-<!-- <div class="home-container" ng-class="{'scroll': vm.scroll}"> -->
-  <section class="homepage" id="home-page">
-    <h1>Home</h1>
+<section class="relative-section homepage" id="home-page">
+  <header class="">
+    <p>
+      <img class="logo" src="/images/logo.svg" alt="">
+    </p>
+    <h1>OulipoGram</h1>
+    <h2>Collaborative. Creative. Constrained.</h2>
+  </header>
 
-    <!-- ng-show="vm.loginSection" -->
-    <div ng-show="vm.loginSection">
-      <!-- ng-click="vm.scrollMe()" -->
-      <a href="#login-page">Enter</a>
+  <div ng-show="vm.loginSection">
+    <div class="relative-button">
+      <a href="#login-page">
+        <p>Enter</p>
+        <img class="assets" src="/images/arrow-down.svg" alt="">
+      </a>
     </div>
-    <div ng-show="vm.registerSection">
-      <a href="#register-page">Enter</a>
+  </div>
+  <div ng-show="vm.registerSection">
+    <div class="relative-button">
+      <a href="#register-page">
+        <p>Enter</p>
+        <img class="assets" src="/images/arrow-down.svg" alt="">
+      </a>
     </div>
+  </div>
 
-  </section>
-  <section ng-controller="LoginCtrl as login" class="login-page" id="login-page" ng-show="vm.loginSection">
-    <a href="#home-page">Home</a>
-    <form ng-submit="login.login()">
-      <div>
-        <label for="email">Email</label>
-        <input type="email" name="email" placeholder="email" ng-model="login.user.email">
-      </div>
-      <div>
-        <label for="password">Password</label>
-        <input type="password" name="password" placeholder="password" ng-model="login.user.password">
-      </div>
-      <input type="submit" value="Login">
-    </form>
-    <a ng-click="vm.goToRegister()">Register</a>
-  </section>
-
-<<<<<<< HEAD
-<section ng-controller="RegisterCtrl as register" class="register-page" id="register-page" ng-show="vm.registerSection">
-  <a href="#home-page">Home</a>
-  <form ng-submit="register.register()">
-    <div>
-      <label for="username">Username</label>
-      <input type="text" name="username" placeholder="username" ng-model="register.user.username">
-    </div>
-    <div>
-      <label for="email">Email</label>
-      <input type="email" name="email" placeholder="email" ng-model="register.user.email">
-    </div>
-    <div>
-      <label for="profilePicture">Upload a profile picture</label>
-      <input type="profilePicture" name="profilePicture" placeholder="http://www.YOUR_PICTURE.com" ng-model="register.user.profilePicture">
-    </div>
-    <div>
-      <label for="password">Password</label>
-      <input type="password" name="password" placeholder="password" ng-model="register.user.password">
-    </div>
-    <div>
-      <label for="passwordConfirmation">Confirm your password</label>
-      <input type="password" name="passwordConfirmation" placeholder="confirm your password" ng-model="register.user.passwordConfirmation">
-    </div>
-    <input type="submit" value="Register">
-  </form>
-  <a ng-click="vm.goToLogin()">Login</a>
 </section>
-=======
+<section ng-controller="LoginCtrl as login" class="relative-section" id="login-page" ng-show="vm.loginSection">
+  <div class="">
+    <a href="#home-page">
+      <img class="assets-flipped" src="/images/arrow-down.svg" alt="">
+      <p>Home</p>
+    </a>
+  </div>
+  <form ng-submit="login.login()">
+    <div>
+      <!-- <label for="email">Email</label> -->
+      <input type="email" name="email" placeholder="email" ng-model="login.user.email">
+    </div>
+    <div>
+      <!-- <label for="password">Password</label> -->
+      <input type="password" name="password" placeholder="password" ng-model="login.user.password">
+    </div>
+    <input type="submit" value="Login">
+  </form>
+  <a ng-click="vm.goToRegister()">Register</a>
+</section>
 
-  <section ng-controller="RegisterCtrl as register" class="register-page" id="register-page" ng-show="vm.registerSection">
-    <a href="#home-page">Home</a>
-    <form ng-submit="register.register()">
-      <div>
-        <label for="username">Username</label>
-        <input type="text" name="username" placeholder="username" ng-model="register.user.username">
-      </div>
-      <div>
-        <label for="email">Email</label>
-        <input type="email" name="email" placeholder="email" ng-model="register.user.email">
-      </div>
-      <div>
-        <label for="password">Password</label>
-        <input type="password" name="password" placeholder="password" ng-model="register.user.password">
-      </div>
-      <div>
-        <label for="passwordConfirmation">Confirm your password</label>
-        <input type="password" name="passwordConfirmation" placeholder="confirm your password" ng-model="register.user.passwordConfirmation">
-      </div>
-      <input type="submit" value="Register">
-    </form>
-    <a ng-click="vm.goToLogin()">Login</a>
-  </section>
-<!-- </div> -->
->>>>>>> a510d0c566eb4d94b4ab9c04de511bef9d1861ae
+<section ng-controller="RegisterCtrl as register" class="relative-section" id="register-page" ng-show="vm.registerSection">
+  <div class="">
+    <a href="#home-page">
+      <img class="assets-flipped" src="/images/arrow-down.svg" alt="">
+      <p>Home</p>
+    </a>
+  </div>
+
+<form ng-submit="register.register()">
+  <div>
+    <input type="text" name="username" placeholder="username" ng-model="register.user.username">
+  </div>
+  <div>
+    <input type="email" name="email" placeholder="email" ng-model="register.user.email">
+  </div>
+  <div>
+    <input type="profilePicture" name="profilePicture" placeholder="http://www.your-picture-here.com" ng-model="register.user.profilePicture">
+  </div>
+  <div>
+    <input type="password" name="password" placeholder="password" ng-model="register.user.password">
+  </div>
+  <div>
+    <input type="password" name="passwordConfirmation" placeholder="confirm your password" ng-model="register.user.passwordConfirmation">
+  </div>
+  <input type="submit" value="Register">
+</form>
+<a ng-click="vm.goToLogin()">Login</a>
+</section>
