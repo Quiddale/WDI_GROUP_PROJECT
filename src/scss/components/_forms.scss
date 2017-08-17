@@ -9,3 +9,79 @@
     outline: none;
   }
 }
+
+// form {
+  // font-size: 20px;
+  // text-align: center;
+  // position: absolute;
+  // text-align: center;
+  // left: 50%;
+  // top: 45%;
+  // transform: translate(-50%, -50%);
+
+
+  .wrapper {
+    font-size: 20px;
+    text-align: center;
+    position: absolute;
+    text-align: center;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -50%);
+  }
+
+  #bold-reg, #bold-log {
+    font-weight: bold;
+  }
+
+  input:focus{
+    border: none;
+  }
+
+
+
+  .login-btn, .register-btn{
+    border: none;
+    padding-top: 30px;
+  }
+
+
+  a {
+    padding-top: 30px;
+    font-weight: bold;
+  }
+
+  input{
+    border-bottom: 2px solid black;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 500px;
+  }
+
+// }
+
+// .relative-section {
+//   text-align: center;
+//   position: absolute;
+//   text-align: center;
+//   left: 50%;
+//   top: 45%;
+//   transform: translate(-50%, -50%);
+// }
+
+a{
+  color: black;
+
+}
+input {
+  // background-color: rgba(0,0,0,0.1);
+  // border: none;
+
+  background: rgba(0, 0, 0, 0);
+   border: none;
+  //  outline: none;
+
+
+  // background: transparent;
+  // border: none;
+}
