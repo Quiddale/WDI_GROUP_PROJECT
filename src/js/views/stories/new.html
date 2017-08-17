@@ -1,5 +1,3 @@
-<h1>Create New</h1>
-<p>{{new.story}}</p>
 
 <ul class="progress-btns">
   <li>
@@ -17,17 +15,17 @@
   </li>
   <li>
     <button ng-disabled="!new.story.authorContribution" ng-click="new.goContrib()" ng-class="{bold: new.contribCheck}">4</button>
-    <p ng-class="{grey: !new.story.authorContribution, bold: new.contribCheck}">Start the story</p>
+    <p ng-class="{grey: !new.story.authorContribution, bold: new.contribCheck}">start</p>
   </li>
 </ul>
 
-<form ng-submit="new.submit()">
+<form ng-submit="new.submit()" class="create-new-form">
   <input type="hidden" name="image" ng-model="new.story.image">
 
   <div class="" ng-show="new.titleCheck">
-    <label for="title">Give your story a title</label>
-    <input type="text" name="title" ng-model="new.story.title">
-    <button type="button" name="button" ng-click="new.goGenre()" ng-disabled="!new.story.title" value="button">Next</button>
+    <label for="title">The title of my story is going to be <span><input type="text" name="title" ng-model="new.story.title" class=""></span></label>
+
+    <button type="button" name="button" ng-click="new.goGenre()" ng-disabled="!new.story.title" ng-class="{invalid: !new.story.title}" value="button">Next</button>
   </div>
 
   <div class="" ng-show="new.genreCheck">

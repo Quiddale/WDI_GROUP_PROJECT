@@ -1,0 +1,67 @@
+
+.progress-btns {
+  list-style-type: none;
+  padding: 0;
+  text-align: center;
+  margin-top: 50px;
+  li {
+    display: inline-block;
+    width: 100px;
+    padding: 10px;
+    button {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #eee;
+      border: 1px solid #888;
+      margin-bottom: 10px;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
+
+.grey {
+  color: #636363;
+}
+
+.black {
+  color: black;
+}
+
+.bold {
+  font-weight: bold;
+  color: #333;
+}
+
+.create-new-form{
+  @include absolute-center;
+  margin-top: 50px;
+  font-size: 30px;
+  width: 450px;
+  text-align: left;
+  line-height: 50px;
+
+  input{
+    width: 400px;
+    background: none;
+    border: none;
+    border-bottom: 1px solid black;
+  }
+  input:focus{
+    outline: none;
+    font-weight: lighter;
+  }
+  button{
+    width:100%;
+    background: none;
+    border: none;
+    margin-top: 30px;
+
+  }
+  .invalid{
+    color: #ccc;
+    // font-style: italic;
+  }
+}
