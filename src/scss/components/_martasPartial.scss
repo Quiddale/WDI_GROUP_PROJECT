@@ -1,0 +1,6 @@
+.image-div {
+  @include background-image-styling;
+  background-size: cover;
+  width: 300px;
+  height: 200px;
+}
