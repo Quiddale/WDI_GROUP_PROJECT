@@ -3,4 +3,13 @@
   background-size: cover;
   width: 300px;
   height: 200px;
+  float: left;
+}
+
+.content-div {
+  width: 300px;
+  float: left;
+  .story-title {
+    margin-left: -40px;
+  }
 }
