@@ -18,7 +18,14 @@
 
 <div class="container">
   <div class="row">
-    <h3><span>I wrote {{vm.user.authored.length}}</span> <span ng-if="vm.user.authored.length>1">stories</span> <span ng-if="vm.user.authored.length<=1">story</span><h3>
+    <h3 ng-if="vm.user.authored.length> 0">
+      <span>I wrote {{vm.user.authored.length}}</span>
+      <span ng-if="vm.user.authored.length>1">stories</span>
+      <span ng-if="vm.user.authored.length<=1">story</span>
+    <h3>
+    <!-- <h3 ng-if="vm.user.authored.lengh === 0">
+      <span>I haven't written any stories yet</span>
+    <h3> -->
       <div class="col-sm-4" ng-repeat="story in vm.user.authored">
         <div class="storyImage"
         style="background-image:url({{ story.image }})">

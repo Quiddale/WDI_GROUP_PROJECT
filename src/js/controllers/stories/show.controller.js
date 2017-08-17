@@ -27,6 +27,7 @@ function StoryShowCtrl(Story, $stateParams, CurrentUserService, $http, $state, L
     .$promise
     .then(() => {
       vm.story.contributions.pop();
+      vm.lastContributor = vm.story.contributions[vm.story.contributions.length - 1];
     });
   };
 
