@@ -58,6 +58,15 @@ function NewCtrl(Story, $state, CurrentUserService, $http, LogicService, $stateP
     }else{
       vm.showWordCount = false;
     }
+
+    vm.containAdhere = LogicService.containLogicCheck;
+    vm.startsAdhere = LogicService.startLogicCheck;
+
+
+  }
+  if(!vm.story.authorContribution){
+    vm.containAdhere = true;
+    vm.startsAdhere = true;
   }
 
 
@@ -72,19 +81,19 @@ function NewCtrl(Story, $state, CurrentUserService, $http, LogicService, $stateP
 
   function submit(){
     $http
-      .get('https://api.unsplash.com/photos/random?client_id=6486f6a95a6e765711b9ee1b7accf318606fffc506b7769da674d6d51d44a9ba&featured=true')
-      .then((response) => {
-        vm.story.image = response.data.urls.regular;
-      })
-      .then(() => {
-        Story
-          .save(vm.story)
-          .$promise
-          .then((story) =>{
-            console.log(story);
-            // $state.go('storiesIndex');
-            $state.go('storiesShow', {id: story._id});
-          });
+    .get('https://api.unsplash.com/photos/random?client_id=6486f6a95a6e765711b9ee1b7accf318606fffc506b7769da674d6d51d44a9ba&featured=true')
+    .then((response) => {
+      vm.story.image = response.data.urls.regular;
+    })
+    .then(() => {
+      Story
+      .save(vm.story)
+      .$promise
+      .then((story) =>{
+        console.log(story);
+        // $state.go('storiesIndex');
+        $state.go('storiesShow', {id: story._id});
       });
+    });
   }
 }

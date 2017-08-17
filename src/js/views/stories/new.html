@@ -74,15 +74,34 @@
   </div>
 
   <div class="contrib-form" ng-show="new.contribCheck">
+    {{new.story.rules}}
+    {{new.startsAdhere}}
     <label for="authorContribution">Be the first to contibute</label>
 
-    <textarea type="text-area"  class="text-area" name="authorContribution" ng-model="new.story.authorContribution" ng-change="new.addContrib()" ng-limit="10"></textarea>
-    <label for="charLeft" class="wordcount" ng-show="new.showWordCount">word count: {{new.wordCount}}</label>
-    <br>
+    <div class="row">
+<!-- ng-show="new.story.rules.contain || new.story.rules.start" -->
+      <div class="show-rules col-sm-2" >
+        <div class="show-rule" ng-class="{error: !new.startsAdhere && new.story.authorContribution}" ng-show="new.story.rules.start">
+          <p>{{new.story.rules.start}} |</p>
+        </div>
+        <div class="show-rule" ng-class="{error: !new.containAdhere && new.story.authorContribution}" ng-show="new.story.rules.contain">
+          <p >({{new.story.rules.contain}})</p>
+        </div>
+      </div>
+
+      <div class="col-sm-10">
+        <textarea type="text-area"  class="text-area" name="authorContribution" ng-model="new.story.authorContribution" ng-change="new.addContrib()" ng-limit="10"></textarea>
+        <label for="charLeft" class="wordcount" ng-show="new.showWordCount">word count: {{new.wordCount}}</label>
+        <br>
+
+      </div>
+
+    </div>
     <span class="two-buttons">
       <button type="button" name="button" ng-click="new.goGenre()" value="button">Back</button>
-      <input type="submit" value="|      Submit" ng-show="new.submitCheck">
-  </span
+      <input type="submit" value="|      Submit" ng-disable="!new.submitCheck">
+    </span>
+
 
   </div>
 
