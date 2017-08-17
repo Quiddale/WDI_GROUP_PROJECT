@@ -114,7 +114,8 @@ function StoryShowCtrl(Story, $stateParams, CurrentUserService, $http, $state, L
       .update(vm.story)
       .$promise
       .then(() =>{
-        // console.log(story);
+
+        console.log(story);
         // console.log(vm.story);
         $state.go('storiesShow', $stateParams);
       });

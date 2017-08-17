@@ -40,7 +40,7 @@
 
 
 
-  .login-btn, .register-btn{
+  .login-btn, .register-btn {
     border: none;
     padding-top: 30px;
   }
@@ -48,15 +48,24 @@
 
   a {
     padding-top: 30px;
+    font-size: 15px;
     font-weight: bold;
   }
-
-  input{
+.wrapper{
+  input {
     border-bottom: 2px solid black;
     margin-top: 10px;
     margin-bottom: 20px;
     width: 500px;
   }
+  .login-btn{
+    border-bottom: none;
+  }
+  .register-btn {
+    border-bottom: none;
+  }
+}
+
 
 // }
 
@@ -69,19 +78,18 @@
 //   transform: translate(-50%, -50%);
 // }
 
-a{
-  color: black;
 
-}
-input {
+//
+// }
+// input {
   // background-color: rgba(0,0,0,0.1);
   // border: none;
 
-  background: rgba(0, 0, 0, 0);
-   border: none;
+  // background: rgba(0, 0, 0, 0);
+  //  border: none;
   //  outline: none;
 
 
   // background: transparent;
   // border: none;
-}
+// }

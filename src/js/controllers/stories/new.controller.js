@@ -2,8 +2,8 @@ angular
 .module('groupProject')
 .controller('NewCtrl', NewCtrl);
 
-NewCtrl.$inject = ['Story', '$state', 'CurrentUserService', '$http', 'LogicService'];
-function NewCtrl(Story, $state, CurrentUserService, $http, LogicService){
+NewCtrl.$inject = ['Story', '$state', 'CurrentUserService', '$http', 'LogicService','$stateParams'];
+function NewCtrl(Story, $state, CurrentUserService, $http, LogicService, $stateParams){
   const vm = this;
   vm.story = {};
   vm.titleCheck = true;
@@ -80,8 +80,10 @@ function NewCtrl(Story, $state, CurrentUserService, $http, LogicService){
         Story
           .save(vm.story)
           .$promise
-          .then(() =>{
-            $state.go('storiesIndex');
+          .then((story) =>{
+            console.log(story);
+            // $state.go('storiesIndex');
+            $state.go('storiesShow', {id: story._id});
           });
       });
   }
