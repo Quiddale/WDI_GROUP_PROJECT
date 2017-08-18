@@ -58,11 +58,11 @@
 
   <div class="row">
     <div class="show-rules col-sm-1" ng-hide="vm.lastContributor" ng-show="vm.story.rules.contain">
-      <div class="show-rule" ng-class="{error: !vm.startsAdhere && vm.contribution.body}">
+      <div class="show-rule rule-show-page" ng-class="{error: !vm.startsAdhere && vm.contribution.body}">
         <p ng-show="vm.story.rules.start">{{vm.story.rules.start}} |</p>
       </div>
-      <div class="show-rule"  ng-hide="vm.lastContributor" ng-class="{error: !vm.containAdhere && vm.contribution.body}">
-        <p ng-show="vm.story.rules.contain">({{vm.story.rules.contain}})</p>
+      <div class="show-rule rule-show-page"  ng-hide="vm.lastContributor" ng-class="{error: !vm.containAdhere && vm.contribution.body}">
+        <p ng-show="vm.story.rules.contain">( {{vm.story.rules.contain}} )</p>
       </div>
     </div>
 
@@ -94,10 +94,10 @@
         <div class="storyImage"
         style="background-image:url({{ story.image }})">
         <div class="rules-index">
-          <div ng-show="story.rules.start" class="">
+          <div ng-show="story.rules.start" >
             {{story.rules.start}} |
           </div>
-          <div ng-show="story.rules.contain" class="">
+          <div ng-show="story.rules.contain" >
             <span class="brackets-index">( </span>{{story.rules.contain}} <span class="brackets-index"> )</span>
           </div>
         </div>
