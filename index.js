@@ -9,8 +9,9 @@ const app        = express();
 const config     = require('./config/config');
 const routes     = require('./config/routes');
 const dest       = `${__dirname}/public`;
+const enviroment = app.get('env');
 
-mongoose.connect(config.db.development);
+mongoose.connect(config.db[enviroment]);
 mongoose.Promise = bluebird;
 
 if (app.get('env') !== 'production') app.use(cors());
