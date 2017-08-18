@@ -21,6 +21,9 @@
     }
   }
 }
+button:focus{
+    outline: none;
+}
 
 .grey {
   color: #636363;
@@ -125,9 +128,9 @@
 .show-rules{
   p{
     // text-align: center;
-    padding: 13px;
-    padding-left:18px;
-    font-size: 24px
+    padding: 5px;
+    padding-left: 8px;
+    font-size: 24px;
   }
   .show-rule{
 
