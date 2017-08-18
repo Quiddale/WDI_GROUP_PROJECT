@@ -44,6 +44,6 @@
     }
   },
   "resolutions": {
-    "angular": "1.6.4"
+    "angular": "^1.5.8"
   }
 }
