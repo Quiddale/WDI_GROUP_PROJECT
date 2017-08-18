@@ -42,5 +42,8 @@
         "slick/fonts/*"
       ]
     }
+  },
+  "resolutions": {
+    "angular": "1.6.4"
   }
 }
