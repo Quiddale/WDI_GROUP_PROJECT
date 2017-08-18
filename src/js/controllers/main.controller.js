@@ -42,9 +42,13 @@ function MainCtrl($rootScope, CurrentUserService, $state, Story){
   function toggleFilter() {
     if (vm.filterBar === false) {
       vm.filterBar = true;
+      $('.search-container').fadeIn();
     } else {
-      vm.filterBar = false;
-      vm.q = '';
+      $(() =>{
+        $('.search-container').fadeOut();
+        vm.filterBar = false;
+        vm.q = '';
+      });
     }
   }
 
