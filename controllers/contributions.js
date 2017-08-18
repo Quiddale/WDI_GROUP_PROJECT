@@ -23,7 +23,7 @@ function contributionsDelete(req, res){
   .exec()
   .then(story => {
     if(!story) return res.status(404).json({ message: 'No story found!'});
-    story.contributions.splice(story.contributions);
+    story.contributions.pop();
     console.log(story, '---------------------------_STORY');
     story.save();
   })

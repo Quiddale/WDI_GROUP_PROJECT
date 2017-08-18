@@ -1,39 +1,31 @@
 <section style="background-image:url({{ vm.story.image }})" class="background-image">
-  <!-- <div class="row"> -->
   <div class="show-titles">
     <div class="titles">
       <h1>{{ vm.story.title}}</h1>
       <h3>{{ vm.story.genre }}</h3>
-      <h3>By {{vm.story.createdBy.username}}<span ng-if="vm.story.contributions.length>=1"> and {{vm.story.contributions.length}} <span ng-if="vm.story.contributions.length!=1"> collaborators</span><span ng-if="vm.story.contributions.length=1"> collaborator</span></span></h3>
+      <h3><span>By {{vm.story.createdBy.username}}</span>
+        <span ng-if="vm.story.contributions.length>=1"> and {{vm.story.contributions.length}}</span>
+        <span ng-if="vm.story.contributions.length!==1"> collaborators</span>
+        <span ng-if="vm.story.contributions.length===1"> collaborator</span>
+      </h3>
     </div>
     <div class="rules-show">
       <div class="" ng-show="vm.story.rules.start">
-        {{vm.story.rules.start}} |
+        <span>{{vm.story.rules.start}} |</span>
       </div>
-      <div ng-show="vm.story.rules.contain" class="">
-        <span class="brackets-show">( </span>{{vm.story.rules.contain}}<span class="brackets-show"> )</span>
+      <div ng-show="vm.story.rules.contain">
+        <span class="brackets-show">( </span>
+        <span>{{vm.story.rules.contain}}</span>
+        <span class="brackets-show"> )</span>
       </div>
-
     </div>
-    <!-- <div> -->
-    <!-- <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-    width="78.098px" height="28.583px" viewBox="0 0 78.098 28.583" enable-background="new 0 0 78.098 28.583" xml:space="preserve">
-    <polyline fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
-    74.098,5.001 40.12,23.989 4.589,5.001 "/> -->
-    <!-- </svg> -->
-
-    <!-- </div> -->
-
   </div>
-
 </section>
-<!-- <img src="{{vm.story.image}}" alt="" class="background-image"> -->
-<!-- {{vm.story}} -->
 <button ng-click="vm.refreshMe()" class="refreshBtn">
   <!-- <input type="submit" ng-show="vm.canRefresh" value="Refresh"> -->
   <i class="fa fa-refresh" aria-hidden="true"></i>
 </button>
-
+{{vm.story.contributions.length}}
 <div class="container">
   <div class="row">
     <div class="col-sm-2">
@@ -51,8 +43,8 @@
     <div ng-repeat="contrib in vm.story.contributions">
 
       <div class="col-sm-2">
-        <img ng-show="main.user.profilePicture" class="show-profile-photo" src="{{main.user.profilePicture}}" alt="">
-        <img ng-hide="main.user.profilePicture"
+        <img ng-show="contrib.contributor.profilePicture" class="show-profile-photo" src="{{contrib.contributor.profilePicture}}" alt="">
+        <img ng-hide="contrib.contributor.profilePicture"
         class="show-profile-photo" src="https://www.fillmurray.com/g/300/300" alt="">
       </div>
 
