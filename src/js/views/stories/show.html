@@ -18,6 +18,9 @@
         <span>{{vm.story.rules.contain}}</span>
         <span class="brackets-show"> )</span>
       </div>
+      <div class=""  ng-show="vm.story.rules.increase">
+        <i class="fa fa-signal" aria-hidden="true"></i>
+      </div>
     </div>
   </div>
 </section>
@@ -40,29 +43,34 @@
   </div>
 
 
-    <div ng-repeat="contrib in vm.story.contributions">
-      <div class="row contrib-row">
-        <div class="col-sm-1">
-          <img ng-show="contrib.contributor.profilePicture" class="show-profile-photo" src="{{contrib.contributor.profilePicture}}" alt="" ui-sref="userShow({id: contrib.contributor.id})">
-          <img ng-hide="contrib.contributor.profilePicture"
-          class="show-profile-photo" src="https://www.fillmurray.com/g/300/300" alt="">
-
-        </div>
-        <div class="col-sm-11 contrib">
-          <p>{{contrib.body}}</p>
-        </div>
+  <div ng-repeat="contrib in vm.story.contributions">
+    <div class="row contrib-row">
+      <div class="col-sm-1">
+        <img ng-show="contrib.contributor.profilePicture" class="show-profile-photo" src="{{contrib.contributor.profilePicture}}" alt="" ui-sref="userShow({id: contrib.contributor.id})">
+        <img ng-hide="contrib.contributor.profilePicture"
+        class="show-profile-photo" src="https://www.fillmurray.com/g/300/300" alt="">
 
       </div>
+      <div class="col-sm-11 contrib">
+        <p>{{contrib.body}}</p>
+      </div>
+
+    </div>
   </div>
 
 
   <div class="row">
-    <div class="show-rules col-sm-1" ng-hide="vm.lastContributor" ng-show="vm.story.rules.contain">
-      <div class="show-rule rule-show-page" ng-class="{error: !vm.startsAdhere && vm.contribution.body}">
+    <div class="show-rules col-sm-1" ng-hide="vm.lastContributor">
+      <div class="show-rule rule-show-page" ng-class="{error: !vm.startsAdhere && vm.contribution.body}" ng-show="vm.story.rules.start">
         <p ng-show="vm.story.rules.start">{{vm.story.rules.start}} |</p>
       </div>
-      <div class="show-rule rule-show-page"  ng-hide="vm.lastContributor" ng-class="{error: !vm.containAdhere && vm.contribution.body}">
-        <p ng-show="vm.story.rules.contain">( {{vm.story.rules.contain}} )</p>
+      <div class="show-rule rule-show-page"  ng-hide="vm.lastContributor || !vm.story.rules.contain"  ng-class="{error: !vm.containAdhere && vm.contribution.body}">
+        <p>( {{vm.story.rules.contain}} )</p>
+      </div>
+      <div class="show-rule rule-show-page"  ng-hide="vm.lastContributor || !vm.story.rules.increase" ng-class="{error: !vm.increaseAdhere && vm.contribution.body}">
+        <p>
+          <i class="fa fa-signal" aria-hidden="true"></i>
+        </p>
       </div>
     </div>
 
@@ -99,6 +107,9 @@
           </div>
           <div ng-show="story.rules.contain" >
             <span class="brackets-index">( </span>{{story.rules.contain}} <span class="brackets-index"> )</span>
+          </div>
+          <div ng-show="story.rules.increase">
+            <i class="fa fa-signal" aria-hidden="true"></i>
           </div>
         </div>
       </div>

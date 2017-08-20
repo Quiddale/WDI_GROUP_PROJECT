@@ -152,6 +152,9 @@ img {
 
 .related-stories{
   margin: 30px 0;
+  i{
+    font-size: 18px;
+  }
 }
 .contrib-row{
   margin-bottom: 20px;
@@ -243,4 +246,13 @@ button {
     top: -130px;
     margin-left: -20px;
   }
+}
+.apply-btn{
+  width: auto!important;
+  margin-left: 20px;
+  font-size: 25px;
+  color: #bbb;
+}
+.button-clicked{
+  color: red!important;
 }

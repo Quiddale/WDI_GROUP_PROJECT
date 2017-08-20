@@ -25,9 +25,7 @@ function StoryShowCtrl(Story, $stateParams, CurrentUserService, $http, $state, L
       vm.lastContributor = true;
       vm.submitCheck = false;
     }
-
   };
-
 
 
   vm.deleteContrib = function(){
@@ -57,6 +55,7 @@ function StoryShowCtrl(Story, $stateParams, CurrentUserService, $http, $state, L
     vm.submitCheck = LogicService.submitCheck;
     vm.containAdhere = LogicService.containLogicCheck;
     vm.startsAdhere = LogicService.startLogicCheck;
+    vm.increaseAdhere = LogicService.increaseLogicCheck;
   }
 
   vm.submitContrib = submitContrib;
