@@ -251,8 +251,10 @@ button {
   width: auto!important;
   margin-left: 20px;
   font-size: 25px;
-  color: #bbb;
+  color: #888;
 }
 .buttonClicked{
-  color: #1F9A80;
+  color: black;
+  background-color: #acbaba!important;
+  border-radius: 10px!important;
 }
