@@ -19,7 +19,6 @@ function UsersShowCtrl($stateParams, User, Story){
           vm.userContributions.push(vm.stories[i]);
         }
       }
-
     }
   });
 }

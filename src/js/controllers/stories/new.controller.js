@@ -100,8 +100,6 @@ function NewCtrl(Story, $state, CurrentUserService, $http, LogicService){
       .save(vm.story)
       .$promise
       .then((story) =>{
-        console.log(story);
-        // $state.go('storiesIndex');
         $state.go('storiesShow', {id: story._id});
       });
     });

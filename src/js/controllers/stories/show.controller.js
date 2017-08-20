@@ -18,18 +18,23 @@ function StoryShowCtrl(Story, $stateParams, CurrentUserService, $http, $state, L
 
   vm.refreshMe = refreshMe;
   vm.lastContributor = false;
-
+  vm.isAuthor = false;
   vm.limitAccess = function(){
-
+    if(vm.story.createdBy.id === CurrentUserService.currentUser.id && vm.story.contributions.length === 0){
+      vm.isAuthor = true;
+    }
+    console.log(vm.isAuthor);
+    console.log(vm.story.contributions.length);
     if(vm.story.contributions[vm.story.contributions.length -1].contributor.id === CurrentUserService.currentUser.id){
       vm.lastContributor = true;
       vm.submitCheck = false;
     }
+
+
   };
 
 
   vm.deleteContrib = function(){
-    console.log(vm.story.contributions[vm.story.contributions.length -1]);
     Story
     .deleteContribution({id: vm.story._id}, vm.story.contributions[vm.story.contributions.length -1])
     .$promise
@@ -86,7 +91,6 @@ function StoryShowCtrl(Story, $stateParams, CurrentUserService, $http, $state, L
           vm.relatedStories.push(stories[i]);
         }
       }
-      console.log(vm.relatedStories, 'related?');
     });
   };
   vm.getRelated();
@@ -97,10 +101,6 @@ function StoryShowCtrl(Story, $stateParams, CurrentUserService, $http, $state, L
     .$promise
     .then(function() {
       vm.authorId = vm.story.createdBy.id;
-      // vm.actualAuthorId = vm.authorId.createdBy.id;
-      // console.log(vm.actualAuthorId, CurrentUserService.currentUser.id);
-      console.log(vm.story, 'THIS IS VM.STORY');
-
       if (vm.authorId === CurrentUserService.currentUser.id) {
         vm.canRefresh = true;
       } else {
