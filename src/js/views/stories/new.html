@@ -66,10 +66,13 @@
           <input type="text" name="contain" ng-model="new.story.rules.contain" ng-change="new.contains()" class="letter">
         </span>
       </label>
-      <label>Within a sentence, all words must be longer than the previous. <span><button type="button" name="button" ng-click="new.addIncreaseRule()" ng-model="new.story.rules.increase" class="apply-btn" ng-class="{button-clicked: new.story.rules.increase}">Apply</button></span>
+      <label>All words must contain more letters than the previous.
+        <span>
+          <button type="button" name="button" ng-click="new.addIncreaseRule()" ng-model="new.story.rules.increase" class="apply-btn" ng-class="{buttonClicked: new.story.rules.increase}">Apply
+          </button>
+        </span>
 
       </label>
-      {{new.story.rules}}
       <br>
       <span class="two-buttons">
         <button type="button" name="button" ng-click="new.goGenre()" value="button">Back</button> | <button type="button" name="button" ng-click="new.goContrib()" ng-disabled="!new.story.rules" value="button">Next</button>
@@ -81,7 +84,7 @@
       <label for="authorContribution">Be the first to contibute</label>
 
       <div class="row">
-        <!-- ng-show="new.story.rules.contain || new.story.rules.start" -->
+
         <div class="show-rules col-sm-2" >
           <div class="show-rule" ng-class="{error: !new.startsAdhere && new.story.authorContribution}" ng-show="new.story.rules.start">
             <p>{{new.story.rules.start}} |</p>
