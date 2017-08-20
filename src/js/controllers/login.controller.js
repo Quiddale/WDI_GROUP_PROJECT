@@ -12,8 +12,6 @@ function LoginCtrl(User, CurrentUserService, $state) {
       .login(vm.user)
       .$promise
       .then(() => {
-        // console.log(data);
-        // TokenService.setToken(data.token);
         CurrentUserService.getUser();
         $state.go('storiesIndex');
       });

@@ -10,7 +10,6 @@ function StoryShowCtrl(Story, $stateParams, CurrentUserService, $http, $state, L
   .get({id: $stateParams.id})
   .$promise
   .then(data => {
-    console.log(data);
     vm.story = data;
     vm.limitAccess();
   });
@@ -23,16 +22,11 @@ function StoryShowCtrl(Story, $stateParams, CurrentUserService, $http, $state, L
     if(vm.story.createdBy.id === CurrentUserService.currentUser.id && vm.story.contributions.length === 0){
       vm.isAuthor = true;
     }
-    console.log(vm.isAuthor);
-    console.log(vm.story.contributions.length);
     if(vm.story.contributions[vm.story.contributions.length -1].contributor.id === CurrentUserService.currentUser.id){
       vm.lastContributor = true;
       vm.submitCheck = false;
     }
-
-
   };
-
 
   vm.deleteContrib = function(){
     Story
@@ -65,9 +59,7 @@ function StoryShowCtrl(Story, $stateParams, CurrentUserService, $http, $state, L
 
   vm.submitContrib = submitContrib;
   function submitContrib(){
-    if(!vm.contribution.body){
-      console.log('EMPTY');
-    }else{
+    if(vm.contribution.body){
       vm.contribution.contributor = CurrentUserService.currentUser.id;
       Story
       .newContribution({id: vm.story._id}, vm.contribution)
@@ -84,7 +76,6 @@ function StoryShowCtrl(Story, $stateParams, CurrentUserService, $http, $state, L
     Story.query()
     .$promise
     .then((stories)=>{
-      // console.log(stories);
       vm.relatedStories = [];
       for (var i = 0; i < stories.length; i++) {
         if(stories[i].genre === vm.story.genre && stories[i]._id !== vm.story._id){
@@ -94,7 +85,6 @@ function StoryShowCtrl(Story, $stateParams, CurrentUserService, $http, $state, L
     });
   };
   vm.getRelated();
-
   if (vm.story !== undefined) {
     vm.text = Story.query();
     vm.text
@@ -113,7 +103,6 @@ function StoryShowCtrl(Story, $stateParams, CurrentUserService, $http, $state, L
     $http
     .get('https://api.unsplash.com/photos/random?client_id=6486f6a95a6e765711b9ee1b7accf318606fffc506b7769da674d6d51d44a9ba&featured=true')
     .then((response) => {
-      // console.log(response.data.urls.full);
       vm.story.image = response.data.urls.regular;
     })
     .then(() => {
@@ -121,9 +110,6 @@ function StoryShowCtrl(Story, $stateParams, CurrentUserService, $http, $state, L
       .update(vm.story)
       .$promise
       .then(() =>{
-
-        console.log(story);
-        // console.log(vm.story);
         $state.go('storiesShow', $stateParams);
       });
     });

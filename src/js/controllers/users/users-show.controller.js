@@ -6,10 +6,8 @@ UsersShowCtrl.$inject = ['$stateParams', 'User', 'Story'];
 function UsersShowCtrl($stateParams, User, Story){
   const vm = this;
   vm.user = User.get($stateParams);
-  console.log(vm.user);
   vm.stories = Story.query();
   vm.userContributions = [];
-
   vm.stories
   .$promise
   .then(()=>{

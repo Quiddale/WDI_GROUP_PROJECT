@@ -21,17 +21,12 @@ function usersShow(req, res) {
     if (!user) return res.status(404).json({ message: 'User not found.' });
 
     Story.find({ createdBy: user.id }, (err, authored) => {
-      user.authored = authored
+      user.authored = authored;
       return res.status(200).json(user);
     });
-
-
-    // Story.find({ contributor: user.id }, (err, contributed) => {
-    //   user.contributed = contributed
-    //   return res.status(200).json(user);
-    // });
-})
-};
+    
+  });
+}
 
 function usersUpdate(req, res) {
   User.findByIdAndUpdate(req.params.id, req.body.user, { new: true },  (err, user) => {
