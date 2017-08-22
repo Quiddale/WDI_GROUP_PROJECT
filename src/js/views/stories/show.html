@@ -18,11 +18,13 @@
         <span>{{vm.story.rules.contain}}</span>
         <span class="brackets-show"> )</span>
       </div>
+      <div class=""  ng-show="vm.story.rules.increase">
+        <i class="fa fa-signal" aria-hidden="true"></i>
+      </div>
     </div>
   </div>
 </section>
-<button ng-click="vm.refreshMe()" class="refreshBtn">
-  <!-- <input type="submit" ng-show="vm.canRefresh" value="Refresh"> -->
+<button ng-show="vm.canRefresh" ng-click="vm.refreshMe()" class="refreshBtn">
   <i class="fa fa-refresh" aria-hidden="true"></i>
 </button>
 
@@ -40,40 +42,45 @@
   </div>
 
 
-    <div ng-repeat="contrib in vm.story.contributions">
-      <div class="row contrib-row">
-        <div class="col-sm-1">
-          <img ng-show="contrib.contributor.profilePicture" class="show-profile-photo" src="{{contrib.contributor.profilePicture}}" alt="" ui-sref="userShow({id: contrib.contributor.id})">
-          <img ng-hide="contrib.contributor.profilePicture"
-          class="show-profile-photo" src="https://www.fillmurray.com/g/300/300" alt="">
-
-        </div>
-        <div class="col-sm-11 contrib">
-          <p>{{contrib.body}}</p>
-        </div>
+  <div ng-repeat="contrib in vm.story.contributions">
+    <div class="row contrib-row">
+      <div class="col-sm-1">
+        <img ng-show="contrib.contributor.profilePicture" class="show-profile-photo" src="{{contrib.contributor.profilePicture}}" alt="" ui-sref="userShow({id: contrib.contributor.id})">
+        <img ng-hide="contrib.contributor.profilePicture"
+        class="show-profile-photo" src="https://www.fillmurray.com/g/300/300" alt="">
 
       </div>
+      <div class="col-sm-11 contrib">
+        <p>{{contrib.body}}</p>
+      </div>
+
+    </div>
   </div>
 
 
   <div class="row">
-    <div class="show-rules col-sm-1" ng-hide="vm.lastContributor" ng-show="vm.story.rules.contain">
-      <div class="show-rule rule-show-page" ng-class="{error: !vm.startsAdhere && vm.contribution.body}">
+    <div class="show-rules col-sm-1" ng-hide="vm.lastContributor || vm.isAuthor">
+      <div class="show-rule rule-show-page" ng-class="{error: !vm.startsAdhere && vm.contribution.body}" ng-show="vm.story.rules.start">
         <p ng-show="vm.story.rules.start">{{vm.story.rules.start}} |</p>
       </div>
-      <div class="show-rule rule-show-page"  ng-hide="vm.lastContributor" ng-class="{error: !vm.containAdhere && vm.contribution.body}">
-        <p ng-show="vm.story.rules.contain">( {{vm.story.rules.contain}} )</p>
+      <div class="show-rule rule-show-page"  ng-hide="vm.lastContributor || !vm.story.rules.contain"  ng-class="{error: !vm.containAdhere && vm.contribution.body}">
+        <p>( {{vm.story.rules.contain}} )</p>
+      </div>
+      <div class="show-rule rule-show-page"  ng-hide="vm.lastContributor || !vm.story.rules.increase" ng-class="{error: !vm.increaseAdhere && vm.contribution.body}">
+        <p>
+          <i class="fa fa-signal" aria-hidden="true"></i>
+        </p>
       </div>
     </div>
 
     <div class="show-text-area">
-      <textarea class="col-sm-11 text-area show-text-area" ng-hide="vm.lastContributor" type="text" name="contribution" ng-model="vm.contribution.body" ng-change="vm.addContribution()"></textarea>
+      <textarea class="col-sm-11 text-area show-text-area" ng-hide="vm.lastContributor || vm.isAuthor" type="text" name="contribution" ng-model="vm.contribution.body" ng-change="vm.addContribution()"></textarea>
     </div>
 
   </div>
 
 
-  <button type="button" ng-hide="!vm.lastContributor" name="button" ng-show="vm.lastContributor" ng-click="vm.deleteContrib()"><i class="fa fa-trash" aria-hidden="true"></i></button>
+  <button type="button" name="button" ng-show="vm.lastContributor" ng-click="vm.deleteContrib()"><i class="fa fa-trash" aria-hidden="true"></i></button>
 
 
   <div class="">
@@ -100,6 +107,9 @@
           <div ng-show="story.rules.contain" >
             <span class="brackets-index">( </span>{{story.rules.contain}} <span class="brackets-index"> )</span>
           </div>
+          <div ng-show="story.rules.increase">
+            <i class="fa fa-signal" aria-hidden="true"></i>
+          </div>
         </div>
       </div>
 
@@ -107,7 +117,7 @@
       <p>By: <strong><a ui-sref="userShow({id: story.createdBy.id})">{{story.createdBy.username}}</a></strong></p>
       <h5>{{ story.genre}}</h5>
       <h5>This story has {{story.contributions.length}}
-        <span ng-if="story.contributions.length=1">contribution</span>
+        <span ng-if="story.contributions.length===1">contribution</span>
         <span ng-if="story.contributions.length!=1">contributions</span>
       </h5>
     </div>

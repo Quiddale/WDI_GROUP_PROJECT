@@ -46,61 +46,73 @@
     <!-- <input type="text" name="genre" ng-model="new.story.genre"> -->
     <div class="two-buttons">
       <span class="two-buttons">
-      <button type="button" name="button" ng-click="new.goTitle()" value="button">Back</button> | <button type="button" name="button" ng-click="new.goRules()" ng-disabled="!new.story.genre" value="button">Next</button></span>
-    </div>
-
-
-
-  </div>
-
-  <div class="rules-form" ng-show="new.ruleCheck">
-    <p for="rule">Choose some rules (optional)</p>
-
-    <label>All sentances must start with the letter
-      <span>
-        <input type="text" name="start" ng-model="new.story.rules.start" ng-change="new.starts()" class="letter">
-      </span>
-    </label>
-    <label>No sentence can contain the letter
-      <span>
-        <input type="text" name="contain" ng-model="new.story.rules.contain" ng-change="new.contains()" class="letter">
-      </span>
-    </label>
-    <br>
-    <span class="two-buttons">
-      <button type="button" name="button" ng-click="new.goGenre()" value="button">Back</button> | <button type="button" name="button" ng-click="new.goContrib()" ng-disabled="!new.story.rules" value="button">Next</button>
-
-  </span>
-  </div>
-
-  <div class="contrib-form" ng-show="new.contribCheck">
-    <label for="authorContribution">Be the first to contibute</label>
-
-    <div class="row">
-<!-- ng-show="new.story.rules.contain || new.story.rules.start" -->
-      <div class="show-rules col-sm-2" >
-        <div class="show-rule" ng-class="{error: !new.startsAdhere && new.story.authorContribution}" ng-show="new.story.rules.start">
-          <p>{{new.story.rules.start}} |</p>
-        </div>
-        <div class="show-rule" ng-class="{error: !new.containAdhere && new.story.authorContribution}" ng-show="new.story.rules.contain">
-          <p >( {{new.story.rules.contain}} )</p>
-        </div>
+        <button type="button" name="button" ng-click="new.goTitle()" value="button">Back</button> | <button type="button" name="button" ng-click="new.goRules()" ng-disabled="!new.story.genre" value="button">Next</button></span>
       </div>
 
-      <div class="col-sm-10">
-        <textarea type="text-area"  class="text-area" name="authorContribution" ng-model="new.story.authorContribution" ng-change="new.addContrib()" ng-limit="10"></textarea>
-        <label for="charLeft" class="wordcount" ng-show="new.showWordCount">word count: {{new.wordCount}}</label>
-        <br>
 
-      </div>
 
     </div>
-    <span class="two-buttons">
-      <button type="button" name="button" ng-click="new.goGenre()" value="button">Back</button>
-      <input type="submit" value="|      Submit" ng-hide="!new.submitCheck">
-    </span>
+
+    <div class="rules-form" ng-show="new.ruleCheck">
+      <p for="rule">Choose some rules (optional)</p>
+
+      <label>All sentances must start with the letter
+        <span>
+          <input type="text" name="start" ng-model="new.story.rules.start" ng-change="new.starts()" class="letter">
+        </span>
+      </label>
+      <label>No sentence can contain the letter
+        <span>
+          <input type="text" name="contain" ng-model="new.story.rules.contain" ng-change="new.contains()" class="letter">
+        </span>
+      </label>
+      <label>All words must contain more letters than the previous.
+        <span>
+          <button type="button" name="button" ng-click="new.addIncreaseRule()" ng-model="new.story.rules.increase" class="apply-btn" ng-class="{buttonClicked: new.story.rules.increase}">Apply
+          </button>
+        </span>
+
+      </label>
+      <br>
+      <span class="two-buttons">
+        <button type="button" name="button" ng-click="new.goGenre()" value="button">Back</button> | <button type="button" name="button" ng-click="new.goContrib()" ng-disabled="!new.story.rules" value="button">Next</button>
+
+      </span>
+    </div>
+
+    <div class="contrib-form" ng-show="new.contribCheck">
+      <label for="authorContribution">Be the first to contibute</label>
+
+      <div class="row">
+
+        <div class="show-rules col-sm-2" >
+          <div class="show-rule" ng-class="{error: !new.startsAdhere && new.story.authorContribution}" ng-show="new.story.rules.start">
+            <p>{{new.story.rules.start}} |</p>
+          </div>
+          <div class="show-rule" ng-class="{error: !new.containAdhere && new.story.authorContribution}" ng-show="new.story.rules.contain">
+            <p >( {{new.story.rules.contain}} )</p>
+          </div>
+          <div class="show-rule" ng-class="{error: !new.increaseAdhere && new.story.authorContribution}" ng-show="new.story.rules.increase">
+            <p >
+              <i class="fa fa-signal" aria-hidden="true"></i>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-sm-10">
+          <textarea type="text-area"  class="text-area" name="authorContribution" ng-model="new.story.authorContribution" ng-change="new.addContrib()" ng-limit="10"></textarea>
+          <label for="charLeft" class="wordcount" ng-show="new.showWordCount">word count: {{new.wordCount}}</label>
+          <br>
+
+        </div>
+
+      </div>
+      <span class="two-buttons">
+        <button type="button" name="button" ng-click="new.goGenre()" value="button">Back</button>
+        <input type="submit" value="|      Submit" ng-hide="!new.submitCheck">
+      </span>
 
 
-  </div>
+    </div>
 
-</form>
+  </form>

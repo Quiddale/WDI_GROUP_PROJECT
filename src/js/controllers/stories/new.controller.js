@@ -2,10 +2,12 @@ angular
 .module('groupProject')
 .controller('NewCtrl', NewCtrl);
 
-NewCtrl.$inject = ['Story', '$state', 'CurrentUserService', '$http', 'LogicService','$stateParams'];
-function NewCtrl(Story, $state, CurrentUserService, $http, LogicService, $stateParams){
+NewCtrl.$inject = ['Story', '$state', 'CurrentUserService', '$http', 'LogicService'];
+function NewCtrl(Story, $state, CurrentUserService, $http, LogicService){
   const vm = this;
   vm.story = {};
+  vm.story.rules = {};
+  vm.increaseCount = 0;
   vm.titleCheck = true;
   vm.genreCheck = false;
   vm.ruleCheck = false;
@@ -62,8 +64,7 @@ function NewCtrl(Story, $state, CurrentUserService, $http, LogicService, $stateP
 
     vm.containAdhere = LogicService.containLogicCheck;
     vm.startsAdhere = LogicService.startLogicCheck;
-
-
+    vm.increaseAdhere = LogicService.increaseLogicCheck;
   }
   if(!vm.story.authorContribution){
     vm.containAdhere = true;
@@ -79,7 +80,15 @@ function NewCtrl(Story, $state, CurrentUserService, $http, LogicService, $stateP
     LogicService.containsInput(vm.story.rules.start.split(''));
     vm.story.rules.start = LogicService.letters[0];
   }
-
+  vm.addIncreaseRule = function(){
+    vm.increaseCount++;
+    if(vm.increaseCount%2 ===1){
+      vm.story.rules.increase = true;
+    }else{
+      vm.story.rules.increase = false;
+    }
+  };
+  // vm.story.rules.increase = false;
   function submit(){
     $http
     .get('https://api.unsplash.com/photos/random?client_id=6486f6a95a6e765711b9ee1b7accf318606fffc506b7769da674d6d51d44a9ba&featured=true')
@@ -91,8 +100,6 @@ function NewCtrl(Story, $state, CurrentUserService, $http, LogicService, $stateP
       .save(vm.story)
       .$promise
       .then((story) =>{
-        console.log(story);
-        // $state.go('storiesIndex');
         $state.go('storiesShow', {id: story._id});
       });
     });

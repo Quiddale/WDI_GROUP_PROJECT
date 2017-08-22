@@ -12,7 +12,6 @@ function storyIndex(req, res) {
 
 function storyCreate(req, res) {
   req.body.createdBy = req.user.id;
-  // console.log(req.body);
   Story
     .create(req.body)
     .then(story => res.status(201).json(story))
@@ -20,7 +19,6 @@ function storyCreate(req, res) {
 }
 
 function storyShow(req, res) {
-  // console.log(req.params);
   Story
   .findById(req.params.id)
   .populate('createdBy contributions.contributor')
@@ -39,18 +37,6 @@ function storyUpdate(req, res) {
     if (req.body.image) {
       story.image = req.body.image;
     }
-    // console.log(story.contributions, '<--------------------- STORY CONTRIBUTIONS');
-    // for (var i = 0; i < story.contributions.length; i++) {
-    //   story.contributions[i].contributor = req.body.contributions[i].contributor._id;
-    // }
-
-    // for (var i = 0; i < story.contributions.length; i++) {
-    //   console.log(story.contributions[i], 'BEFORE');
-    //   story.contributions[i].contributor = story.contributions[i].contributor.id;
-    //   console.log(story.contributions[i], 'AFTER');
-    // }
-
-    // story.contributions = req.body.contributions;
     story.save();
   })
   .then(story => res.status(200).json(story))
