@@ -8,11 +8,10 @@ function LogicService(){
   const self = this;
   self.checkRules = function(authorContrib, rules){
     if (authorContrib) {
-      
+
       self.increaseCheck = function(){
         for (var i = 0; i < self.sentences.length; i++) {
-          self.words = self.sentences[i].replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,'').split(' ');
-
+          self.words = self.sentences[i].replace(/[.,\/#!$%\^&\*;:{}=\-_`~'()]/g,'').split(' ');
           for (var a = 0; a < self.words.length; a++) {
             if (a === 0) {
               self.increaseLogicCheck = true;
@@ -24,7 +23,6 @@ function LogicService(){
             }
           }
         }
-
       };
 
       self.containCheck = function(){

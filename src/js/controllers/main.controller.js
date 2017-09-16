@@ -81,7 +81,8 @@ function MainCtrl($rootScope, CurrentUserService, $state, Story){
     }
   ];
 
-  vm.findStories = function(){
+  vm.findStories = function(e){
+    console.log(e);
     Story
     .query()
     .$promise
