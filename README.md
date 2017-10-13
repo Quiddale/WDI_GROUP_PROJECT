@@ -55,16 +55,3 @@ Built with: AngularJS, Node.js, MongoDB, Express, HTML, SCSS, Bootstrap, Slick, 
 ![alt text](https://i.imgur.com/ABuhJH4.png "Collision Course Screengrab")
 
 All projects and my details can be found here -> www.qosullivan.com
-
-
-
-
-
- 
-
-
-
-
-=======
-# WDI_GROUP_PROJECT
->>>>>>> ce08ffd86873d9558cbbde364985ef1dcbcd2eb8
